@@ -11,11 +11,13 @@ namespace bubuntoid.EasyDialog.Tests.Implementation
         public TextBoxItem ClientId { get; set; }
         public TextBoxItem FirstName { get; set; }
         public TextBoxItem LastName { get; set; }
+        public TextBoxItem MiddleName { get; set; }
         public ComboBoxItem Sex { get; set; }
         public DateTimePickerItem BirthDate { get; set; }
         public CheckBoxItem PerformanceArtist { get; set; }
+        public CheckBoxItem FuckingSlave { get; set; }
+        public CheckBoxItem Boss { get; set; }
         public NumericUpDownItem HighLoadsCount { get; set; }
-        public DialogButtonItem File { get; set; }
 
         private readonly Client client;
 
@@ -26,7 +28,7 @@ namespace bubuntoid.EasyDialog.Tests.Implementation
 
         protected override void OnConfiguring(DialogContextOptionsBuilder builder)
         {
-            builder.UseStyle(DialogStyle.Material)
+            builder.UseStyle(DialogStyle.Metro)
                 .WithTitle($"Edit client #{client.Id}")
                 .WithButton("Save");
 
@@ -45,6 +47,10 @@ namespace bubuntoid.EasyDialog.Tests.Implementation
                     .HasName("Second name")
                     .HasValue(client.LastName);
 
+                options.Property(x => x.MiddleName)
+                    .HasName("Middle name")
+                    .HasValue(client.MiddleName);
+
                 options.Property(x => x.BirthDate)
                     .HasName("Birth date")
                     .HasValue(client.BirthDate);
@@ -52,6 +58,14 @@ namespace bubuntoid.EasyDialog.Tests.Implementation
                 options.Property(x => x.PerformanceArtist)
                     .HasName("Performance artist")
                     .HasValue(client.IsPerformanceArtist);
+
+                options.Property(x => x.FuckingSlave)
+                    .HasName("Fucking slave")
+                    .HasValue(client.Slave);
+
+                options.Property(x => x.Boss)
+                    .HasName("Boss of the gym")
+                    .HasValue(client.Boss);
 
                 options.Property(x => x.HighLoadsCount)
                     .HasName("High loads count")

@@ -15,10 +15,11 @@ namespace bubuntoid.EasyDialog.Tests
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            var taskA = Task.Factory.StartNew(() => new AuthorizationDialog().Show());
+            var taskA = Task.Factory.StartNew(() => new AuthentificationDialog().Show());
             var taskB = Task.Factory.StartNew(() => new EditClientDialog(Client.Get()).Show());
+            var taskC = Task.Factory.StartNew(() => new UploadFileDialog().Show());
 
-            Task.WaitAll(new[] { taskA, taskB});
+            Task.WaitAll(new[] { taskA, taskB, taskC});
         }
     }
 }

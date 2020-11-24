@@ -8,7 +8,7 @@ namespace bubuntoid.EasyDialog.Internal.Forms.Implementations
     {
         public int InitialTopPadding { get; set; } = 80;
         public int SecondColumnXCoord { get; set; } = 150;
-        public int BottomSpace { get; set; } = 0;
+        public int BottomSpace { get; set; } = -60;
         public int ButtonRightPadding { get; set; } = 15;
         public int ButtonBottomPadding { get; set; } = 10;
 
