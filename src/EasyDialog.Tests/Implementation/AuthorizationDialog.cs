@@ -13,8 +13,11 @@ namespace EasyDialog.Tests.Implementation
                 .WithTitle("Authorization")
                 .WithButton("Sign in");
 
-            builder.PropertyOf<AuthorizationDialog>(x => x.Password)
-                .UsePasswordChar();
+            builder.ConfigureItems<AuthorizationDialog>(options =>
+            {
+                options.Property(x => x.Password)
+                    .UsePasswordChar();
+            });
         }
 
         protected override void OnButtonClick()

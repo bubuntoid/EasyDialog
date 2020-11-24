@@ -8,8 +8,8 @@ namespace EasyDialog
 {
     public abstract class DialogContext
     {
+        private IEasyDialogForm dialogForm;
         private IEnumerable<BaseDialogItem> dialogItems;
-        private IDialogForm dialogForm;
 
         private bool isInitialized;
 

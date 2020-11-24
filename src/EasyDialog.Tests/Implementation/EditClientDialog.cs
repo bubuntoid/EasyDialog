@@ -30,36 +30,38 @@ namespace EasyDialog.Tests.Implementation
                 .WithTitle($"Edit client #{client.Id}")
                 .WithButton("Save");
 
-            builder.PropertyOf<EditClientDialog>(x => x.ClientId)
-                .HasName("Client id")
-                .HasValue(client.Id.ToString())
-                .IsEnabled(false);
+            builder.ConfigureItems<EditClientDialog>(options =>
+            {
+                options.Property(x => x.ClientId)
+                    .HasName("Client id")
+                    .HasValue(client.Id.ToString())
+                    .IsEnabled(false);
 
-            builder.PropertyOf<EditClientDialog>(x => x.FirstName)
-                .HasName("First name")
-                .HasValue(client.FirstName);
+                options.Property(x => x.FirstName)
+                    .HasName("First name")
+                    .HasValue(client.FirstName);
 
-            builder.PropertyOf<EditClientDialog>(x => x.LastName)
-                .HasName("Second name")
-                .HasValue(client.LastName);
+                options.Property(x => x.LastName)
+                    .HasName("Second name")
+                    .HasValue(client.LastName);
 
-            builder.PropertyOf<EditClientDialog>(x => x.BirthDate)
-                .HasName("Birth date")
-                .HasValue(client.BirthDate);
+                options.Property(x => x.BirthDate)
+                    .HasName("Birth date")
+                    .HasValue(client.BirthDate);
 
-            builder.PropertyOf<EditClientDialog>(x => x.PerformanceArtist)
-                .HasName("Performance artist")
-                .HasValue(client.IsPerformanceArtist);
+                options.Property(x => x.PerformanceArtist)
+                    .HasName("Performance artist")
+                    .HasValue(client.IsPerformanceArtist);
 
-            builder.PropertyOf<EditClientDialog>(x => x.HighLoadsCount)
-                .HasName("High loads count")
-                .HasValue(client.HighLoadsCount);
+                options.Property(x => x.HighLoadsCount)
+                    .HasName("High loads count")
+                    .HasValue(client.HighLoadsCount);
 
-            var genders = new List<string> {Models.Sex.Male.ToString(), Models.Sex.Female.ToString()};
-
-            builder.PropertyOf<EditClientDialog>(x => x.Sex)
-                .HasDataSource(genders)
-                .HasValue(genders[0]);
+                var genders = new List<string> { Models.Sex.Male.ToString(), Models.Sex.Female.ToString() };
+                options.Property(x => x.Sex)
+                    .HasDataSource(genders)
+                    .HasValue(genders[0]);
+            });
         }
 
         protected override void OnButtonClick()

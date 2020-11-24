@@ -2,7 +2,7 @@
 
 namespace EasyDialog.Internal.Forms.Interfaces
 {
-    internal interface IDialogForm
+    internal interface IEasyDialogForm
     {
         DialogContext Context { get; set; }
 

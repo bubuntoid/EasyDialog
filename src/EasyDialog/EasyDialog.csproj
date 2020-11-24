@@ -58,7 +58,11 @@
   <ItemGroup>
     <Compile Include="DialogContext.cs" />
     <Compile Include="DialogContextOptionsBuilder.cs" />
+    <Compile Include="DialogItemsOptionsBuilder.cs" />
     <Compile Include="Enums\MetroTheme.cs" />
+    <Compile Include="Internal\Forms\EasyDialogForm.cs" />
+    <Compile Include="Internal\Forms\Interfaces\IFormProvider.cs" />
+    <Compile Include="Internal\Forms\Templates\ButtonTemplate.cs" />
     <Compile Include="Items\ComboBoxItemOptionsBuilder.cs" />
     <Compile Include="Items\DateTimePickerItemOptionsBuilder.cs" />
     <Compile Include="Items\Implementations\ComboBoxItem.cs" />
@@ -70,11 +74,11 @@
     <Compile Include="Items\TextBoxItemOptionsBuilder.cs" />
     <Compile Include="Items\DialogItemOptionsBuilder.cs" />
     <Compile Include="Enums\DialogStyle.cs" />
-    <Compile Include="Internal\Forms\Implementations\DefaultDialogForm.cs" />
+    <Compile Include="Internal\Forms\Implementations\DefaultFormProvider.cs" />
     <Compile Include="Internal\Forms\DialogContextFormLoader.cs" />
-    <Compile Include="Internal\Forms\Implementations\MaterialDialogForm.cs" />
-    <Compile Include="Internal\Forms\Implementations\MetroDialogForm.cs" />
-    <Compile Include="Internal\Forms\Interfaces\IDialogForm.cs" />
+    <Compile Include="Internal\Forms\Implementations\MaterialFormProvider.cs" />
+    <Compile Include="Internal\Forms\Implementations\MetroFormProvider.cs" />
+    <Compile Include="Internal\Forms\Interfaces\IEasyDialogForm.cs" />
     <Compile Include="Internal\Forms\Templates\LabelTemplate.cs" />
     <Compile Include="Items\Interfaces\BaseDialogItem.cs" />
     <Compile Include="Internal\Items\DialogContextItemsLoader.cs" />

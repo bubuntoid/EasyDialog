@@ -10,7 +10,7 @@ namespace EasyDialog
 {
     public class DialogContextOptionsBuilder
     {
-        private readonly IEnumerable<BaseDialogItem> items;
+        internal readonly IEnumerable<BaseDialogItem> items;
 
         internal DialogStyle Style { get; set; } = DialogStyle.Default;
         internal MetroTheme MetroTheme { get; set; } = MetroTheme.Default;
@@ -46,22 +46,15 @@ namespace EasyDialog
             return this;
         }
 
-        public DialogItemOptionsBuilder PropertyOf<T>(Expression<Func<T, object>> property) => new DialogItemOptionsBuilder(GetItemFromExpression(property));
-        public TextBoxItemOptionsBuilder PropertyOf<T>(Expression<Func<T, TextBoxItem>> property) => new TextBoxItemOptionsBuilder(GetItemFromExpression(property));
-        public NumericUpDownItemOptionsBuilder PropertyOf<T>(Expression<Func<T, NumericUpDownItem>> property) => new NumericUpDownItemOptionsBuilder(GetItemFromExpression(property));
-        public CheckBoxItemOptionsBuilder PropertyOf<T>(Expression<Func<T, CheckBoxItem>> property) => new CheckBoxItemOptionsBuilder(GetItemFromExpression(property));
-        public DateTimePickerItemOptionsBuilder PropertyOf<T>(Expression<Func<T, DateTimePickerItem>> property) => new DateTimePickerItemOptionsBuilder(GetItemFromExpression(property));
-        public ComboBoxItemOptionsBuilder PropertyOf<T>(Expression<Func<T, ComboBoxItem>> property) => new ComboBoxItemOptionsBuilder(GetItemFromExpression(property));
-
-        private BaseDialogItem GetItemFromExpression<T, TProperty>(Expression<Func<T, TProperty>> property)
+        public DialogContextOptionsBuilder ConfigureItems<T>(Action<DialogItemsOptionsBuilder<T>> options)
         {
-            var expr = property.Body is MemberExpression ?
-                (MemberExpression)property.Body :
-                (MemberExpression)((UnaryExpression)property.Body).Operand;
+            var arg = new DialogItemsOptionsBuilder<T>
+            {
+                DialogContextOptionsBuilder = this
 
-            var prop = (PropertyInfo)expr.Member;
-
-            return items.FirstOrDefault(x => x.DialogContextPropertyName == prop.Name);
+            };
+            options.Invoke(arg);
+            return this;
         }
     }
 }

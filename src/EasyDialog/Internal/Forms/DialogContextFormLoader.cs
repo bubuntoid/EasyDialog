@@ -15,34 +15,37 @@ namespace EasyDialog.Internal.Forms
             this.context = context;
         }
 
-        public IDialogForm Load(DialogContextOptionsBuilder builder, IEnumerable<BaseDialogItem> items)
+        public IEasyDialogForm Load(DialogContextOptionsBuilder builder, IEnumerable<BaseDialogItem> items)
         {
-            IDialogForm result;
+            IFormProvider formProvider;
 
             switch (builder.Style)
             {
                 case DialogStyle.Default: 
-                    result = new DefaultDialogForm();
+                    formProvider = new DefaultFormProvider();
                     break;
 
                 case DialogStyle.Metro:
-                    result = new MetroDialogForm(builder.MetroTheme);
+                    formProvider = new MetroFormProvider(builder.MetroTheme);
                     break;
 
                 case DialogStyle.Material:
-                    result = new MaterialDialogForm();
+                    formProvider = new MaterialFormProvider();
                     break;
 
                 default:
                     throw new ArgumentOutOfRangeException(nameof(builder.Style), builder.Style, null);
             }
 
-            result.Context = context;
-            result.ButtonText = builder.ButtonText;
-            result.Title = builder.Title;
-            result.SetItems(items);
+            var form = new EasyDialogForm(formProvider)
+            {
+                ButtonText = builder.ButtonText,
+                Title = builder.Title,
+                Context = context
+            };
+            form.SetItems(items);
 
-            return result;
+            return form;
         }
     }
 }
