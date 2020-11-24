@@ -46,9 +46,9 @@ namespace EasyDialog
             return this;
         }
 
-        public DialogContextOptionsBuilder ConfigureItems<T>(Action<DialogItemsOptionsBuilder<T>> options)
+        public DialogContextOptionsBuilder ConfigureItems<TContext>(Action<DialogItemsOptionsBuilder<TContext>> options)
         {
-            var arg = new DialogItemsOptionsBuilder<T>
+            var arg = new DialogItemsOptionsBuilder<TContext>
             {
                 DialogContextOptionsBuilder = this
 
