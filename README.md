@@ -42,6 +42,11 @@ public class AuthentificationDialog : DialogContext
 }
 ```
 
+Dialogs that was used in preview:
+- [File dialog](https://github.com/bubuntoid/EasyDialog/blob/main/src/EasyDialog.Tests/Implementation/UploadFileDialog.cs)
+- [Client dialog](https://github.com/bubuntoid/EasyDialog/blob/main/src/EasyDialog.Tests/Implementation/ClientDialog.cs)
+- [Auth dialog](https://github.com/bubuntoid/EasyDialog/blob/main/src/EasyDialog.Tests/Implementation/AuthentificationDialog.cs)
+
 ## Items
 Base items that available "out of the box":
 - TextBoxItem (string)
