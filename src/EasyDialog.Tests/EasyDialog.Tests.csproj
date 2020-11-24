@@ -51,7 +51,7 @@
   <ItemGroup>
     <Compile Include="Implementation\UploadFileDialog.cs" />
     <Compile Include="Implementation\CustomDialogItems\DialogButtonItem.cs" />
-    <Compile Include="Implementation\EditClientDialog.cs" />
+    <Compile Include="Implementation\ClientDialog.cs" />
     <Compile Include="Implementation\AuthentificationDialog.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Program.cs" />

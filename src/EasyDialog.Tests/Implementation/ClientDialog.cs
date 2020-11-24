@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using bubuntoid.EasyDialog.Enums;
 using bubuntoid.EasyDialog.Tests.Implementation.CustomDialogItems;
 using bubuntoid.EasyDialog.Tests.Models;
 
 namespace bubuntoid.EasyDialog.Tests.Implementation
 {
-    public class EditClientDialog : DialogContext
+    public class ClientDialog : DialogContext
     {
         public TextBoxItem ClientId { get; set; }
         public TextBoxItem FirstName { get; set; }
@@ -20,58 +21,64 @@ namespace bubuntoid.EasyDialog.Tests.Implementation
         public NumericUpDownItem HighLoadsCount { get; set; }
 
         private readonly Client client;
+        private readonly MetroTheme theme;
 
-        public EditClientDialog(Client client)
+        public ClientDialog(Client client, MetroTheme theme = MetroTheme.Default)
         {
             this.client = client;
+            this.theme = theme;
         }
 
         protected override void OnConfiguring(DialogContextOptionsBuilder builder)
         {
-            builder.UseStyle(DialogStyle.Metro)
-                .WithTitle($"Edit client #{client.Id}")
-                .WithButton("Save");
+            var title = client == null ? "Create a new client" : $"Edit client #{client.Id}";
+            var button = client == null ? "Add" : "Save";
 
-            builder.ConfigureItems<EditClientDialog>(options =>
+            builder.UseStyle(DialogStyle.Metro)
+                .UseMetroTheme(theme)
+                .WithTitle(title)
+                .WithButton(button);
+
+            builder.ConfigureItems<ClientDialog>(options =>
             {
                 options.Property(x => x.ClientId)
                     .HasName("Client id")
-                    .HasValue(client.Id.ToString())
+                    .HasValue(client?.Id.ToString() ?? string.Empty)
                     .IsEnabled(false);
 
                 options.Property(x => x.FirstName)
                     .HasName("First name")
-                    .HasValue(client.FirstName);
+                    .HasValue(client?.FirstName);
 
                 options.Property(x => x.LastName)
                     .HasName("Second name")
-                    .HasValue(client.LastName);
+                    .HasValue(client?.LastName);
 
                 options.Property(x => x.MiddleName)
                     .HasName("Middle name")
-                    .HasValue(client.MiddleName);
+                    .HasValue(client?.MiddleName);
 
                 options.Property(x => x.BirthDate)
                     .HasName("Birth date")
-                    .HasValue(client.BirthDate);
+                    .HasValue(client?.BirthDate ?? DateTime.Today);
 
                 options.Property(x => x.PerformanceArtist)
                     .HasName("Performance artist")
-                    .HasValue(client.IsPerformanceArtist);
+                    .HasValue(client?.IsPerformanceArtist ?? false);
 
                 options.Property(x => x.FuckingSlave)
                     .HasName("Fucking slave")
-                    .HasValue(client.Slave);
+                    .HasValue(client?.Slave ?? false);
 
                 options.Property(x => x.Boss)
                     .HasName("Boss of the gym")
-                    .HasValue(client.Boss);
+                    .HasValue(client?.Boss ?? false);
 
                 options.Property(x => x.HighLoadsCount)
                     .HasName("High loads count")
-                    .HasValue(client.HighLoadsCount);
+                    .HasValue(client?.HighLoadsCount ?? 0);
 
-                var genders = new List<string> { Models.Sex.Male.ToString(), Models.Sex.Female.ToString() };
+                var genders = new List<string> {Models.Sex.Male.ToString(), Models.Sex.Female.ToString()};
                 options.Property(x => x.Sex)
                     .HasDataSource(genders)
                     .HasValue(genders[0]);
@@ -80,7 +87,6 @@ namespace bubuntoid.EasyDialog.Tests.Implementation
 
         protected override void OnButtonClick()
         {
-            MessageBox.Show($@"Client #{ClientId.Value} ({FirstName.Value} {LastName.Value}) successively saved!");
             Close();
         }
     }
