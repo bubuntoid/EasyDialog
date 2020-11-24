@@ -1,5 +1,10 @@
 # EasyDialog
 EasyDialog is a framework that automatically creates UI dialogs with easy control extendability and Entity Framework's DbContext declaration style.
+
+<p align="center">
+  <img src="https://github.com/bubuntoid/EasyDialog/raw/base-architecture/assets/Screenshot_1.png" alt="Sublime's custom image"/>
+</p>
+
 ```csharp
 using bubuntoid.EasyDialog;
 
