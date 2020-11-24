@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace EasyDialog
+namespace bubuntoid.EasyDialog
 {
     public class DateTimePickerItemOptionsBuilder : DialogItemOptionsBuilder
     {

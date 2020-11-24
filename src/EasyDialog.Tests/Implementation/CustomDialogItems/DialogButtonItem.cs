@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace EasyDialog.Tests.Implementation.CustomDialogItems
+namespace bubuntoid.EasyDialog.Tests.Implementation.CustomDialogItems
 {
     public class DialogButtonItem : BaseDialogItem
     {

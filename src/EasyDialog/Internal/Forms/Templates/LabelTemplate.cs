@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace EasyDialog.Internal.Forms.Templates
+namespace bubuntoid.EasyDialog.Internal.Forms.Templates
 {
     public static class LabelTemplate
     {

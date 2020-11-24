@@ -1,4 +1,4 @@
-﻿namespace EasyDialog
+﻿namespace bubuntoid.EasyDialog
 {
     public class DialogItemOptionsBuilder
     {

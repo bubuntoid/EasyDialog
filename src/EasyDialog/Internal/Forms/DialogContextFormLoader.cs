@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
-using EasyDialog.Internal.Forms.Interfaces;
-using EasyDialog.Internal.Forms.Implementations;
+using bubuntoid.EasyDialog.Internal.Forms.Interfaces;
+using bubuntoid.EasyDialog.Internal.Forms.Implementations;
 
-namespace EasyDialog.Internal.Forms
+namespace bubuntoid.EasyDialog.Internal.Forms
 {
     internal class DialogContextFormLoader
     {

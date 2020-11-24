@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using EasyDialog.Tests.Implementation.CustomDialogItems;
-using EasyDialog.Tests.Models;
+using bubuntoid.EasyDialog.Tests.Implementation.CustomDialogItems;
+using bubuntoid.EasyDialog.Tests.Models;
 
-namespace EasyDialog.Tests.Implementation
+namespace bubuntoid.EasyDialog.Tests.Implementation
 {
     public class EditClientDialog : DialogContext
     {

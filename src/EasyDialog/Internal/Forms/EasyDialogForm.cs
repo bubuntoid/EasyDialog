@@ -3,10 +3,10 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Collections.Generic;
 
-using EasyDialog.Internal.Forms.Templates;
-using EasyDialog.Internal.Forms.Interfaces;
+using bubuntoid.EasyDialog.Internal.Forms.Templates;
+using bubuntoid.EasyDialog.Internal.Forms.Interfaces;
 
-namespace EasyDialog.Internal.Forms
+namespace bubuntoid.EasyDialog.Internal.Forms
 {
     public class EasyDialogForm : IEasyDialogForm
     {

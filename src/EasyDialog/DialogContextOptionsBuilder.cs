@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Linq;
-using System.Reflection;
-using System.Linq.Expressions;
 using System.Collections.Generic;
 
-using EasyDialog.Enums;
+using bubuntoid.EasyDialog.Enums;
 
-namespace EasyDialog
+namespace bubuntoid.EasyDialog
 {
     public class DialogContextOptionsBuilder
     {

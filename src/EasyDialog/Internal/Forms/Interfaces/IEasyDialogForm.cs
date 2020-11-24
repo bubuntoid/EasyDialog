@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace EasyDialog.Internal.Forms.Interfaces
+namespace bubuntoid.EasyDialog.Internal.Forms.Interfaces
 {
     internal interface IEasyDialogForm
     {

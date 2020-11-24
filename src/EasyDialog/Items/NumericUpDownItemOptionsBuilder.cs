@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace EasyDialog
+namespace bubuntoid.EasyDialog
 {
     public class NumericUpDownItemOptionsBuilder : DialogItemOptionsBuilder
     {

@@ -7,8 +7,8 @@
     <ProjectGuid>{CC3F1B6D-0DE7-45F2-86DF-C82D093B23AD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EasyDialog</RootNamespace>
-    <AssemblyName>EasyDialog</AssemblyName>
+    <RootNamespace>bubuntoid.EasyDialog</RootNamespace>
+    <AssemblyName>bubuntoid.EasyDialog</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

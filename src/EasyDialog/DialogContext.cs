@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 
-using EasyDialog.Internal.Forms;
-using EasyDialog.Internal.Items;
-using EasyDialog.Internal.Forms.Interfaces;
+using bubuntoid.EasyDialog.Internal.Forms;
+using bubuntoid.EasyDialog.Internal.Items;
+using bubuntoid.EasyDialog.Internal.Forms.Interfaces;
 
-namespace EasyDialog
+namespace bubuntoid.EasyDialog
 {
     public abstract class DialogContext
     {

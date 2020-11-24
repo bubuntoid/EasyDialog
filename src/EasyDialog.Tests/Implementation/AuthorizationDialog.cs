@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace EasyDialog.Tests.Implementation
+namespace bubuntoid.EasyDialog.Tests.Implementation
 {
     public class AuthorizationDialog : DialogContext
     {

@@ -1,7 +1,7 @@
 ﻿using System.Windows.Forms;
-using EasyDialog.Internal.Forms.Interfaces;
+using bubuntoid.EasyDialog.Internal.Forms.Interfaces;
 
-namespace EasyDialog.Internal.Forms.Implementations
+namespace bubuntoid.EasyDialog.Internal.Forms.Implementations
 {
     internal class DefaultFormProvider : IFormProvider
     {

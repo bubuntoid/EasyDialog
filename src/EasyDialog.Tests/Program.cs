@@ -2,10 +2,10 @@
 using System.Windows.Forms;
 using System.Threading.Tasks;
 
-using EasyDialog.Tests.Implementation;
-using EasyDialog.Tests.Models;
+using bubuntoid.EasyDialog.Tests.Implementation;
+using bubuntoid.EasyDialog.Tests.Models;
 
-namespace EasyDialog.Tests
+namespace bubuntoid.EasyDialog.Tests
 {
     static class Program
     {

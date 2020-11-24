@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EasyDialog.Tests.Models
+namespace bubuntoid.EasyDialog.Tests.Models
 {
     public enum Sex
     {

@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace EasyDialog.Internal.Forms.Interfaces
+namespace bubuntoid.EasyDialog.Internal.Forms.Interfaces
 {
     public interface IFormProvider
     {

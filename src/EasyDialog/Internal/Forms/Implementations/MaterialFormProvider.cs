@@ -1,8 +1,8 @@
 ﻿using System.Windows.Forms;
-using EasyDialog.Internal.Forms.Interfaces;
+using bubuntoid.EasyDialog.Internal.Forms.Interfaces;
 using MaterialSkin.Controls;
 
-namespace EasyDialog.Internal.Forms.Implementations
+namespace bubuntoid.EasyDialog.Internal.Forms.Implementations
 {
     internal class MaterialFormProvider : IFormProvider
     {

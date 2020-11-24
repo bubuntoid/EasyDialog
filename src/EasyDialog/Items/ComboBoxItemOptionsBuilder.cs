@@ -1,7 +1,7 @@
 ﻿using System.Windows.Forms;
 using System.Collections.Generic;
 
-namespace EasyDialog
+namespace bubuntoid.EasyDialog
 {
     public class ComboBoxItemOptionsBuilder : DialogItemOptionsBuilder
     {
