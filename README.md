@@ -37,6 +37,7 @@ public class AuthentificationDialog : DialogContext
     protected override void OnButtonClick()
     {
         MessageBox.Show($@"Login: {Username.Value} Password: {Password.Value}");
+        this.Close();
     }
 }
 ```
