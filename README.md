@@ -1,6 +1,8 @@
 # EasyDialog
 EasyDialog is a framework that automatically creates UI dialogs with easy control extendability and Entity Framework's DbContext declaration style.
 ```csharp
+using bubuntoid.EasyDialog;
+
 public class AuthorizationDialog : DialogContext
 {
     public TextBoxItem Username { get; set; }
