@@ -62,12 +62,16 @@ public class DialogButtonItem : BaseDialogItem
     public override Control Control { get; set; } = new Button() { Text = "Click on me!" };
 }
 ```
-There is just a little thing you should know: if your control's height is not "one row" default size, you have to override **ControlHeight** property like this:
+There is just a little thing you should know: if your control's height is not "one row" default size, you have to override **ControlHeight** property or configure it in your **DialogContext**:
+
 ```csharp
-public class DialogButtonItem : BaseDialogItem
+protected override void OnConfiguring(DialogContextOptionsBuilder builder)
 {
-    public override Control Control { get; set; } = new Button() { Text = "Click on me!" };
-    public override int ControlHeight { get: set; } = Control.Height; // or something like that
+    builder.ConfigureItems<YourDialog>(options =>
+    {
+        options.Property(x => x.YourDialogProperty)
+            .HasHeight(value);
+    });
 }
 ```
 
