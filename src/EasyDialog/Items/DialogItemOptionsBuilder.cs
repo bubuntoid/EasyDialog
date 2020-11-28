@@ -26,5 +26,11 @@
             item.Enabled = value;
             return this;
         }
+
+        public DialogItemOptionsBuilder Ignore()
+        {
+            item.Ignore = true;
+            return this;
+        }
     }
 }

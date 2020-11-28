@@ -10,6 +10,7 @@ namespace bubuntoid.EasyDialog
         internal string DialogContextPropertyName { get; set; }
         internal string Name { get; set; }
         internal bool Enabled { get; set; } = true;
+        internal bool Ignore { get; set; } = false;
 
         public abstract Control Control { get; set; }
         public virtual int ControlHeight { get; set; } = DEFAULT_CONTROL_HEIGHT;

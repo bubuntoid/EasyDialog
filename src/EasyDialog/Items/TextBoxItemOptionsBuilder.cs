@@ -46,5 +46,11 @@ namespace bubuntoid.EasyDialog
             control.Text = value;
             return this;
         }
+
+        public TextBoxItemOptionsBuilder Ignore()
+        {
+            item.Ignore = true;
+            return this;
+        }
     }
 }

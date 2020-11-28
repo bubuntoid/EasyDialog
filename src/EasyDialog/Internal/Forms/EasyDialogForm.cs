@@ -60,6 +60,9 @@ namespace bubuntoid.EasyDialog.Internal.Forms
                 var currentItem = items.ElementAt(i);
                 var control = currentItem.Control;
 
+                if (currentItem.Ignore == true)
+                    continue;
+
                 control.Enabled = currentItem.Enabled;
                 control.AutoSize = false;
                 control.Size = new Size(DEFAULT_VALUE_CONTROL_WIDTH, currentItem.ControlHeight);
