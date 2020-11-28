@@ -38,5 +38,11 @@ namespace bubuntoid.EasyDialog
             control.Value = value;
             return this;
         }
+
+        public NumericUpDownItemOptionsBuilder Ignore()
+        {
+            item.Ignore = true;
+            return this;
+        }
     }
 }

@@ -24,5 +24,11 @@ namespace bubuntoid.EasyDialog
             control.Checked = value;
             return this;
         }
+
+        public CheckBoxItemOptionsBuilder Ignore()
+        {
+            item.Ignore = true;
+            return this;
+        }
     }
 }

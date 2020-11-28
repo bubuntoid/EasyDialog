@@ -39,5 +39,11 @@ namespace bubuntoid.EasyDialog
             control.MaxDate = value;
             return this;
         }
+
+        public DateTimePickerItemOptionsBuilder Ignore()
+        {
+            item.Ignore = true;
+            return this;
+        }
     }
 }

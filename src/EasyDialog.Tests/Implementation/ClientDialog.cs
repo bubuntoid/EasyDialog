@@ -76,7 +76,8 @@ namespace bubuntoid.EasyDialog.Tests.Implementation
 
                 options.Property(x => x.HighLoadsCount)
                     .HasName("High loads count")
-                    .HasValue(client?.HighLoadsCount ?? 0);
+                    .HasValue(client?.HighLoadsCount ?? 0)
+                    .Ignore();
 
                 var genders = new List<string> {Models.Sex.Male.ToString(), Models.Sex.Female.ToString()};
                 options.Property(x => x.Sex)

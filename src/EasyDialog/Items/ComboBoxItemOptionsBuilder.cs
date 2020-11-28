@@ -38,5 +38,11 @@ namespace bubuntoid.EasyDialog
             control.SelectedItem = value;
             return this;
         }
+
+        public ComboBoxItemOptionsBuilder Ignore()
+        {
+            item.Ignore = true;
+            return this;
+        }
     }
 }
