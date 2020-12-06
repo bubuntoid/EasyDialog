@@ -52,5 +52,11 @@ namespace bubuntoid.EasyDialog
             item.Ignore = true;
             return this;
         }
+        
+        public TextBoxItemOptionsBuilder AsFullRow()
+        {
+            item.FullRow = true;
+            return this;
+        }
     }
 }
