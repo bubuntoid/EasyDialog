@@ -32,5 +32,11 @@
             item.Ignore = true;
             return this;
         }
+
+        public DialogItemOptionsBuilder AsFullRow()
+        {
+            item.FullRow = true;
+            return this;
+        }
     }
 }

@@ -44,5 +44,11 @@ namespace bubuntoid.EasyDialog
             item.Ignore = true;
             return this;
         }
+        
+        public ComboBoxItemOptionsBuilder AsFullRow()
+        {
+            item.FullRow = true;
+            return this;
+        }
     }
 }

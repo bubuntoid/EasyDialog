@@ -30,5 +30,11 @@ namespace bubuntoid.EasyDialog
             item.Ignore = true;
             return this;
         }
+        
+        public CheckBoxItemOptionsBuilder AsFullRow()
+        {
+            item.FullRow = true;
+            return this;
+        }
     }
 }

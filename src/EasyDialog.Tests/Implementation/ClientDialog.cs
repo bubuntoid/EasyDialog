@@ -60,7 +60,8 @@ namespace bubuntoid.EasyDialog.Tests.Implementation
 
                 options.Property(x => x.BirthDate)
                     .HasName("Birth date")
-                    .HasValue(client?.BirthDate ?? DateTime.Today);
+                    .HasValue(client?.BirthDate ?? DateTime.Today)
+                    .AsFullRow();
 
                 options.Property(x => x.PerformanceArtist)
                     .HasName("Performance artist")

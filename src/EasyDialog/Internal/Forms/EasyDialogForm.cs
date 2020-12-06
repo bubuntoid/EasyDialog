@@ -14,7 +14,8 @@ namespace bubuntoid.EasyDialog.Internal.Forms
 
         private const int DEFAULT_BUTTON_HEIGHT = 40;
         private const int DEFAULT_BUTTON_WIDTH = 120;
-       
+
+        private const int PADDING = 25;
 
         public DialogContext Context { get; set; }
 
@@ -59,26 +60,32 @@ namespace bubuntoid.EasyDialog.Internal.Forms
             {
                 var currentItem = items.ElementAt(i);
                 var control = currentItem.Control;
+                control.Enabled = currentItem.Enabled;
+                control.AutoSize = false;
 
                 if (currentItem.Ignore == true)
                     continue;
 
-                control.Enabled = currentItem.Enabled;
-                control.AutoSize = false;
-                control.Size = new Size(DEFAULT_VALUE_CONTROL_WIDTH, currentItem.ControlHeight);
-                control.Location = new Point
+                if (currentItem.FullRow == false)
+                    formProvider.AddControl(LabelTemplate.DefaultLabel(currentItem.Name, currentHeight + 3));
+
+                control.Size = new Size()
                 {
-                    X = formProvider.SecondColumnXCoord,
-                    Y = currentHeight
+                    Width = currentItem.FullRow ? formProvider.Width - 45 : DEFAULT_VALUE_CONTROL_WIDTH,
+                    Height = currentItem.ControlHeight
+                };
+                control.Location = new Point()
+                {
+                    X = currentItem.FullRow ? PADDING : formProvider.SecondColumnXCoord,
+                    Y = currentHeight,
                 };
 
-                formProvider.AddControl(LabelTemplate.DefaultLabel(currentItem.Name, currentHeight + 3));
                 formProvider.AddControl(control);
-
                 currentHeight += control.Size.Height + 10;
             }
 
-            formProvider.Height = formProvider.InitialTopPadding + currentHeight + DEFAULT_BUTTON_HEIGHT + formProvider.BottomSpace;
+            formProvider.Height = formProvider.InitialTopPadding + currentHeight + DEFAULT_BUTTON_HEIGHT +
+                                  formProvider.BottomSpace;
 
             var buttonControl = new Button()
             {

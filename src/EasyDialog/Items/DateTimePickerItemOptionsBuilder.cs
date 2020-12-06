@@ -45,5 +45,11 @@ namespace bubuntoid.EasyDialog
             item.Ignore = true;
             return this;
         }
+        
+        public DateTimePickerItemOptionsBuilder AsFullRow()
+        {
+            item.FullRow = true;
+            return this;
+        }
     }
 }
