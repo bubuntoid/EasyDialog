@@ -15,6 +15,7 @@ namespace bubuntoid.EasyDialog
         public CheckBoxItemOptionsBuilder Property(Expression<Func<TContext, CheckBoxItem>> property) => new CheckBoxItemOptionsBuilder(GetItemFromExpression(property));
         public DateTimePickerItemOptionsBuilder Property(Expression<Func<TContext, DateTimePickerItem>> property) => new DateTimePickerItemOptionsBuilder(GetItemFromExpression(property));
         public ComboBoxItemOptionsBuilder Property(Expression<Func<TContext, ComboBoxItem>> property) => new ComboBoxItemOptionsBuilder(GetItemFromExpression(property));
+        public ListBoxItemOptionsBuilder Property(Expression<Func<TContext, ListBoxItem>> property) => new ListBoxItemOptionsBuilder(GetItemFromExpression(property));
 
         private BaseDialogItem GetItemFromExpression<TProperty>(Expression<Func<TContext, TProperty>> property)
         {

@@ -13,7 +13,7 @@ namespace bubuntoid.EasyDialog.Tests.Implementation
         public TextBoxItem FirstName { get; set; }
         public TextBoxItem LastName { get; set; }
         public TextBoxItem MiddleName { get; set; }
-        public ComboBoxItem Sex { get; set; }
+        public ListBoxItem Sex { get; set; }
         public DateTimePickerItem BirthDate { get; set; }
         public CheckBoxItem PerformanceArtist { get; set; }
         public CheckBoxItem FuckingSlave { get; set; }
@@ -60,8 +60,7 @@ namespace bubuntoid.EasyDialog.Tests.Implementation
 
                 options.Property(x => x.BirthDate)
                     .HasName("Birth date")
-                    .HasValue(client?.BirthDate ?? DateTime.Today)
-                    .AsFullRow();
+                    .HasValue(client?.BirthDate ?? DateTime.Today);
 
                 options.Property(x => x.PerformanceArtist)
                     .HasName("Performance artist")

@@ -67,9 +67,11 @@
     <Compile Include="Items\DateTimePickerItemOptionsBuilder.cs" />
     <Compile Include="Items\Implementations\ComboBoxItem.cs" />
     <Compile Include="Items\Implementations\DateTimePickerItem.cs" />
+    <Compile Include="Items\Implementations\ListBoxItem.cs" />
     <Compile Include="Items\Implementations\NumericUpDownItem.cs" />
     <Compile Include="Items\Implementations\CheckBoxItem.cs" />
     <Compile Include="Items\CheckBoxItemOptionsBuilder.cs" />
+    <Compile Include="Items\ListBoxItemOptionsBuilder.cs" />
     <Compile Include="Items\NumericUpDownItemOptionsBuilder.cs" />
     <Compile Include="Items\TextBoxItemOptionsBuilder.cs" />
     <Compile Include="Items\DialogItemOptionsBuilder.cs" />
