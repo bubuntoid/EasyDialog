@@ -30,7 +30,7 @@ namespace bubuntoid.EasyDialog.Internal.Forms
                     break;
 
                 case DialogStyle.Material:
-                    formProvider = new MaterialFormProvider();
+                    formProvider = new MaterialFormProvider(builder.MaterialTheme, builder.MaterialColorScheme);
                     break;
 
                 default:

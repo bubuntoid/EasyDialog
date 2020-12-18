@@ -1,6 +1,4 @@
-﻿using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
-using bubuntoid.EasyDialog.Tests.Implementation.CustomDialogItems;
+﻿using bubuntoid.EasyDialog.Tests.Implementation.CustomDialogItems;
 
 namespace bubuntoid.EasyDialog.Tests.Implementation
 {
@@ -11,7 +9,7 @@ namespace bubuntoid.EasyDialog.Tests.Implementation
 
         protected override void OnConfiguring(DialogContextOptionsBuilder builder)
         {
-            builder.UseStyle(DialogStyle.Default)
+            builder.UseDefaultStyle()
                 .WithTitle("Uploading...")
                 .WithButton("Upload");
 

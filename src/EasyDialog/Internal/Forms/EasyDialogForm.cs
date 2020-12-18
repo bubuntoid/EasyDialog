@@ -8,7 +8,7 @@ using bubuntoid.EasyDialog.Internal.Forms.Interfaces;
 
 namespace bubuntoid.EasyDialog.Internal.Forms
 {
-    public class EasyDialogForm : IEasyDialogForm
+    internal class EasyDialogForm : IEasyDialogForm
     {
         private const int DEFAULT_VALUE_CONTROL_WIDTH = 150;
 

@@ -59,10 +59,14 @@
     <Compile Include="DialogContext.cs" />
     <Compile Include="DialogContextOptionsBuilder.cs" />
     <Compile Include="DialogItemsOptionsBuilder.cs" />
+    <Compile Include="Enums\MaterialTheme.cs" />
+    <Compile Include="Enums\MaterialThemeAccent.cs" />
+    <Compile Include="Enums\MaterialThemePrimaryColor.cs" />
     <Compile Include="Enums\MetroTheme.cs" />
     <Compile Include="Internal\Forms\EasyDialogForm.cs" />
     <Compile Include="Internal\Forms\Interfaces\IFormProvider.cs" />
     <Compile Include="Internal\Forms\Templates\ButtonTemplate.cs" />
+    <Compile Include="Models\MaterialColorScheme.cs" />
     <Compile Include="Items\ComboBoxItemOptionsBuilder.cs" />
     <Compile Include="Items\DateTimePickerItemOptionsBuilder.cs" />
     <Compile Include="Items\Implementations\ComboBoxItem.cs" />
@@ -89,6 +93,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Compile Include="Enums\MaterialThemeTextShade.cs" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

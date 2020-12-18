@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 
-using bubuntoid.EasyDialog.Enums;
-
 namespace bubuntoid.EasyDialog
 {
     public class DialogContextOptionsBuilder
@@ -11,6 +9,8 @@ namespace bubuntoid.EasyDialog
 
         internal DialogStyle Style { get; set; } = DialogStyle.Default;
         internal MetroTheme MetroTheme { get; set; } = MetroTheme.Default;
+        internal MaterialTheme MaterialTheme { get; set; } = MaterialTheme.Light;
+        internal MaterialColorScheme MaterialColorScheme { get; set; } = MaterialColorScheme.Default;
         internal string Title { get; set; } = "Dialog";
         internal string ButtonText { get; set; } = "Ok";
 
@@ -19,15 +19,49 @@ namespace bubuntoid.EasyDialog
             this.items = items;
         }
 
-        public DialogContextOptionsBuilder UseStyle(DialogStyle style)
+        /// <summary>
+        /// Material skin using some statics inside, so you may use only one dialog with that style at once.
+        /// </summary>
+        /// <param name="theme"></param>
+        /// <returns></returns>
+        public DialogContextOptionsBuilder UseMaterialStyle(MaterialTheme theme)
         {
-            Style = style;
+            Style = DialogStyle.Material;
+
+            MaterialTheme = theme;
             return this;
         }
+        /// <summary>
+        /// Material skin using some statics inside, so you may use only one dialog with that style at once.
+        /// Uses Light theme by default.
+        /// </summary>
+        /// <param name="theme"></param>
+        /// <returns></returns>
+        public DialogContextOptionsBuilder UseMaterialStyle() => UseMaterialStyle(MaterialTheme.Light);
 
-        public DialogContextOptionsBuilder UseMetroTheme(MetroTheme theme)
+        /// <summary>
+        /// Material skin using some statics inside, so you may use only one dialog with that style at once.
+        /// Default values are: Light, BlueGrey800, BlueGrey900, BlueGrey500, LightBlue200, White
+        /// </summary>
+        /// <param name="theme"></param>
+        /// <returns></returns>
+        public DialogContextOptionsBuilder UseMaterialStyle(MaterialTheme theme, MaterialColorScheme colorScheme)
         {
+            MaterialColorScheme = colorScheme;
+            return UseMaterialStyle(theme);
+        }
+
+        public DialogContextOptionsBuilder UseMetroStyle(MetroTheme theme)
+        {
+            Style = DialogStyle.Metro;
             MetroTheme = theme;
+            return this;
+        }
+        public DialogContextOptionsBuilder UseMetroStyle() => UseMetroStyle(MetroTheme.Default);
+
+        public DialogContextOptionsBuilder UseDefaultStyle()
+        {
+            Style = DialogStyle.Default;
             return this;
         }
 
