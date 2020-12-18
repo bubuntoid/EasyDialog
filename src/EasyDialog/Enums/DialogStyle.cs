@@ -1,6 +1,6 @@
 ﻿namespace bubuntoid.EasyDialog
 {
-    public enum DialogStyle
+    internal enum DialogStyle
     {
         Default,
         Metro,

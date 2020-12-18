@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace bubuntoid.EasyDialog.Internal.Forms.Templates
 {
-    public static class LabelTemplate
+    internal static class LabelTemplate
     {
         public static Label DefaultLabel(string name, int currentHeight)
         {

@@ -2,7 +2,7 @@
 
 namespace bubuntoid.EasyDialog.Internal.Forms.Interfaces
 {
-    public interface IFormProvider
+    internal interface IFormProvider
     {
         void ShowDialog();
         void Close();

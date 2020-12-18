@@ -1,6 +1,9 @@
 ﻿using System.Windows.Forms;
-using bubuntoid.EasyDialog.Internal.Forms.Interfaces;
+
+using MaterialSkin;
 using MaterialSkin.Controls;
+
+using bubuntoid.EasyDialog.Internal.Forms.Interfaces;
 
 namespace bubuntoid.EasyDialog.Internal.Forms.Implementations
 {
@@ -32,7 +35,7 @@ namespace bubuntoid.EasyDialog.Internal.Forms.Implementations
 
         private readonly MaterialForm form;
 
-        public MaterialFormProvider()
+        public MaterialFormProvider(MaterialTheme theme, MaterialColorScheme colorScheme)
         {
             form = new MaterialForm()
             {
@@ -42,6 +45,17 @@ namespace bubuntoid.EasyDialog.Internal.Forms.Implementations
                 StartPosition = FormStartPosition.CenterParent,
                 Sizable = false
             };
+
+            var materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.ROBOTO_REGULAR_11 = new System.Drawing.Font(materialSkinManager.ROBOTO_MEDIUM_10.FontFamily.Name, 10);
+            materialSkinManager.AddFormToManage(form);
+            materialSkinManager.Theme = (MaterialSkinManager.Themes)theme;
+            materialSkinManager.ColorScheme = new ColorScheme(
+                primary: (Primary)colorScheme.Primary,
+                darkPrimary: (Primary)colorScheme.DarkPrimary,
+                lightPrimary: (Primary)colorScheme.LightPrimary,
+                accent: (Accent)colorScheme.Accent,
+                textShade: (TextShade)colorScheme.TextShade);
         }
 
         public void ShowDialog()
@@ -56,6 +70,33 @@ namespace bubuntoid.EasyDialog.Internal.Forms.Implementations
 
         public void AddControl(Control control)
         {
+            // todo: refactoring
+            if (control is Label label)
+            {
+                control = new MaterialLabel()
+                {
+                    Text = label.Text,
+                    Size = label.Size,
+                    Location = label.Location,
+                    
+                };
+            }
+            if (control is Button button)
+            {
+                control = new MaterialRaisedButton()
+                {
+                    Text = button.Text,
+                    Size = button.Size,
+                    Location = button.Location,
+                };
+
+                var buttonControl = control as MaterialRaisedButton;
+                buttonControl.Click += (s, e) =>
+                {
+                    button.PerformClick();
+                };
+            }
+
             form.Controls.Add(control);
         }
     }

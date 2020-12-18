@@ -1,4 +1,4 @@
-﻿namespace bubuntoid.EasyDialog.Enums
+﻿namespace bubuntoid.EasyDialog
 {
     public enum MetroTheme
     {

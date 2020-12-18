@@ -1,6 +1,5 @@
 ﻿using System.Windows.Forms;
 
-using bubuntoid.EasyDialog.Enums;
 using bubuntoid.EasyDialog.Internal.Forms.Interfaces;
 
 using MetroFramework;

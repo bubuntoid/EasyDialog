@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using bubuntoid.EasyDialog.Enums;
 using bubuntoid.EasyDialog.Tests.Implementation.CustomDialogItems;
 using bubuntoid.EasyDialog.Tests.Models;
 
@@ -34,8 +33,7 @@ namespace bubuntoid.EasyDialog.Tests.Implementation
             var title = client == null ? "Create a new client" : $"Edit client #{client.Id}";
             var button = client == null ? "Add" : "Save";
 
-            builder.UseStyle(DialogStyle.Metro)
-                .UseMetroTheme(theme)
+            builder.UseMetroStyle(theme)
                 .WithTitle(title)
                 .WithButton(button);
 
