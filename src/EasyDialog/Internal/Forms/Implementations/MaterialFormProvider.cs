@@ -46,8 +46,13 @@ namespace bubuntoid.EasyDialog.Internal.Forms.Implementations
                 Sizable = false
             };
 
+            var defaultLabel = new Label();
+            var defaultFontFamilyName = defaultLabel.Font.FontFamily.Name;
+            var defaultLabelSize = defaultLabel.Font.Size;
+            defaultLabel.Dispose();
+
             var materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.ROBOTO_REGULAR_11 = new System.Drawing.Font(materialSkinManager.ROBOTO_MEDIUM_10.FontFamily.Name, 10);
+            materialSkinManager.ROBOTO_REGULAR_11 = new System.Drawing.Font(defaultFontFamilyName, defaultLabelSize);
             materialSkinManager.AddFormToManage(form);
             materialSkinManager.Theme = (MaterialSkinManager.Themes)theme;
             materialSkinManager.ColorScheme = new ColorScheme(
