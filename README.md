@@ -94,27 +94,6 @@ var scheme = new MaterialColorScheme()
 
 builder.UseMaterialStyle(MaterialTheme.Dark, scheme)
 ```
-Available color schemes:
-- Default
-- Green
-- LightGreen
-- Red
-- Amber
-- Brown
-- Teal 
-- Yellow
-- Pink
-- Purple
-- DeepPurple
-- Orange
-- DeepOrange
-- Lime
-- LightBlue
-- Indigo 
-- Grey
-- Cyan
-
-[Metro style themes](https://github.com/bubuntoid/EasyDialog/blob/main/src/EasyDialog/Enums/MetroTheme.cs).
 
 ## Dependencies
 - System.Windows.Forms 4.0.0.0
