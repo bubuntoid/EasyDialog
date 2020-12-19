@@ -10,7 +10,7 @@ namespace bubuntoid.EasyDialog.Tests.Implementation
 
         protected override void OnConfiguring(DialogContextOptionsBuilder builder)
         {
-            builder.UseMaterialStyle(MaterialTheme.Light, MaterialColorScheme.Cyan)
+            builder.UseMaterialStyle(MaterialTheme.Dark, MaterialColorScheme.Indigo)
                 .WithTitle("Authentification")
                 .WithButton("Sign in");
 

@@ -20,7 +20,7 @@ public class AuthentificationDialog : DialogContext
 
     protected override void OnConfiguring(DialogContextOptionsBuilder builder)
     {
-        builder.UseStyle(DialogStyle.Material)
+        builder.UseMaterialStyle()
             .WithTitle("Authentification")
             .WithButton("Sign in");
 
@@ -53,6 +53,7 @@ Base items that available "out of the box":
 - NumericUpDownItem (decimal/int)
 - CheckBoxItem (bool)
 - ComboBoxItem (Collection)
+- ListBoxItem (Collection)
 - DateTimePickerItem (DateTime)
 
 You can use your own control as dialog item by inerhiting from BaseDialogItem:
@@ -74,6 +75,46 @@ protected override void OnConfiguring(DialogContextOptionsBuilder builder)
     });
 }
 ```
+
+## Themes
+Material style has only two themes - Dark and Light, but it also supports color schemes, for using them you can use constant schemes from **MaterialColorScheme**:
+```csharp
+builder.UseMaterialStyle(MaterialTheme.Light, MaterialColorScheme.Indigo)
+```
+Or create your own, there is tons of available colors [here](https://github.com/bubuntoid/EasyDialog/blob/main/src/EasyDialog/Enums/MaterialThemePrimaryColor.cs):
+```csharp
+var scheme = new MaterialColorScheme()
+{
+    Primary = MaterialThemePrimaryColor.BlueGrey800,
+    DarkPrimary = MaterialThemePrimaryColor.BlueGrey900,
+    LightPrimary = MaterialThemePrimaryColor.BlueGrey500,
+    Accent = MaterialThemeAccent.LightBlue200,
+    TextShade = MaterialThemeTextShade.White,
+};
+
+builder.UseMaterialStyle(MaterialTheme.Dark, scheme)
+```
+Available color schemes:
+- Default
+- Green
+- LightGreen
+- Red
+- Amber
+- Brown
+- Teal 
+- Yellow
+- Pink
+- Purple
+- DeepPurple
+- Orange
+- DeepOrange
+- Lime
+- LightBlue
+- Indigo 
+- Grey
+- Cyan
+
+[Metro style themes](https://github.com/bubuntoid/EasyDialog/blob/main/src/EasyDialog/Enums/MetroTheme.cs).
 
 ## Dependencies
 - System.Windows.Forms 4.0.0.0
