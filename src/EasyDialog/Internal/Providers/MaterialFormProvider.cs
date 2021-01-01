@@ -3,9 +3,7 @@
 using MaterialSkin;
 using MaterialSkin.Controls;
 
-using bubuntoid.EasyDialog.Internal.Forms.Interfaces;
-
-namespace bubuntoid.EasyDialog.Internal.Forms.Implementations
+namespace bubuntoid.EasyDialog.Internal.Providers
 {
     internal class MaterialFormProvider : IFormProvider
     {

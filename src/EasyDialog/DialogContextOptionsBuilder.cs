@@ -78,6 +78,7 @@ namespace bubuntoid.EasyDialog
         }
 
         public DialogContextOptionsBuilder ConfigureItems<TContext>(Action<DialogItemsOptionsBuilder<TContext>> options)
+            where TContext : DialogContext
         {
             var arg = new DialogItemsOptionsBuilder<TContext>
             {

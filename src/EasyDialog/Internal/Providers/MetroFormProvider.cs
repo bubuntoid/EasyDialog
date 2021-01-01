@@ -1,12 +1,10 @@
 ﻿using System.Windows.Forms;
 
-using bubuntoid.EasyDialog.Internal.Forms.Interfaces;
-
 using MetroFramework;
 using MetroFramework.Forms;
 using MetroFramework.Drawing;
 
-namespace bubuntoid.EasyDialog.Internal.Forms.Implementations
+namespace bubuntoid.EasyDialog.Internal.Providers
 {
     internal class MetroFormProvider : IFormProvider
     {

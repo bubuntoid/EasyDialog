@@ -3,10 +3,9 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Collections.Generic;
 
-using bubuntoid.EasyDialog.Internal.Forms.Templates;
-using bubuntoid.EasyDialog.Internal.Forms.Interfaces;
+using bubuntoid.EasyDialog.Internal.Providers;
 
-namespace bubuntoid.EasyDialog.Internal.Forms
+namespace bubuntoid.EasyDialog.Internal
 {
     internal class EasyDialogForm : IEasyDialogForm
     {
@@ -37,7 +36,7 @@ namespace bubuntoid.EasyDialog.Internal.Forms
 
         public EasyDialogForm(IFormProvider formProvider)
         {
-            button = ButtonTemplate.DefaultButton;
+            button = Templates.DefaultButton;
             this.formProvider = formProvider;
         }
 
@@ -67,14 +66,20 @@ namespace bubuntoid.EasyDialog.Internal.Forms
                     continue;
 
                 if (currentItem.FullRow == false)
-                    formProvider.AddControl(LabelTemplate.DefaultLabel(currentItem.Name, currentHeight + 3));
+                {
+                    var label = Templates.DefaultLabel;
+                    label.Text = currentItem.Name;
+                    label.Location = new Point(25, currentHeight + 3);
 
-                control.Size = new Size()
+                    formProvider.AddControl(label);
+                }
+
+                control.Size = new Size
                 {
                     Width = currentItem.FullRow ? formProvider.Width - 45 : DEFAULT_VALUE_CONTROL_WIDTH,
                     Height = currentItem.ControlHeight
                 };
-                control.Location = new Point()
+                control.Location = new Point
                 {
                     X = currentItem.FullRow ? PADDING : formProvider.SecondColumnXCoord,
                     Y = currentHeight,
@@ -87,7 +92,7 @@ namespace bubuntoid.EasyDialog.Internal.Forms
             formProvider.Height = formProvider.InitialTopPadding + currentHeight + DEFAULT_BUTTON_HEIGHT +
                                   formProvider.BottomSpace;
 
-            var buttonControl = new Button()
+            var buttonControl = new Button
             {
                 Text = ButtonText,
                 Height = DEFAULT_BUTTON_HEIGHT,

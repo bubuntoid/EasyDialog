@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace bubuntoid.EasyDialog.Internal.Forms.Interfaces
+namespace bubuntoid.EasyDialog.Internal.Providers
 {
     internal interface IFormProvider
     {
@@ -9,11 +9,12 @@ namespace bubuntoid.EasyDialog.Internal.Forms.Interfaces
 
         void AddControl(Control control);
 
+        int Height { get; set; }
+        int Width { get; set; }
+
         int InitialTopPadding { get; set; }
         int SecondColumnXCoord { get; set; }
         int BottomSpace { get; set; }
-        int Height { get; set; }
-        int Width { get; set; }
         int ButtonRightPadding { get; set; }
         int ButtonBottomPadding { get; set; }
 
