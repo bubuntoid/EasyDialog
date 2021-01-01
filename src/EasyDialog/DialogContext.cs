@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 
-using bubuntoid.EasyDialog.Internal.Forms;
-using bubuntoid.EasyDialog.Internal.Items;
-using bubuntoid.EasyDialog.Internal.Forms.Interfaces;
+using bubuntoid.EasyDialog.Internal;
 
 namespace bubuntoid.EasyDialog
 {

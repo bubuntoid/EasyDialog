@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 
-namespace bubuntoid.EasyDialog.Internal.Items
+namespace bubuntoid.EasyDialog.Internal
 {
     internal class DialogContextItemsLoader
     {

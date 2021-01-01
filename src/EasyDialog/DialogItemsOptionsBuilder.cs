@@ -6,9 +6,11 @@ using System.Reflection;
 namespace bubuntoid.EasyDialog
 {
     public class DialogItemsOptionsBuilder<TContext>
+        where TContext : DialogContext
     {
         internal DialogContextOptionsBuilder DialogContextOptionsBuilder;
 
+        // todo: move to extensions?
         public DialogItemOptionsBuilder Property(Expression<Func<TContext, object>> property) => new DialogItemOptionsBuilder(GetItemFromExpression(property));
         public TextBoxItemOptionsBuilder Property(Expression<Func<TContext, TextBoxItem>> property) => new TextBoxItemOptionsBuilder(GetItemFromExpression(property));
         public NumericUpDownItemOptionsBuilder Property(Expression<Func<TContext, NumericUpDownItem>> property) => new NumericUpDownItemOptionsBuilder(GetItemFromExpression(property));
