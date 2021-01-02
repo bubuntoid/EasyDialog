@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 using MetroFramework;
 using MetroFramework.Forms;
@@ -13,6 +14,8 @@ namespace bubuntoid.EasyDialog.Internal.Providers
         public int BottomSpace { get; set; } = -40;
         public int ButtonRightPadding { get; set; } = 15;
         public int ButtonBottomPadding { get; set; } = 10;
+
+        public Action OnCloseHandler { get; set; }
 
         public string Title
         {
@@ -44,6 +47,11 @@ namespace bubuntoid.EasyDialog.Internal.Providers
                 MaximizeBox = false,
                 Resizable = false,
                 BorderStyle = MetroBorderStyle.FixedSingle,
+            };
+
+            form.FormClosed += (s, e) =>
+            {
+                OnCloseHandler.Invoke();
             };
         }
 

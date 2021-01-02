@@ -7,7 +7,8 @@ using bubuntoid.EasyDialog.Internal.Providers;
 
 namespace bubuntoid.EasyDialog.Internal
 {
-    internal class EasyDialogForm : IEasyDialogForm
+    internal class EasyDialogForm<TContext> : IEasyDialogForm<TContext>
+        where TContext : DialogContext<TContext>
     {
         private const int DEFAULT_VALUE_CONTROL_WIDTH = 150;
 
@@ -16,7 +17,7 @@ namespace bubuntoid.EasyDialog.Internal
 
         private const int PADDING = 25;
 
-        public DialogContext Context { get; set; }
+        public DialogContext<TContext> Context { get; set; }
 
         public string Title
         {

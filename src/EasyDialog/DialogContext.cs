@@ -4,9 +4,10 @@ using bubuntoid.EasyDialog.Internal;
 
 namespace bubuntoid.EasyDialog
 {
-    public abstract class DialogContext
+    public abstract class DialogContext<TContext> 
+        where TContext : DialogContext<TContext>
     {
-        private IEasyDialogForm dialogForm;
+        private IEasyDialogForm<TContext> dialogForm;
         private IEnumerable<BaseDialogItem> dialogItems;
 
         private bool isInitialized;
@@ -18,37 +19,30 @@ namespace bubuntoid.EasyDialog
 
         public void ShowDialog()
         {
-            if (!isInitialized)
-                OnConfiguringInternal();
+            if (isInitialized == false)
+            {
+                dialogItems = new DialogContextItemsLoader<TContext>(this).GetFromProperties();
+
+                var options = new DialogContextOptionsBuilder<TContext>(dialogItems);
+                OnConfiguring(options);
+
+                dialogForm = new DialogContextFormLoader<TContext>(this).Load(options, dialogItems);
+
+                isInitialized = true;
+            }
 
             dialogForm.ShowDialog();
         }
 
-        protected void Close()
+        public void Close()
         {
             dialogForm.Close();
         }
 
-        private void OnConfiguringInternal()
-        {
-            dialogItems = new DialogContextItemsLoader(this).GetFromProperties();
+        protected internal virtual void OnClose() { }
 
-            var options = new DialogContextOptionsBuilder(dialogItems);
-            OnConfiguring(options);
+        protected internal abstract void OnButtonClick();
 
-            dialogForm = new DialogContextFormLoader(this).Load(options, dialogItems);
-
-            isInitialized = true;
-        }
-
-        protected virtual void OnConfiguring(DialogContextOptionsBuilder builder)
-        {
-
-        }
-
-        protected internal virtual void OnButtonClick()
-        {
-
-        }
+        protected abstract void OnConfiguring(DialogContextOptionsBuilder<TContext> builder);
     }
 }

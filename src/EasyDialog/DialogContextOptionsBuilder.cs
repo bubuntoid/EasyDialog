@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace bubuntoid.EasyDialog
 {
-    public class DialogContextOptionsBuilder
+    public class DialogContextOptionsBuilder<TContext>
     {
         internal readonly IEnumerable<BaseDialogItem> items;
         
@@ -35,7 +38,7 @@ namespace bubuntoid.EasyDialog
         /// </summary>
         /// <param name="theme"></param>
         /// <returns></returns>
-        public DialogContextOptionsBuilder UseMaterialStyle(MaterialTheme theme)
+        public DialogContextOptionsBuilder<TContext> UseMaterialStyle(MaterialTheme theme)
         {
             Style = DialogStyle.Material;
 
@@ -48,7 +51,7 @@ namespace bubuntoid.EasyDialog
         /// </summary>
         /// <param name="theme"></param>
         /// <returns></returns>
-        public DialogContextOptionsBuilder UseMaterialStyle() => UseMaterialStyle(MaterialTheme.Light);
+        public DialogContextOptionsBuilder<TContext> UseMaterialStyle() => UseMaterialStyle(MaterialTheme.Light);
 
         /// <summary>
         /// Material skin using some statics inside, so you may use only one dialog with that style at once.
@@ -56,54 +59,62 @@ namespace bubuntoid.EasyDialog
         /// </summary>
         /// <param name="theme"></param>
         /// <returns></returns>
-        public DialogContextOptionsBuilder UseMaterialStyle(MaterialTheme theme, MaterialColorScheme colorScheme)
+        public DialogContextOptionsBuilder<TContext> UseMaterialStyle(MaterialTheme theme, MaterialColorScheme colorScheme)
         {
             MaterialColorScheme = colorScheme;
             return UseMaterialStyle(theme);
         }
 
-        public DialogContextOptionsBuilder UseMetroStyle(MetroTheme theme)
+        public DialogContextOptionsBuilder<TContext> UseMetroStyle(MetroTheme theme)
         {
             Style = DialogStyle.Metro;
             MetroTheme = theme;
             return this;
         }
-        public DialogContextOptionsBuilder UseMetroStyle() => UseMetroStyle(MetroTheme.Default);
+        public DialogContextOptionsBuilder<TContext> UseMetroStyle() => UseMetroStyle(MetroTheme.Default);
 
-        public DialogContextOptionsBuilder UseDefaultStyle()
+        public DialogContextOptionsBuilder<TContext> UseDefaultStyle()
         {
             Style = DialogStyle.Default;
             return this;
         }
 
-        public DialogContextOptionsBuilder WithTitle(string title)
+        public DialogContextOptionsBuilder<TContext> WithTitle(string title)
         {
             Title = title;
             return this;
         }
 
-        public DialogContextOptionsBuilder WithButton(string text)
+        public DialogContextOptionsBuilder<TContext> WithButton(string text)
         {
             ButtonText = text;
             return this;
         }
 
-        public DialogContextOptionsBuilder WithStartPosition(FormStartPosition startPosition)
+        public DialogContextOptionsBuilder<TContext> WithStartPosition(FormStartPosition startPosition)
         {
             StartPosition = startPosition;
             return this;
         }
 
-        public DialogContextOptionsBuilder ConfigureItems<TContext>(Action<DialogItemsOptionsBuilder<TContext>> options)
-            where TContext : DialogContext
-        {
-            var arg = new DialogItemsOptionsBuilder<TContext>
-            {
-                DialogContextOptionsBuilder = this
+        // todo: move to extensions?
+        public DialogItemOptionsBuilder Property(Expression<Func<TContext, object>> property) => new DialogItemOptionsBuilder(GetItemFromExpression(property));
+        public TextBoxItemOptionsBuilder Property(Expression<Func<TContext, TextBoxItem>> property) => new TextBoxItemOptionsBuilder(GetItemFromExpression(property));
+        public NumericUpDownItemOptionsBuilder Property(Expression<Func<TContext, NumericUpDownItem>> property) => new NumericUpDownItemOptionsBuilder(GetItemFromExpression(property));
+        public CheckBoxItemOptionsBuilder Property(Expression<Func<TContext, CheckBoxItem>> property) => new CheckBoxItemOptionsBuilder(GetItemFromExpression(property));
+        public DateTimePickerItemOptionsBuilder Property(Expression<Func<TContext, DateTimePickerItem>> property) => new DateTimePickerItemOptionsBuilder(GetItemFromExpression(property));
+        public ComboBoxItemOptionsBuilder Property(Expression<Func<TContext, ComboBoxItem>> property) => new ComboBoxItemOptionsBuilder(GetItemFromExpression(property));
+        public ListBoxItemOptionsBuilder Property(Expression<Func<TContext, ListBoxItem>> property) => new ListBoxItemOptionsBuilder(GetItemFromExpression(property));
 
-            };
-            options.Invoke(arg);
-            return this;
+        private BaseDialogItem GetItemFromExpression<TProperty>(Expression<Func<TContext, TProperty>> property)
+        {
+            var expr = property.Body is MemberExpression ?
+                (MemberExpression)property.Body :
+                (MemberExpression)((UnaryExpression)property.Body).Operand;
+
+            var prop = (PropertyInfo)expr.Member;
+
+            return items.FirstOrDefault(x => x.DialogContextPropertyName == prop.Name);
         }
     }
 }

@@ -4,11 +4,12 @@ using System.Collections.Generic;
 
 namespace bubuntoid.EasyDialog.Internal
 {
-    internal class DialogContextItemsLoader
+    internal class DialogContextItemsLoader<TContext>
+        where TContext : DialogContext<TContext>
     {
-        private readonly DialogContext context;
+        private readonly DialogContext<TContext> context;
 
-        public DialogContextItemsLoader(DialogContext context)
+        public DialogContextItemsLoader(DialogContext<TContext> context)
         {
             this.context = context;
         }
@@ -25,7 +26,6 @@ namespace bubuntoid.EasyDialog.Internal
             {
                 var item = Activator.CreateInstance(property.PropertyType) as BaseDialogItem;
 
-                item.Context = context;
                 item.DialogContextPropertyName = property.Name;
                 item.Name = property.Name;
 

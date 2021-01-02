@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 using MaterialSkin;
 using MaterialSkin.Controls;
@@ -12,6 +13,8 @@ namespace bubuntoid.EasyDialog.Internal.Providers
         public int BottomSpace { get; set; } = -60;
         public int ButtonRightPadding { get; set; } = 15;
         public int ButtonBottomPadding { get; set; } = 10;
+
+        public Action OnCloseHandler { get; set; }
 
         public string Title
         {
@@ -41,6 +44,11 @@ namespace bubuntoid.EasyDialog.Internal.Providers
 
                 MaximizeBox = false,
                 Sizable = false
+            };
+
+            form.FormClosed += (s, e) =>
+            {
+                OnCloseHandler.Invoke();
             };
 
             var defaultLabel = Templates.DefaultLabel;

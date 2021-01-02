@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace bubuntoid.EasyDialog.Internal.Providers
 {
@@ -20,5 +21,7 @@ namespace bubuntoid.EasyDialog.Internal.Providers
         int ButtonBottomPadding { get; set; }
 
         string Title { get; set; }
+
+        Action OnCloseHandler { get; set; }
     }
 }
