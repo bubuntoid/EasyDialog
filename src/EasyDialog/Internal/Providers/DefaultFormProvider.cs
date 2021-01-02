@@ -37,7 +37,6 @@ namespace bubuntoid.EasyDialog.Internal.Providers
                 Width = 335,
 
                 MaximizeBox = false,
-                StartPosition = FormStartPosition.CenterParent,
                 FormBorderStyle = FormBorderStyle.FixedSingle
             };
         }
@@ -55,6 +54,11 @@ namespace bubuntoid.EasyDialog.Internal.Providers
         public void AddControl(Control control)
         {
             form.Controls.Add(control);
+        }
+
+        public void SetStartPosition(FormStartPosition startPosition)
+        {
+            form.StartPosition = startPosition;
         }
     }
 }

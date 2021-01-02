@@ -40,15 +40,8 @@ namespace bubuntoid.EasyDialog.Internal
             this.formProvider = formProvider;
         }
 
-        public void Show()
-        {
-            formProvider.ShowDialog();
-        }
-
-        public void Close()
-        {
-            formProvider.Close();
-        }
+        public void ShowDialog() => formProvider.ShowDialog();
+        public void Close() => formProvider.Close();
 
         public void SetItems(IEnumerable<BaseDialogItem> items)
         {

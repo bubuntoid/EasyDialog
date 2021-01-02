@@ -40,11 +40,10 @@ namespace bubuntoid.EasyDialog.Internal.Providers
                 Width = 320,
 
                 MaximizeBox = false,
-                StartPosition = FormStartPosition.CenterParent,
                 Sizable = false
             };
 
-            var defaultLabel = new Label();
+            var defaultLabel = Templates.DefaultLabel;
             var defaultFontFamilyName = defaultLabel.Font.FontFamily.Name;
             var defaultLabelSize = defaultLabel.Font.Size;
             defaultLabel.Dispose();
@@ -84,7 +83,7 @@ namespace bubuntoid.EasyDialog.Internal.Providers
                     
                 };
             }
-            if (control is Button button)
+            else if (control is Button button)
             {
                 control = new MaterialRaisedButton()
                 {
@@ -101,6 +100,11 @@ namespace bubuntoid.EasyDialog.Internal.Providers
             }
 
             form.Controls.Add(control);
+        }
+
+        public void SetStartPosition(FormStartPosition startPosition)
+        {
+            form.StartPosition = startPosition;
         }
     }
 }

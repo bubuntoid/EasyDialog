@@ -17,7 +17,7 @@ namespace bubuntoid.EasyDialog.Internal
         public IEasyDialogForm Load(DialogContextOptionsBuilder builder, IEnumerable<BaseDialogItem> items)
         {
             IFormProvider formProvider;
-
+            
             switch (builder.Style)
             {
                 case DialogStyle.Default: 
@@ -35,6 +35,8 @@ namespace bubuntoid.EasyDialog.Internal
                 default:
                     throw new ArgumentOutOfRangeException(nameof(builder.Style), builder.Style, null);
             }
+            
+            formProvider.SetStartPosition(builder.StartPosition);
 
             var form = new EasyDialogForm(formProvider)
             {
