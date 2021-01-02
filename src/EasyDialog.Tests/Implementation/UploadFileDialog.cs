@@ -1,4 +1,5 @@
 ﻿using bubuntoid.EasyDialog.Tests.Implementation.CustomDialogItems;
+using System.Windows.Forms;
 
 namespace bubuntoid.EasyDialog.Tests.Implementation
 {

@@ -7,6 +7,7 @@ namespace bubuntoid.EasyDialog.Internal.Providers
         void ShowDialog();
         void Close();
 
+        void SetStartPosition(FormStartPosition startPosition);
         void AddControl(Control control);
 
         int Height { get; set; }

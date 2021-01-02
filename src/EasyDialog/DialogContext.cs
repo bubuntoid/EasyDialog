@@ -16,12 +16,12 @@ namespace bubuntoid.EasyDialog
             isInitialized = false;
         }
 
-        public void Show()
+        public void ShowDialog()
         {
             if (!isInitialized)
                 OnConfiguringInternal();
 
-            dialogForm.Show();
+            dialogForm.ShowDialog();
         }
 
         protected void Close()

@@ -1,22 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace bubuntoid.EasyDialog
 {
     public class DialogContextOptionsBuilder
     {
         internal readonly IEnumerable<BaseDialogItem> items;
-
-        internal DialogStyle Style { get; set; } = DialogStyle.Default;
-        internal MetroTheme MetroTheme { get; set; } = MetroTheme.Default;
-        internal MaterialTheme MaterialTheme { get; set; } = MaterialTheme.Light;
-        internal MaterialColorScheme MaterialColorScheme { get; set; } = MaterialColorScheme.Default;
-        internal string Title { get; set; } = "Dialog";
-        internal string ButtonText { get; set; } = "Ok";
+        
+        internal FormStartPosition StartPosition { get; set; }
+        internal DialogStyle Style { get; set; }
+        internal MetroTheme MetroTheme { get; set; }
+        internal MaterialTheme MaterialTheme { get; set; }
+        internal MaterialColorScheme MaterialColorScheme { get; set; }
+        internal string Title { get; set; }
+        internal string ButtonText { get; set; }
 
         internal DialogContextOptionsBuilder(IEnumerable<BaseDialogItem> items)
         {
             this.items = items;
+
+            StartPosition = FormStartPosition.CenterScreen;
+            Style = DialogStyle.Default;
+            MetroTheme = MetroTheme.Default;
+            MaterialTheme = MaterialTheme.Light;
+            MaterialColorScheme = MaterialColorScheme.Default;
+            
+            Title = "Dialog";
+            ButtonText = "Ok";
         }
 
         /// <summary>
@@ -74,6 +85,12 @@ namespace bubuntoid.EasyDialog
         public DialogContextOptionsBuilder WithButton(string text)
         {
             ButtonText = text;
+            return this;
+        }
+
+        public DialogContextOptionsBuilder WithStartPosition(FormStartPosition startPosition)
+        {
+            StartPosition = startPosition;
             return this;
         }
 

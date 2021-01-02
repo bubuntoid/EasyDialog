@@ -39,12 +39,11 @@ namespace bubuntoid.EasyDialog.Internal.Providers
             form = new MetroForm()
             {
                 Width = 335,
-
+                
                 Style = (MetroColorStyle)theme,
                 MaximizeBox = false,
                 Resizable = false,
-                StartPosition = FormStartPosition.CenterParent,
-                BorderStyle = MetroBorderStyle.FixedSingle
+                BorderStyle = MetroBorderStyle.FixedSingle,
             };
         }
 
@@ -61,6 +60,11 @@ namespace bubuntoid.EasyDialog.Internal.Providers
         public void AddControl(Control control)
         {
             form.Controls.Add(control);
+        }
+
+        public void SetStartPosition(FormStartPosition startPosition)
+        {
+            form.StartPosition = startPosition;
         }
     }
 }

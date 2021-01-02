@@ -9,7 +9,7 @@ namespace bubuntoid.EasyDialog.Internal
         string Title { get; set; }
         string ButtonText { get; set; }
 
-        void Show();
+        void ShowDialog();
         void Close();
 
         void SetItems(IEnumerable<BaseDialogItem> items);
