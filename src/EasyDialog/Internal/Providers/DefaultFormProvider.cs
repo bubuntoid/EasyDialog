@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace bubuntoid.EasyDialog.Internal.Providers
 {
@@ -9,6 +10,8 @@ namespace bubuntoid.EasyDialog.Internal.Providers
         public int BottomSpace { get; set; } = 50;
         public int ButtonRightPadding { get; set; } = 35;
         public int ButtonBottomPadding { get; set; } = 50;
+
+        public Action OnCloseHandler { get; set; }
 
         public string Title
         {
@@ -38,6 +41,11 @@ namespace bubuntoid.EasyDialog.Internal.Providers
 
                 MaximizeBox = false,
                 FormBorderStyle = FormBorderStyle.FixedSingle
+            };
+
+            form.FormClosed += (s, e) =>
+            {
+                OnCloseHandler.Invoke();
             };
         }
 

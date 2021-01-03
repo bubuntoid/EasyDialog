@@ -58,7 +58,6 @@
   <ItemGroup>
     <Compile Include="DialogContext.cs" />
     <Compile Include="DialogContextOptionsBuilder.cs" />
-    <Compile Include="DialogItemsOptionsBuilder.cs" />
     <Compile Include="Enums\MaterialTheme.cs" />
     <Compile Include="Enums\MaterialThemeAccent.cs" />
     <Compile Include="Enums\MaterialThemePrimaryColor.cs" />

@@ -5,16 +5,17 @@ using bubuntoid.EasyDialog.Internal.Providers;
 
 namespace bubuntoid.EasyDialog.Internal
 {
-    internal class DialogContextFormLoader
+    internal class DialogContextFormLoader<TContext>
+        where TContext : DialogContext<TContext>
     {
-        private readonly DialogContext context;
+        private readonly DialogContext<TContext> context;
 
-        public DialogContextFormLoader(DialogContext context)
+        public DialogContextFormLoader(DialogContext<TContext> context)
         {
             this.context = context;
         }
 
-        public IEasyDialogForm Load(DialogContextOptionsBuilder builder, IEnumerable<BaseDialogItem> items)
+        public IEasyDialogForm<TContext> Load(DialogContextOptionsBuilder<TContext> builder, IEnumerable<BaseDialogItem> items)
         {
             IFormProvider formProvider;
             
@@ -36,9 +37,10 @@ namespace bubuntoid.EasyDialog.Internal
                     throw new ArgumentOutOfRangeException(nameof(builder.Style), builder.Style, null);
             }
             
+            formProvider.OnCloseHandler += context.OnClose;
             formProvider.SetStartPosition(builder.StartPosition);
 
-            var form = new EasyDialogForm(formProvider)
+            var form = new EasyDialogForm<TContext>(formProvider)
             {
                 ButtonText = builder.ButtonText,
                 Title = builder.Title,

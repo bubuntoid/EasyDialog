@@ -12,26 +12,23 @@ https://www.nuget.org/packages/bubuntoid.EasyDialog
 ```csharp
 using bubuntoid.EasyDialog;
 
-public class AuthentificationDialog : DialogContext
+public class AuthDialog : DialogContext
 {
     public TextBoxItem Username { get; set; }
     public TextBoxItem Password { get; set; }
     public CheckBoxItem Robot { get; set; }
 
-    protected override void OnConfiguring(DialogContextOptionsBuilder builder)
+    protected override void OnConfiguring(DialogContextOptionsBuilder<AuthDialog> builder)
     {
         builder.UseMaterialStyle()
             .WithTitle("Authentification")
             .WithButton("Sign in");
 
-        builder.ConfigureItems<AuthentificationDialog>(options =>
-        {
-            options.Property(x => x.Password)
-                .UsePasswordChar();
+        options.Property(x => x.Password)
+            .UsePasswordChar();
 
-            options.Property(x => x.Robot)
-                .HasName("I`m not a robot");
-        });
+        options.Property(x => x.Robot)
+            .HasName("I`m not a robot");
     }
 
     protected override void OnButtonClick()
@@ -66,13 +63,10 @@ public class DialogButtonItem : BaseDialogItem
 There is just a little thing you should know: if your control's height is not "one row" default size, you have to override **ControlHeight** property or configure it in your **DialogContext**:
 
 ```csharp
-protected override void OnConfiguring(DialogContextOptionsBuilder builder)
+protected override void OnConfiguring(DialogContextOptionsBuilder<YourDialogContext> builder)
 {
-    builder.ConfigureItems<YourDialog>(options =>
-    {
-        options.Property(x => x.YourDialogProperty)
-            .HasHeight(value);
-    });
+    builder.Property(x => x.PropertyName)
+        .HasHeight(value);
 }
 ```
 

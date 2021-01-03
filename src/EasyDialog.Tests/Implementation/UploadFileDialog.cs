@@ -3,21 +3,23 @@ using System.Windows.Forms;
 
 namespace bubuntoid.EasyDialog.Tests.Implementation
 {
-    public class UploadFileDialog : DialogContext
+    public class UploadFileDialog : DialogContext<UploadFileDialog>
     {
         public DialogButtonItem File { get; set; }
         public TextBoxItem Filename { get; set; }
 
-        protected override void OnConfiguring(DialogContextOptionsBuilder builder)
+        protected override void OnButtonClick()
+        {
+
+        }
+
+        protected override void OnConfiguring(DialogContextOptionsBuilder<UploadFileDialog> builder)
         {
             builder.UseDefaultStyle()
                 .WithTitle("Uploading...")
                 .WithButton("Upload");
 
-            builder.ConfigureItems<UploadFileDialog>(options =>
-            {
-                File.Control.Text = "Select";
-            });
+            File.Control.Text = "Select";
         }
     }
 }

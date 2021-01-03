@@ -2,9 +2,10 @@
 
 namespace bubuntoid.EasyDialog.Internal
 {
-    internal interface IEasyDialogForm
+    internal interface IEasyDialogForm<TContext> 
+        where TContext : DialogContext<TContext>
     {
-        DialogContext Context { get; set; }
+        DialogContext<TContext> Context { get; set; }
 
         string Title { get; set; }
         string ButtonText { get; set; }
