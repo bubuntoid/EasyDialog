@@ -12,7 +12,7 @@ https://www.nuget.org/packages/bubuntoid.EasyDialog
 ```csharp
 using bubuntoid.EasyDialog;
 
-public class AuthDialog : DialogContext
+public class AuthDialog : DialogContext<AuthDialog>
 {
     public TextBoxItem Username { get; set; }
     public TextBoxItem Password { get; set; }
