@@ -12,7 +12,7 @@ namespace bubuntoid.EasyDialog
         internal bool Ignore { get; set; } = false;
         internal bool FullRow { get; set; } = false;
 
-        public abstract Control Control { get; set; }
+        public virtual Control BaseControl { get; set; }
         public virtual int ControlHeight { get; set; } = DEFAULT_CONTROL_HEIGHT;
     }
 }

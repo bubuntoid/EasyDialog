@@ -20,7 +20,7 @@ namespace bubuntoid.EasyDialog
 
         public CheckBoxItemOptionsBuilder HasValue(bool value)
         {
-            var control = (item.Control as CheckBox);
+            var control = (item.BaseControl as CheckBox);
             control.Checked = value;
             return this;
         }

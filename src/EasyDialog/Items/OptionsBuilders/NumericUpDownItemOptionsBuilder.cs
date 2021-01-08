@@ -20,21 +20,21 @@ namespace bubuntoid.EasyDialog
 
         public NumericUpDownItemOptionsBuilder HasMinimum(decimal value)
         {
-            var control = (item.Control as NumericUpDown);
+            var control = (item.BaseControl as NumericUpDown);
             control.Minimum = value;
             return this;
         }
 
         public NumericUpDownItemOptionsBuilder HasMaximum(decimal value)
         {
-            var control = (item.Control as NumericUpDown);
+            var control = (item.BaseControl as NumericUpDown);
             control.Maximum = value;
             return this;
         }
 
         public NumericUpDownItemOptionsBuilder HasValue(decimal value)
         {
-            var control = (item.Control as NumericUpDown);
+            var control = (item.BaseControl as NumericUpDown);
             control.Value = value;
             return this;
         }

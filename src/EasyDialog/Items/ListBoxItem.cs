@@ -2,14 +2,14 @@
 
 namespace bubuntoid.EasyDialog
 {
-    public class ListBoxItem : BaseDialogItem
+    public class ListBoxItem : DialogItem<ListBox, string>
     {
-        public override Control Control { get; set; } = new ListBox();
+        public override ListBox Control { get; set; } = new ListBox();
 
-        public string Value
+        public override string Value
         {
-            get => (string) ((ListBox) Control).SelectedItem;
-            set => ((ListBox) Control).SelectedItem = value;
+            get => (string)Control.SelectedItem;
+            set => Control.SelectedItem = value;
         }
     }
 }

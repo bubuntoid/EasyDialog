@@ -21,21 +21,21 @@ namespace bubuntoid.EasyDialog
 
         public DateTimePickerItemOptionsBuilder HasValue(DateTime value)
         {
-            var control = (item.Control as DateTimePicker);
+            var control = (item.BaseControl as DateTimePicker);
             control.Value = value;
             return this;
         }
 
         public DateTimePickerItemOptionsBuilder HasMinimum(DateTime value)
         {
-            var control = (item.Control as DateTimePicker);
+            var control = (item.BaseControl as DateTimePicker);
             control.MinDate = value;
             return this;
         }
 
         public DateTimePickerItemOptionsBuilder HasMaximum(DateTime value)
         {
-            var control = (item.Control as DateTimePicker);
+            var control = (item.BaseControl as DateTimePicker);
             control.MaxDate = value;
             return this;
         }

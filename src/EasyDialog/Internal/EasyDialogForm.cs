@@ -52,7 +52,7 @@ namespace bubuntoid.EasyDialog.Internal
             for (int i = 0; i < count; i++)
             {
                 var currentItem = items.ElementAt(i);
-                var control = currentItem.Control;
+                var control = currentItem.BaseControl;
                 control.Enabled = currentItem.Enabled;
                 control.AutoSize = false;
 

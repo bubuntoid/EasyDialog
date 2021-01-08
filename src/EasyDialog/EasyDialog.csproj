@@ -65,6 +65,8 @@
     <Compile Include="Internal\EasyDialogForm.cs" />
     <Compile Include="Internal\Providers\IFormProvider.cs" />
     <Compile Include="Internal\Templates.cs" />
+    <Compile Include="Items\DialogItem.cs" />
+    <Compile Include="Items\IDialogItem.cs" />
     <Compile Include="Models\MaterialColorScheme.cs" />
     <Compile Include="Items\OptionsBuilders\ComboBoxItemOptionsBuilder.cs" />
     <Compile Include="Items\OptionsBuilders\DateTimePickerItemOptionsBuilder.cs" />

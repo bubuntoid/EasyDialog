@@ -18,7 +18,7 @@ namespace bubuntoid.EasyDialog.Internal
         {
             var properties = context.GetType()
                 .GetProperties()
-                    .Where(x => x.PropertyType.BaseType == typeof(BaseDialogItem));
+                    .Where(x => x.PropertyType.BaseType?.BaseType == typeof(BaseDialogItem)); // todo: refactoring
 
             var result = new HashSet<BaseDialogItem>();
 
