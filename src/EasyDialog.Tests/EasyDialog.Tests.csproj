@@ -53,7 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Implementation\UploadFileDialog.cs" />
-    <Compile Include="Implementation\CustomDialogItems\DialogButtonItem.cs" />
+    <Compile Include="Implementation\CustomDialogItems\SelectFileItem.cs" />
     <Compile Include="Implementation\ClientDialog.cs" />
     <Compile Include="Implementation\AuthentificationDialog.cs" />
     <Compile Include="Models\Client.cs" />

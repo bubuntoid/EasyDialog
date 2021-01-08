@@ -22,7 +22,7 @@ namespace bubuntoid.EasyDialog
 
         public ListBoxItemOptionsBuilder HasDataSource(IEnumerable<string> source, bool autoSize = true)
         {
-            var control = (item.Control as ListBox);
+            var control = (item.BaseControl as ListBox);
             control.Items.Clear();
 
             foreach (var item in source)
@@ -38,7 +38,7 @@ namespace bubuntoid.EasyDialog
 
         public ListBoxItemOptionsBuilder HasValue(string value)
         {
-            var control = (item.Control as ListBox);
+            var control = (item.BaseControl as ListBox);
             control.SelectedItem = value;
             return this;
         }

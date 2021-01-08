@@ -8,7 +8,7 @@ namespace bubuntoid.EasyDialog
 
         public TextBoxItemOptionsBuilder(BaseDialogItem item) : base(item)
         {
-            control = base.item.Control as TextBox;
+            control = base.item.BaseControl as TextBox;
         }
 
         public TextBoxItemOptionsBuilder HasName(string name)

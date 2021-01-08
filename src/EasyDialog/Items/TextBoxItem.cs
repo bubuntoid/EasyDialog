@@ -2,11 +2,11 @@
 
 namespace bubuntoid.EasyDialog
 {
-    public class TextBoxItem : BaseDialogItem
+    public class TextBoxItem : DialogItem<TextBox, string>
     {
-        public override Control Control { get; set; } = new TextBox();
+        public override TextBox Control { get; set; } = new TextBox();
 
-        public string Value
+        public override string Value
         {
             get => Control.Text;
             set => Control.Text = value;

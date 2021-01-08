@@ -3,17 +3,17 @@ using System.Windows.Forms;
 
 namespace bubuntoid.EasyDialog
 {
-    public class CheckBoxItem : BaseDialogItem
+    public class CheckBoxItem : DialogItem<CheckBox, bool>
     {
-        public override Control Control { get; set; } = new CheckBox()
+        public override CheckBox Control { get; set; } = new CheckBox()
         {
             BackColor = Color.Transparent
         };
 
-        public bool Value
+        public override bool Value
         {
-            get => ((CheckBox) Control).Checked;
-            set => ((CheckBox) Control).Checked = value;
+            get => Control.Checked;
+            set => Control.Checked = value;
         }
     }
 }

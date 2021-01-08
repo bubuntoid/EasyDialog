@@ -2,14 +2,14 @@
 
 namespace bubuntoid.EasyDialog
 {
-    public class NumericUpDownItem : BaseDialogItem
+    public class NumericUpDownItem : DialogItem<NumericUpDown, decimal>
     {
-        public override Control Control { get; set; } = new NumericUpDown();
+        public override NumericUpDown Control { get; set; } = new NumericUpDown();
 
-        public decimal Value
+        public override decimal Value
         {
-            get => ((NumericUpDown) Control).Value;
-            set => ((NumericUpDown) Control).Value = value;
+            get => Control.Value;
+            set => Control.Value = value;
         }
     }
 }

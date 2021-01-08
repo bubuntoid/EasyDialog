@@ -21,7 +21,7 @@ namespace bubuntoid.EasyDialog
 
         public ComboBoxItemOptionsBuilder HasDataSource(IEnumerable<string> source)
         {
-            var control = (item.Control as ComboBox);
+            var control = (item.BaseControl as ComboBox);
             control.Items.Clear();
 
             foreach (var item in source)
@@ -34,7 +34,7 @@ namespace bubuntoid.EasyDialog
 
         public ComboBoxItemOptionsBuilder HasValue(string value)
         {
-            var control = (item.Control as ComboBox);
+            var control = (item.BaseControl as ComboBox);
             control.SelectedItem = value;
             return this;
         }

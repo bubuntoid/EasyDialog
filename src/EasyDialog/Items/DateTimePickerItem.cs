@@ -3,14 +3,14 @@ using System.Windows.Forms;
 
 namespace bubuntoid.EasyDialog
 {
-    public class DateTimePickerItem : BaseDialogItem
+    public class DateTimePickerItem : DialogItem<DateTimePicker, DateTime>
     {
-        public override Control Control { get; set; } = new DateTimePicker();
+        public override DateTimePicker Control { get; set; } = new DateTimePicker();
 
-        public DateTime Value
+        public override DateTime Value
         {
-            get => ((DateTimePicker) Control).Value;
-            set => ((DateTimePicker) Control).Value = value;
+            get => Control.Value;
+            set => Control.Value = value;
         }
     }
 }
