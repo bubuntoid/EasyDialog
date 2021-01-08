@@ -55,11 +55,14 @@ Base items that available "out of the box":
 
 You can use your own control as dialog item by inerhiting from BaseDialogItem:
 ```csharp
-public class DialogButtonItem : BaseDialogItem
+public class DialogButtonItem : DialogItem<Button, bool>
 {
-    public override Control Control { get; set; } = new Button() { Text = "Click on me!" };
+    public override Button Control { get; set; } = new Button() { Text = "Click on me!" };
+    public override bool Value { get; set } = true;
 }
 ```
+[Select file button sample](https://github.com/bubuntoid/EasyDialog/blob/main/src/EasyDialog.Tests/Implementation/CustomDialogItems/SelectFileItem.cs)
+
 There is just a little thing you should know: if your control's height is not "one row" default size, you have to override **ControlHeight** property or configure it in your **DialogContext**:
 
 ```csharp
