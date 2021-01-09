@@ -14,10 +14,10 @@ namespace bubuntoid.EasyDialog.Tests.Implementation
                 .WithTitle("Authentification")
                 .WithButton("Sign in");
 
-            builder.Property(x => x.Password)
+            builder.Item(x => x.Password)
                 .UsePasswordChar();
 
-            builder.Property(x => x.Robot)
+            builder.Item(x => x.Robot)
                 .HasName("I`m not a robot");
         }
 

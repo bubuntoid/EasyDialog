@@ -35,46 +35,46 @@ namespace bubuntoid.EasyDialog.Tests.Implementation
                 .WithTitle(title)
                 .WithButton(button);
 
-            builder.Property(x => x.ClientId)
+            builder.Item(x => x.ClientId)
                 .HasName("Client id")
                 .HasValue(client?.Id.ToString() ?? string.Empty)
-                .IsEnabled(false);
+                .IsDisabled();
 
-            builder.Property(x => x.FirstName)
+            builder.Item(x => x.FirstName)
                 .HasName("First name")
                 .HasValue(client?.FirstName);
 
-            builder.Property(x => x.LastName)
+            builder.Item(x => x.LastName)
                 .HasName("Second name")
                 .HasValue(client?.LastName);
 
-            builder.Property(x => x.MiddleName)
+            builder.Item(x => x.MiddleName)
                 .HasName("Middle name")
                 .HasValue(client?.MiddleName);
 
-            builder.Property(x => x.BirthDate)
+            builder.Item(x => x.BirthDate)
                 .HasName("Birth date")
                 .HasValue(client?.BirthDate ?? DateTime.Today);
 
-            builder.Property(x => x.PerformanceArtist)
+            builder.Item(x => x.PerformanceArtist)
                 .HasName("Performance artist")
                 .HasValue(client?.IsPerformanceArtist ?? false);
 
-            builder.Property(x => x.FuckingSlave)
+            builder.Item(x => x.FuckingSlave)
                 .HasName("Fucking slave")
                 .HasValue(client?.Slave ?? false);
 
-            builder.Property(x => x.Boss)
+            builder.Item(x => x.Boss)
                 .HasName("Boss of the gym")
                 .HasValue(client?.Boss ?? false);
 
-            builder.Property(x => x.HighLoadsCount)
+            builder.Item(x => x.HighLoadsCount)
                 .HasName("High loads count")
                 .HasValue(client?.HighLoadsCount ?? 0)
                 .Ignore();
 
             var genders = new List<string> { Models.Sex.Male.ToString(), Models.Sex.Female.ToString() };
-            builder.Property(x => x.Sex)
+            builder.Item(x => x.Sex)
                 .HasDataSource(genders)
                 .HasValue(genders[0]);
         }
