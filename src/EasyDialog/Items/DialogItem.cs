@@ -2,7 +2,8 @@
 
 namespace bubuntoid.EasyDialog
 {
-    public abstract class DialogItem<TControl, TValue> : BaseDialogItem, IDialogItem<TControl, TValue> where TControl : Control
+    public abstract class DialogItem<TControl, TValue> : BaseDialogItem, IDialogItem<TControl, TValue>
+        where TControl : Control
     {
         public override Control BaseControl
         {
