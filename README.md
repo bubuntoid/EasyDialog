@@ -53,7 +53,7 @@ Base items that available "out of the box":
 - ListBoxItem (Collection)
 - DateTimePickerItem (DateTime)
 
-You can use your own control as dialog item by inerhiting from BaseDialogItem:
+You can use your own control as dialog item by inerhiting from DialogItem<TControl, TValue> where **TControl** is System.Windows.Forms.Control and **TValue** is output value:
 ```csharp
 public class DialogButtonItem : DialogItem<Button, bool>
 {
@@ -61,7 +61,7 @@ public class DialogButtonItem : DialogItem<Button, bool>
     public override bool Value { get; set } = true;
 }
 ```
-[Select file button sample](https://github.com/bubuntoid/EasyDialog/blob/main/src/EasyDialog.Tests/Implementation/CustomDialogItems/SelectFileItem.cs)
+[Base items implementation samples](https://github.com/bubuntoid/EasyDialog/tree/main/src/EasyDialog/Items)
 
 There is just a little thing you should know: if your control's height is not "one row" default size, you have to override **ControlHeight** property or configure it in your **DialogContext**:
 
