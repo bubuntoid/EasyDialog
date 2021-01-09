@@ -68,7 +68,7 @@ There is just a little thing you should know: if your control's height is not "o
 ```csharp
 protected override void OnConfiguring(DialogContextOptionsBuilder<YourDialogContext> builder)
 {
-    builder.Property(x => x.PropertyName)
+    builder.Item(x => x.PropertyName)
         .HasHeight(value);
 }
 ```
