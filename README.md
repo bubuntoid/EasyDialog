@@ -24,10 +24,10 @@ public class AuthDialog : DialogContext<AuthDialog>
             .WithTitle("Authentification")
             .WithButton("Sign in");
 
-        options.Property(x => x.Password)
+        options.Item(x => x.Password)
             .UsePasswordChar();
 
-        options.Property(x => x.Robot)
+        options.Item(x => x.Robot)
             .HasName("I`m not a robot");
     }
 
