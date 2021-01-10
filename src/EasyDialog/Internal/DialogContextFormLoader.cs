@@ -42,6 +42,7 @@ namespace bubuntoid.EasyDialog.Internal
 
             var form = new EasyDialogForm<TContext>(formProvider)
             {
+                ButtonAlign = builder.ButtonAlign,
                 ButtonText = builder.ButtonText,
                 Title = builder.Title,
                 Context = context

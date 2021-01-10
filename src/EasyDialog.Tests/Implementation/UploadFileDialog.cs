@@ -11,7 +11,7 @@ namespace bubuntoid.EasyDialog.Tests.Implementation
         {
             builder.UseDefaultStyle()
                 .WithTitle("Uploading...")
-                .WithButton("Upload");
+                .WithButton("Upload", ButtonAlign.Center);
         }
 
         protected override void OnButtonClick()

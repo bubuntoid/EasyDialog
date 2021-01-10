@@ -20,6 +20,8 @@ namespace bubuntoid.EasyDialog.Tests.Implementation
         private readonly Client client;
         private readonly MetroTheme theme;
 
+        private bool isNewClient => client == null;
+
         public ClientDialog(Client client, MetroTheme theme = MetroTheme.Default)
         {
             this.client = client;
@@ -28,12 +30,13 @@ namespace bubuntoid.EasyDialog.Tests.Implementation
 
         protected override void OnConfiguring(DialogContextOptionsBuilder<ClientDialog> builder)
         {
-            var title = client == null ? "Create a new client" : $"Edit client #{client.Id}";
-            var button = client == null ? "Add" : "Save";
+            var title = isNewClient ? "Create a new client" : $"Edit client #{client.Id}";
+            var button = isNewClient ? "Add" : "Save";
+            var buttonAlign = isNewClient ? ButtonAlign.Right : ButtonAlign.Left;
 
             builder.UseMetroStyle(theme)
                 .WithTitle(title)
-                .WithButton(button);
+                .WithButton(button, buttonAlign);
 
             builder.Item(x => x.ClientId)
                 .HasName("Client id")
@@ -76,7 +79,7 @@ namespace bubuntoid.EasyDialog.Tests.Implementation
             var genders = new List<string> { Models.Sex.Male.ToString(), Models.Sex.Female.ToString() };
             builder.Item(x => x.Sex)
                 .HasDataSource(genders)
-                .HasValue(genders[0]);
+                .HasValue(client?.Sex.ToString() ?? genders[0]);
         }
 
         protected override void OnButtonClick()
