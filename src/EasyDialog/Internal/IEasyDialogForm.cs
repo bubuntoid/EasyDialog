@@ -6,6 +6,7 @@ namespace bubuntoid.EasyDialog.Internal
         where TContext : DialogContext<TContext>
     {
         DialogContext<TContext> Context { get; set; }
+        ButtonAlign ButtonAlign { get; set; }
 
         string Title { get; set; }
         string ButtonText { get; set; }

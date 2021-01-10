@@ -18,6 +18,8 @@ namespace bubuntoid.EasyDialog.Internal
         private const int PADDING = 25;
 
         public DialogContext<TContext> Context { get; set; }
+        public ButtonAlign ButtonAlign { get; set; }
+        public string ButtonText { get; set; }
 
         public string Title
         {
@@ -25,19 +27,10 @@ namespace bubuntoid.EasyDialog.Internal
             set => formProvider.Title = value;
         }
 
-        public string ButtonText
-        {
-            get => button.Text;
-            set => button.Text = value;
-        }
-
         private readonly IFormProvider formProvider;
-
-        private Button button;
 
         public EasyDialogForm(IFormProvider formProvider)
         {
-            button = Templates.DefaultButton;
             this.formProvider = formProvider;
         }
 
@@ -86,21 +79,51 @@ namespace bubuntoid.EasyDialog.Internal
             formProvider.Height = formProvider.InitialTopPadding + currentHeight + DEFAULT_BUTTON_HEIGHT +
                                   formProvider.BottomSpace;
 
-            var buttonControl = new Button
+            var buttonControl = ResolveButton();
+            formProvider.AddControl(buttonControl);
+            buttonControl.Select();
+        }
+
+        private Button ResolveButton()
+        {
+            var result = new Button()
             {
                 Text = ButtonText,
                 Height = DEFAULT_BUTTON_HEIGHT,
                 Width = DEFAULT_BUTTON_WIDTH,
-
-                Location = new Point
-                {
-                    X = formProvider.Width - (DEFAULT_BUTTON_WIDTH + formProvider.ButtonRightPadding),
-                    Y = formProvider.Height - (DEFAULT_BUTTON_HEIGHT + formProvider.ButtonBottomPadding)
-                }
             };
-            buttonControl.Click += (o, e) => { Context.OnButtonClick(); };
-            formProvider.AddControl(buttonControl);
-            buttonControl.Select();
+
+            int alignExtraPadding = 0;
+            switch (ButtonAlign)
+            {
+                case ButtonAlign.Right:
+                    alignExtraPadding = 0;
+                    break;
+
+                case ButtonAlign.Left: 
+                    alignExtraPadding = formProvider.Width - DEFAULT_BUTTON_WIDTH - formProvider.ButtonRightPadding - 10; 
+                    break;
+
+                case ButtonAlign.Center: 
+                    alignExtraPadding = formProvider.Width / 2 - DEFAULT_BUTTON_WIDTH + 30; 
+                    break;
+            }
+
+            result.Location = new Point
+            {
+                X = formProvider.Width - (DEFAULT_BUTTON_WIDTH + formProvider.ButtonRightPadding) - alignExtraPadding,
+                Y = formProvider.Height - (DEFAULT_BUTTON_HEIGHT + formProvider.ButtonBottomPadding)
+            };
+
+            if (ButtonAlign == ButtonAlign.FullRow)
+            {
+                result.Location = new Point(10, result.Location.Y);
+                result.Width = formProvider.Width - formProvider.ButtonRightPadding;
+            }
+
+            result.Click += (o, e) => { Context.OnButtonClick(); };
+
+            return result;
         }
     }
 }

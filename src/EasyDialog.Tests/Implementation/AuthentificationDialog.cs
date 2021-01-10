@@ -12,7 +12,7 @@ namespace bubuntoid.EasyDialog.Tests.Implementation
         {
             builder.UseMaterialStyle(MaterialTheme.Light, MaterialColorScheme.Default)
                 .WithTitle("Authentification")
-                .WithButton("Sign in");
+                .WithButton("Sign in", ButtonAlign.FullRow);
 
             builder.Item(x => x.Password)
                 .UsePasswordChar();

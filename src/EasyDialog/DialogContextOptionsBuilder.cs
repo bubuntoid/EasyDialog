@@ -13,6 +13,7 @@ namespace bubuntoid.EasyDialog
         
         internal FormStartPosition StartPosition { get; set; }
         internal DialogStyle Style { get; set; }
+        internal ButtonAlign ButtonAlign { get; set; }
         internal MetroTheme MetroTheme { get; set; }
         internal MaterialTheme MaterialTheme { get; set; }
         internal MaterialColorScheme MaterialColorScheme { get; set; }
@@ -25,6 +26,7 @@ namespace bubuntoid.EasyDialog
 
             StartPosition = FormStartPosition.CenterScreen;
             Style = DialogStyle.Default;
+            ButtonAlign = ButtonAlign.Right;
             MetroTheme = MetroTheme.Default;
             MaterialTheme = MaterialTheme.Light;
             MaterialColorScheme = MaterialColorScheme.Default;
@@ -89,6 +91,12 @@ namespace bubuntoid.EasyDialog
         {
             ButtonText = text;
             return this;
+        }
+
+        public DialogContextOptionsBuilder<TContext> WithButton(string text, ButtonAlign buttonAlign)
+        {
+            ButtonAlign = buttonAlign;
+            return WithButton(text);
         }
 
         public DialogContextOptionsBuilder<TContext> WithStartPosition(FormStartPosition startPosition)
