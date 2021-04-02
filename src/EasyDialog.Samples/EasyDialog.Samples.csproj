@@ -1,14 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <LangVersion>9.0</LangVersion>
+    <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <RootNamespace>bubuntoid.EasyDialog</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MetroFramework" Version="1.2.0.3" />
+    <ProjectReference Include="..\EasyDialog\EasyDialog.csproj" />
   </ItemGroup>
 
 </Project>

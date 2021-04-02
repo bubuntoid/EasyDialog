@@ -1,62 +1,75 @@
-﻿using System.Linq;
+﻿using bubuntoid.EasyDialog.Internal.Providers;
+using System;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
-using System.Collections.Generic;
-
-using bubuntoid.EasyDialog.Internal.Providers;
 
 namespace bubuntoid.EasyDialog.Internal
 {
-    internal class EasyDialogForm<TContext> : IEasyDialogForm<TContext>
-        where TContext : DialogContext<TContext>
-    {
-        private const int DEFAULT_VALUE_CONTROL_WIDTH = 150;
+    // todo: fix magic numbers
 
+    internal class EasyDialogForm : IEasyDialogForm
+    {
+        private const int DEFAULT_VALUE_CONTROL_HEIGHT = 20;
+        private const int DEFAULT_VALUE_CONTROL_WIDTH = 150;
         private const int DEFAULT_BUTTON_HEIGHT = 40;
         private const int DEFAULT_BUTTON_WIDTH = 120;
-
         private const int PADDING = 25;
 
-        public DialogContext<TContext> Context { get; set; }
-        public ButtonAlign ButtonAlign { get; set; }
-        public string ButtonText { get; set; }
+        private readonly IDialogContext context;
+        
+        private IFormProvider formProvider;
+        
+        public Form Form => formProvider.Form; 
 
-        public string Title
+        public EasyDialogForm(IDialogContext context)
         {
-            get => formProvider.Title;
-            set => formProvider.Title = value;
+            this.context = context;
         }
 
-        private readonly IFormProvider formProvider;
-
-        public EasyDialogForm(IFormProvider formProvider)
+        public void Initialize(IDialogContextConfigureOptionsBuilder options)
         {
-            this.formProvider = formProvider;
-        }
+            formProvider = options.DialogStyle switch
+            {
+                DialogStyle.Default => new DefaultFormProvider(),
+                DialogStyle.Metro => new MetroFormProvider(options.MetroTheme),
 
-        public void ShowDialog() => formProvider.ShowDialog();
-        public void Close() => formProvider.Close();
+                _ => throw new NotImplementedException()
+            };
+            formProvider.Form.Text = options.Title ?? context.GetType().Name;
+            formProvider.SetStartPosition(options.StartPosition);
 
-        public void SetItems(IEnumerable<BaseDialogItem> items)
-        {
             var currentHeight = formProvider.InitialTopPadding;
-            var count = items.Count();
+            var count = options.Items.Count();
 
             for (int i = 0; i < count; i++)
             {
-                var currentItem = items.ElementAt(i);
-                var control = currentItem.BaseControl;
-                control.Enabled = currentItem.Enabled;
-                control.AutoSize = false;
+                var currentItem = options.Items.ElementAt(i);
+                var control = currentItem.Control;
 
                 if (currentItem.Ignore == true)
                     continue;
 
+                if (control == null)
+                {
+                    throw new DialogContextConfigureException("Control is not specified"); // todo: fix message
+                }
+
+                if (currentItem.ControlSpecifiedFromBuilder && (currentItem.GetterSpecifiedFromBuilder || currentItem.SetterSpecifiedFromBuilder) == false)
+                {
+                    throw new DialogContextConfigureException("Getter or setter is not specified"); // todo: fix message
+                }
+
+                control.Enabled = currentItem.Enabled;
+                control.AutoSize = false;
+
                 if (currentItem.FullRow == false)
                 {
-                    var label = Templates.DefaultLabel;
-                    label.Text = currentItem.Name;
-                    label.Location = new Point(25, currentHeight + 3);
+                    var label = new Label
+                    {
+                        Text = currentItem.Name,
+                        Location = new Point(25, currentHeight + 3)
+                    };
 
                     formProvider.AddControl(label);
                 }
@@ -64,7 +77,7 @@ namespace bubuntoid.EasyDialog.Internal
                 control.Size = new Size
                 {
                     Width = currentItem.FullRow ? formProvider.Width - 45 : DEFAULT_VALUE_CONTROL_WIDTH,
-                    Height = currentItem.ControlHeight
+                    Height = currentItem.ControlHeight ?? DEFAULT_VALUE_CONTROL_HEIGHT
                 };
                 control.Location = new Point
                 {
@@ -74,38 +87,41 @@ namespace bubuntoid.EasyDialog.Internal
 
                 formProvider.AddControl(control);
                 currentHeight += control.Size.Height + 10;
+
+                if (currentItem.PreValue != null)
+                    currentItem.Setter.Invoke(currentItem.Control, currentItem.PreValue);
             }
 
             formProvider.Height = formProvider.InitialTopPadding + currentHeight + DEFAULT_BUTTON_HEIGHT +
                                   formProvider.BottomSpace;
 
-            var buttonControl = ResolveButton();
+            var buttonControl = ResolveButton(options);
             formProvider.AddControl(buttonControl);
             buttonControl.Select();
         }
 
-        private Button ResolveButton()
+        private Button ResolveButton(IDialogContextConfigureOptionsBuilder options)
         {
             var result = new Button()
             {
-                Text = ButtonText,
+                Text = options.ButtonText,
                 Height = DEFAULT_BUTTON_HEIGHT,
                 Width = DEFAULT_BUTTON_WIDTH,
             };
 
             int alignExtraPadding = 0;
-            switch (ButtonAlign)
+            switch (options.ButtonAlign)
             {
                 case ButtonAlign.Right:
                     alignExtraPadding = 0;
                     break;
 
-                case ButtonAlign.Left: 
-                    alignExtraPadding = formProvider.Width - DEFAULT_BUTTON_WIDTH - formProvider.ButtonRightPadding - 10; 
+                case ButtonAlign.Left:
+                    alignExtraPadding = formProvider.Width - DEFAULT_BUTTON_WIDTH - formProvider.ButtonRightPadding - 10;
                     break;
 
-                case ButtonAlign.Center: 
-                    alignExtraPadding = formProvider.Width / 2 - DEFAULT_BUTTON_WIDTH + 30; 
+                case ButtonAlign.Center:
+                    alignExtraPadding = formProvider.Width / 2 - DEFAULT_BUTTON_WIDTH + 30;
                     break;
             }
 
@@ -115,15 +131,25 @@ namespace bubuntoid.EasyDialog.Internal
                 Y = formProvider.Height - (DEFAULT_BUTTON_HEIGHT + formProvider.ButtonBottomPadding)
             };
 
-            if (ButtonAlign == ButtonAlign.FullRow)
+            if (options.ButtonAlign == ButtonAlign.FullRow)
             {
                 result.Location = new Point(10, result.Location.Y);
                 result.Width = formProvider.Width - formProvider.ButtonRightPadding;
             }
 
-            result.Click += (o, e) => { Context.OnButtonClick(); };
+            result.Click += (o, e) => { context.OnButtonClick(); };
 
             return result;
+        }
+
+        public void ShowDialog()
+        {
+            formProvider.ShowDialog();
+        }
+
+        public void Close()
+        {
+            formProvider.Close();
         }
     }
 }
