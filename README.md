@@ -44,24 +44,29 @@ Dialogs that was used in preview:
 - [Client dialog](https://github.com/bubuntoid/EasyDialog/blob/main/src/EasyDialog.Tests/Implementation/ClientDialog.cs)
 - [Auth dialog](https://github.com/bubuntoid/EasyDialog/blob/main/src/EasyDialog.Tests/Implementation/AuthentificationDialog.cs)
 
-## Items
-Base items that available "out of the box":
-- TextBoxItem (string)
-- NumericUpDownItem (decimal/int)
-- CheckBoxItem (bool)
-- ComboBoxItem (Collection)
-- ListBoxItem (Collection)
-- DateTimePickerItem (DateTime)
 
-You can use your own control as dialog item by inerhiting from DialogItem<TControl, TValue> where **TControl** is System.Windows.Forms.Control and **TValue** is output value:
+
+## Items
+Supported types that are available out of the box:
+- `DialogSet<string>` -> TextBox
+- `DialogSet<int>` -> NumericUpDown (also work with `decimal`, `float` and `double`)
+- `DialogSet<bool>` -> CheckBox
+- `DialogSet<DateTime>` -> DateTimePicker
+- `DialogCollectionSet<string>` -> ComboBox or ListBox
+
+### Configuration
+For using your own control or type as set you have to specify **control**, **getter**, **setter**, and **update items event** in case that you using **DialogCollectionSet**. There a little sample for **TimeSpan** type (that actually could be easier to get by using `.AsDateTimePicker()`):
 ```csharp
-public class DialogButtonItem : DialogItem<Button, bool>
+public DialogSet<TimeSpan> Time { get; set; }
+
+protected override void OnConfiguring(DialogContextOptionsBuilder<YourDialogContext> builder)
 {
-    public override Button Control { get; set; } = new Button() { Text = "Click on me!" };
-    public override bool Value { get; set } = true;
+    builder.Item(x => x.Time)
+        .AsControl<TextBox>()
+        .ConfigureGetter((control) => TimeSpan.Parse(control.Text))
+        .ConfigureSetter((control, value) => control.Text = value.ToString())
 }
 ```
-[Base items implementation samples](https://github.com/bubuntoid/EasyDialog/tree/main/src/EasyDialog/Items)
 
 There is just a little thing you should know: if your control's height is not "one row" default size, you have to override **ControlHeight** property or configure it in your **DialogContext**:
 
