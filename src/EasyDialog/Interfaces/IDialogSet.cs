@@ -1,4 +1,6 @@
-﻿using System;
+﻿using bubuntoid.EasyDialog.Internal.Models;
+using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace bubuntoid.EasyDialog
@@ -22,5 +24,7 @@ namespace bubuntoid.EasyDialog
 
         internal string Name { get; set; }
         internal int? ControlHeight { get; set; }
+
+        internal Dictionary<Type, SupportedTypeSetup> SupportedTypesSetups { get; }
     }
 }

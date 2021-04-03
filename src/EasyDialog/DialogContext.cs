@@ -1,4 +1,5 @@
 ﻿using bubuntoid.EasyDialog.Internal;
+using System;
 using System.Windows.Forms;
 
 namespace bubuntoid.EasyDialog
@@ -6,6 +7,8 @@ namespace bubuntoid.EasyDialog
     public abstract class DialogContext<TContext> : IDialogContext
         where TContext : DialogContext<TContext>
     {
+        void IDialogContext.OnButtonClick() => OnButtonClick();
+
         private readonly IEasyDialogForm dialogForm;
         private bool isInitialized;
 
@@ -41,8 +44,6 @@ namespace bubuntoid.EasyDialog
         }
 
         protected abstract void OnConfigure(DialogContextConfigureOptionsBuilder<TContext> builder);
-
-        void IDialogContext.OnButtonClick() => OnButtonClick();
         protected internal abstract void OnButtonClick();
     }
 }

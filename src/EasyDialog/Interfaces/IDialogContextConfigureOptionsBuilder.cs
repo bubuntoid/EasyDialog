@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace bubuntoid.EasyDialog
@@ -14,5 +15,7 @@ namespace bubuntoid.EasyDialog
         internal FormStartPosition StartPosition { get; set; }
         internal ButtonAlign ButtonAlign { get; set; }
         internal MetroTheme MetroTheme { get; set; }
+
+        internal Action OnShownEvent { get; set; }
     }
 }

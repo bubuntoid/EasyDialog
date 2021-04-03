@@ -5,7 +5,7 @@ namespace bubuntoid.EasyDialog
     public static class TextBoxExtensions
     {
         public static DialogSetOptionsWithSpecifiedControlBuilder<TextBox, string> AsTextBox(this DialogSetOptionsBuilder<string> builder) =>
-            new DialogSetOptionsWithSpecifiedControlBuilder<TextBox, string>(builder.Set)
+            builder.AsControl<TextBox>()
                 .ConfigureGetter((control) => control.Text)
                 .ConfigureSetter((control, value) => control.Text = value);
 
@@ -14,6 +14,23 @@ namespace bubuntoid.EasyDialog
         {
             var textBox = builder.Set.Control as TextBox;
             textBox.PasswordChar = passwordChar;
+            return builder;
+        }
+
+        public static DialogSetOptionsWithSpecifiedControlBuilder<TextBox, string> HasTextAlign
+           (this DialogSetOptionsWithSpecifiedControlBuilder<TextBox, string> builder, HorizontalAlignment textAlign)
+        {
+            var textBox = builder.Set.Control as TextBox;
+            textBox.TextAlign = textAlign;
+            return builder;
+        }
+
+        public static DialogSetOptionsWithSpecifiedControlBuilder<TextBox, string> IsMultiline
+         (this DialogSetOptionsWithSpecifiedControlBuilder<TextBox, string> builder, int size = 100)
+        {
+            var textBox = builder.Set.Control as TextBox;
+            textBox.Multiline = true;
+            builder.Set.ControlHeight = size;
             return builder;
         }
     }

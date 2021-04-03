@@ -20,7 +20,7 @@ namespace EasyDialog.Samples
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            new AuthDialogContext().ShowDialog();
+            new DialogWithBasicSupportedTypes().ShowDialog();
         }
     }
 }

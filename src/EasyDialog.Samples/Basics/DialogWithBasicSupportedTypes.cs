@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Drawing;
 using System.Windows.Forms;
 using bubuntoid.EasyDialog;
 
@@ -8,6 +9,8 @@ namespace EasyDialog.Samples.Basics
     public class DialogWithBasicSupportedTypes : DialogContext<DialogWithBasicSupportedTypes>
     {
         public DialogSet<string> String { get; set; }
+        public DialogSet<string> Disabled { get; set; }
+        public DialogSet<string> Multiline { get; set; }
 
         public DialogSet<int> Int { get; set; }
         public DialogSet<decimal> Decimal { get; set; }
@@ -17,8 +20,10 @@ namespace EasyDialog.Samples.Basics
         public DialogSet<bool> Bool { get; set; }
         public DialogSet<DateTime> DateTime { get; set; }
         
-        public DialogSet<string> ComboBox { get; set; }
-        public DialogSet<string> ListBox { get; set; }
+        public DialogCollectionSet<string> ComboBox { get; set; }
+        public DialogCollectionSet<string> ListBox { get; set; }
+        
+        public DialogSet<string> FullRow { get; set; }
 
         protected override void OnButtonClick()
         {
@@ -29,8 +34,26 @@ namespace EasyDialog.Samples.Basics
         {
             builder.HasTitle("Supported types");
 
-            builder.Item(x => x.ComboBox).AsComboBox();
-            builder.Item(x => x.ComboBox).AsTextBox();
+            builder.Item(x => x.FullRow)
+                .AsTextBox()
+                .AsFullRow()
+                .HasValue("Full row");
+
+            builder.Item(x => x.Disabled)
+                .Disabled();
+
+            builder.Item(x => x.Multiline)
+              .AsTextBox()
+              .IsMultiline();
+
+            builder.Item(x => x.ComboBox)
+                .HasDataSource(new[] { "First", "Second", "Third" })
+                .HasValue("First");
+
+            builder.Item(x => x.ListBox)
+                .AsListBox()
+                .HasDataSource(new[] { "Third", "First", "Second" })
+                .HasValue("Third");
         }
     }
 }

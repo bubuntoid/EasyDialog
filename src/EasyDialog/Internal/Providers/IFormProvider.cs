@@ -16,6 +16,7 @@ namespace bubuntoid.EasyDialog.Internal.Providers
         int Height { get; set; }
         int Width { get; set; }
 
+        int ExtraPaddingForFullRow { get; set; }
         int InitialTopPadding { get; set; }
         int SecondColumnXCoord { get; set; }
         int BottomSpace { get; set; }

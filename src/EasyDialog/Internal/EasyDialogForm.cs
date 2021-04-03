@@ -19,7 +19,8 @@ namespace bubuntoid.EasyDialog.Internal
         private readonly IDialogContext context;
         
         private IFormProvider formProvider;
-        
+        private Action onShownEvent;
+
         public Form Form => formProvider.Form; 
 
         public EasyDialogForm(IDialogContext context)
@@ -38,6 +39,7 @@ namespace bubuntoid.EasyDialog.Internal
             };
             formProvider.Form.Text = options.Title ?? context.GetType().Name;
             formProvider.SetStartPosition(options.StartPosition);
+            onShownEvent = options.OnShownEvent;
 
             var currentHeight = formProvider.InitialTopPadding;
             var count = options.Items.Count();
@@ -51,14 +53,12 @@ namespace bubuntoid.EasyDialog.Internal
                     continue;
 
                 if (control == null)
-                {
-                    throw new DialogContextConfigureException("Control is not specified"); // todo: fix message
-                }
+                    throw ExceptionBuilder.ControlIsNotSpecifiedException;
 
                 if (currentItem.ControlSpecifiedFromBuilder && (currentItem.GetterSpecifiedFromBuilder || currentItem.SetterSpecifiedFromBuilder) == false)
-                {
-                    throw new DialogContextConfigureException("Getter or setter is not specified"); // todo: fix message
-                }
+                    throw currentItem.GetterSpecifiedFromBuilder == false
+                        ? ExceptionBuilder.GetterIsNotConfiguredException 
+                        : ExceptionBuilder.SetterIsNotConfiguredException;
 
                 control.Enabled = currentItem.Enabled;
                 control.AutoSize = false;
@@ -74,9 +74,21 @@ namespace bubuntoid.EasyDialog.Internal
                     formProvider.AddControl(label);
                 }
 
+                if (currentItem is IDialogCollectionSet collectionSet)
+                {
+                    if (collectionSet.ControlSpecifiedFromBuilder && collectionSet.UpdateItemsEventSpecifiedFromBuilder == false)
+                        throw ExceptionBuilder.UpdateItemsEventNotSpecifiedException;
+                    
+                    collectionSet.ControlHeight = collectionSet.DataSource?.Count() * 20 + 30;
+                    collectionSet.UpdateItemsEvent(collectionSet.Control, collectionSet.DataSource);
+                }
+
+                if (currentItem.PreValue != null)
+                    currentItem.Setter.Invoke(currentItem.Control, currentItem.PreValue);
+
                 control.Size = new Size
                 {
-                    Width = currentItem.FullRow ? formProvider.Width - 45 : DEFAULT_VALUE_CONTROL_WIDTH,
+                    Width = currentItem.FullRow ? formProvider.Width + formProvider.ExtraPaddingForFullRow - 45 : DEFAULT_VALUE_CONTROL_WIDTH,
                     Height = currentItem.ControlHeight ?? DEFAULT_VALUE_CONTROL_HEIGHT
                 };
                 control.Location = new Point
@@ -87,9 +99,6 @@ namespace bubuntoid.EasyDialog.Internal
 
                 formProvider.AddControl(control);
                 currentHeight += control.Size.Height + 10;
-
-                if (currentItem.PreValue != null)
-                    currentItem.Setter.Invoke(currentItem.Control, currentItem.PreValue);
             }
 
             formProvider.Height = formProvider.InitialTopPadding + currentHeight + DEFAULT_BUTTON_HEIGHT +
@@ -144,6 +153,7 @@ namespace bubuntoid.EasyDialog.Internal
 
         public void ShowDialog()
         {
+            onShownEvent?.Invoke();
             formProvider.ShowDialog();
         }
 

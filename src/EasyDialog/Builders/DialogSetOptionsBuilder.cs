@@ -20,9 +20,21 @@ namespace bubuntoid.EasyDialog
 
         public DialogSetOptionsWithSpecifiedControlBuilder<TControl, TValue> AsControl<TControl>() where TControl : Control, new() => AsControl(new TControl());
 
+        public DialogSetOptionsBuilder<TValue> Disabled()
+        {
+            Set.Enabled = false;
+            return this;
+        }
+
         public DialogSetOptionsBuilder<TValue> Ignore()
         {
             Set.Ignore = true;
+            return this;
+        }
+
+        public DialogSetOptionsBuilder<TValue> AsFullRow()
+        {
+            Set.FullRow = true;
             return this;
         }
 
@@ -32,15 +44,9 @@ namespace bubuntoid.EasyDialog
             return this;
         }
 
-        public DialogSetOptionsBuilder<TValue> AsListBox()
+        public DialogSetOptionsBuilder<TValue> HasName(string name)
         {
-            // todo: implement
-            return this;
-        }
-
-        public DialogSetOptionsBuilder<TValue> AsComboBox()
-        {
-            // todo: implement
+            Set.Name = name;
             return this;
         }
     }

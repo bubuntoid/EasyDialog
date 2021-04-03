@@ -53,45 +53,16 @@ namespace bubuntoid.EasyDialog.Internal
 
             var type = property.PropertyType.GenericTypeArguments.First();
 
-            if (SupportedTypes.ContainsKey(type))
+            if (item.SupportedTypesSetups.ContainsKey(type))
             {
-                var setup = SupportedTypes.GetValueOrDefault(type);
-                item.Control = setup.control.Invoke();
-                item.Getter = setup.getter;
-                item.Setter = setup.setter;
+                var setup = item.SupportedTypesSetups.GetValueOrDefault(type);
+                item.Control = setup.ControlFactory.Invoke();
+                item.Getter = setup.Getter;
+                item.Setter = setup.Setter;
+
+                if (item is IDialogCollectionSet collectionSet)
+                    collectionSet.UpdateItemsEvent = setup.UpdateItemsEvent;
             }
         }
-
-        private Dictionary<Type, (Func<Control> control, Func<Control, object> getter, Action<Control, object> setter)> SupportedTypes  = new()
-        {
-            [typeof(string)] = (control: () => new TextBox(),
-                                getter: (control) => control.Text,
-                                setter: (control, value) => control.Text = (string)value),
-
-            [typeof(int)] = (control: () => new NumericUpDown { Minimum = int.MinValue, Maximum = int.MaxValue },
-                             getter: (control) => Convert.ToInt32((control as NumericUpDown).Value), 
-                             setter: (control, value) => (control as NumericUpDown).Value = (decimal)value),
-
-            [typeof(double)] = (control: () => new NumericUpDown { Minimum = int.MinValue, Maximum = int.MaxValue, DecimalPlaces = 2 },
-                             getter: (control) => Convert.ToDouble((control as NumericUpDown).Value),
-                             setter: (control, value) => (control as NumericUpDown).Value = (decimal)value),
-
-            [typeof(float)] = (control: () => new NumericUpDown { Minimum = int.MinValue, Maximum = int.MaxValue, DecimalPlaces = 2 },
-                             getter: (control) => (float)(control as NumericUpDown).Value,
-                             setter: (control, value) => (control as NumericUpDown).Value = (decimal)value),
-
-            [typeof(decimal)] = (control: () => new NumericUpDown { Minimum = int.MinValue, Maximum = int.MaxValue, DecimalPlaces = 2 },
-                             getter: (control) => (control as NumericUpDown).Value,
-                             setter: (control, value) => (control as NumericUpDown).Value = (decimal)value),
-
-            [typeof(bool)] = (control: () => new CheckBox(),
-                                getter: (control) => ((CheckBox)control).Checked,
-                                setter: (control, value) => ((CheckBox)control).Checked = (bool)value),
-
-            [typeof(DateTime)] = (control: () => new DateTimePicker(),
-                                getter: (control) => ((DateTimePicker)control).Value,
-                                setter: (control, value) => ((DateTimePicker)control).Value = (DateTime)value),
-        };
-
     }
 }

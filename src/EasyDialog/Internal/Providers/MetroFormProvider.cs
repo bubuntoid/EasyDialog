@@ -14,6 +14,7 @@ namespace bubuntoid.EasyDialog.Internal.Providers
         public int BottomSpace { get; set; } = -40;
         public int ButtonRightPadding { get; set; } = 15;
         public int ButtonBottomPadding { get; set; } = 10;
+        public int ExtraPaddingForFullRow { get; set; } = 0;
 
         public Action OnCloseHandler { get; set; }
 

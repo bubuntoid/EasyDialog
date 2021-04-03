@@ -7,6 +7,7 @@ namespace EasyDialog.Samples.Authorization
     {
         public DialogSet<string> Username { get; set; }
         public DialogSet<string> Password { get; set; }
+        public DialogSet<bool> IsRobot { get; set; }
 
         protected override void OnConfigure(DialogContextConfigureOptionsBuilder<AuthDialogContext> builder)
         {
@@ -15,8 +16,12 @@ namespace EasyDialog.Samples.Authorization
                 .HasButton("Sign In", ButtonAlign.Right);
 
             builder.Item(x => x.Password)
+                .AsFullRow()
                 .AsTextBox()
                 .UsePasswordChar('*');
+
+            builder.Item(x => x.IsRobot)
+                .HasName("I'm not a robot");
         }
 
         protected override void OnButtonClick()

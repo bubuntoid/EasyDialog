@@ -16,6 +16,7 @@ namespace bubuntoid.EasyDialog
         FormStartPosition IDialogContextConfigureOptionsBuilder.StartPosition { get; set; }
         DialogStyle IDialogContextConfigureOptionsBuilder.DialogStyle { get; set; }
         MetroTheme IDialogContextConfigureOptionsBuilder.MetroTheme{ get; set; }
+        Action IDialogContextConfigureOptionsBuilder.OnShownEvent { get; set; }
 
         internal DialogContextConfigureOptionsBuilder(IEnumerable<IDialogSet> items)
         {
@@ -25,6 +26,12 @@ namespace bubuntoid.EasyDialog
             Base.ButtonText = "Submit";
             Base.ButtonAlign = ButtonAlign.Right;
             Base.StartPosition = FormStartPosition.CenterScreen;
+        }
+
+        public DialogContextConfigureOptionsBuilder<TContext> OnShown(Action action)
+        {
+            Base.OnShownEvent = action;
+            return this;
         }
 
         public DialogContextConfigureOptionsBuilder<TContext> HasTitle(string title)
@@ -75,6 +82,11 @@ namespace bubuntoid.EasyDialog
         public DialogSetOptionsBuilder<TValue> Item<TValue>(Expression<Func<TContext, DialogSet<TValue>>> property)
         {
             return new DialogSetOptionsBuilder<TValue>(GetDialogSetFromExpression(property));
+        }
+
+        public DialogCollectionSetOptionsBuilder<TValue> Item<TValue>(Expression<Func<TContext, DialogCollectionSet<TValue>>> property)
+        {
+            return new DialogCollectionSetOptionsBuilder<TValue>(GetDialogSetFromExpression(property) as IDialogCollectionSet);
         }
 
         private IDialogSet GetDialogSetFromExpression<TProperty>(Expression<Func<TContext, TProperty>> property)

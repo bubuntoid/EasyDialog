@@ -1,4 +1,7 @@
-﻿using System;
+﻿using bubuntoid.EasyDialog.Internal;
+using bubuntoid.EasyDialog.Internal.Models;
+using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace bubuntoid.EasyDialog
@@ -27,24 +30,51 @@ namespace bubuntoid.EasyDialog
             get 
             {
                 if (Base.Getter == null)
-                {
-                    throw new DialogContextConfigureException("Getter is not configured."); // todo fix message
-                }
+                    throw ExceptionBuilder.GetterIsNotConfiguredException;
 
                 return (TValue)Base.Getter(Base.Control);
             }
-
             set
             {
                 if (Base.Setter == null)
-                {
-                    throw new DialogContextConfigureException("Setter is not configured."); // todo fix message
-                }
+                    throw ExceptionBuilder.SetterIsNotConfiguredException;
 
                 Base.Setter(Base.Control, value);
             }
         }
+        public Control Control => Base.Control;
 
         private IDialogSet Base => this;
+
+        Dictionary<Type, SupportedTypeSetup> IDialogSet.SupportedTypesSetups => new()
+        {
+            [typeof(string)] = new SupportedTypeSetup(control: () => new TextBox(),
+                                getter: (control) => control.Text,
+                                setter: (control, value) => control.Text = (string)value),
+
+            [typeof(int)] = new SupportedTypeSetup(control: () => new NumericUpDown { Minimum = int.MinValue, Maximum = int.MaxValue },
+                             getter: (control) => Convert.ToInt32((control as NumericUpDown).Value),
+                             setter: (control, value) => (control as NumericUpDown).Value = (decimal)value),
+
+            [typeof(double)] = new SupportedTypeSetup(control: () => new NumericUpDown { Minimum = int.MinValue, Maximum = int.MaxValue, DecimalPlaces = 2 },
+                             getter: (control) => Convert.ToDouble((control as NumericUpDown).Value),
+                             setter: (control, value) => (control as NumericUpDown).Value = (decimal)value),
+
+            [typeof(float)] = new SupportedTypeSetup(control: () => new NumericUpDown { Minimum = int.MinValue, Maximum = int.MaxValue, DecimalPlaces = 2 },
+                             getter: (control) => (float)(control as NumericUpDown).Value,
+                             setter: (control, value) => (control as NumericUpDown).Value = (decimal)value),
+
+            [typeof(decimal)] = new SupportedTypeSetup(control: () => new NumericUpDown { Minimum = int.MinValue, Maximum = int.MaxValue, DecimalPlaces = 2 },
+                             getter: (control) => (control as NumericUpDown).Value,
+                             setter: (control, value) => (control as NumericUpDown).Value = (decimal)value),
+
+            [typeof(bool)] = new SupportedTypeSetup(control: () => new CheckBox(),
+                                getter: (control) => ((CheckBox)control).Checked,
+                                setter: (control, value) => ((CheckBox)control).Checked = (bool)value),
+
+            [typeof(DateTime)] = new SupportedTypeSetup(control: () => new DateTimePicker { Format = DateTimePickerFormat.Short },
+                                getter: (control) => ((DateTimePicker)control).Value,
+                                setter: (control, value) => ((DateTimePicker)control).Value = (DateTime)value),
+        };
     }
 }

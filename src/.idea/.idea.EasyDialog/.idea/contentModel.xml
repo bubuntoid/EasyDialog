@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Evs\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Evs\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_EasyDialog.-853315488.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Evs\repos\EasyDialog\src" t="IncludeFlat">
+      <e p="EasyDialog" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="DialogCollectionSet.cs" t="Include" />
+        <e p="DialogContext.cs" t="Include" />
+        <e p="DialogContextConfigureOptionsBuilder.cs" t="Include" />
+        <e p="DialogSet.cs" t="Include" />
+        <e p="DialogSetOptionsBuilder.cs" t="Include" />
+        <e p="DialogSetOptionsWithSpecifiedControlBuilder.cs" t="Include" />
+        <e p="EasyDialog.csproj" t="IncludeRecursive" />
+        <e p="Enums" t="Include">
+          <e p="ButtonAlign.cs" t="Include" />
+          <e p="DialogStyle.cs" t="Include" />
+          <e p="MaterialTheme.cs" t="Include" />
+          <e p="MaterialThemeAccent.cs" t="Include" />
+          <e p="MaterialThemePrimaryColor.cs" t="Include" />
+          <e p="MaterialThemeTextShade.cs" t="Include" />
+          <e p="MetroTheme.cs" t="Include" />
+        </e>
+        <e p="Exceptions" t="Include">
+          <e p="DialogContextConfigureException.cs" t="Include" />
+        </e>
+        <e p="Extensions" t="Include">
+          <e p="TextBoxExtensions.cs" t="Include" />
+        </e>
+        <e p="Interfaces" t="Include">
+          <e p="IDialogContext.cs" t="Include" />
+          <e p="IDialogContextConfigureOptionsBuilder.cs" t="Include" />
+          <e p="IDialogSet.cs" t="Include" />
+        </e>
+        <e p="Internal" t="Include">
+          <e p="DialogContextItemsLoader.cs" t="Include" />
+          <e p="EasyDialogForm.cs" t="Include" />
+          <e p="Helpers" t="Include">
+            <e p="ExceptionBuilder.cs" t="Include" />
+          </e>
+          <e p="IEasyDialogForm.cs" t="Include" />
+          <e p="Models" t="Include">
+            <e p="SupportedTypeSetup.cs" t="Include" />
+          </e>
+          <e p="Providers" t="Include">
+            <e p="DefaultFormProvider.cs" t="Include" />
+            <e p="IFormProvider.cs" t="Include" />
+            <e p="MaterialFormProvider.cs" t="Include" />
+            <e p="MetroFormProvider.cs" t="Include" />
+          </e>
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="net5.0-windows" t="Include">
+              <e p="EasyDialog.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="EasyDialog.Samples" t="IncludeRecursive">
+        <e p="Authorization" t="Include">
+          <e p="AuthDialogContext.cs" t="Include" />
+        </e>
+        <e p="Basics" t="Include">
+          <e p="DialogWithBasicSupportedTypes.cs" t="Include" />
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="EasyDialog.Samples.csproj" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="net5.0-windows" t="Include">
+              <e p="EasyDialog.Samples.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+      </e>
+      <e p="EasyDialog.sln" t="IncludeFlat" />
+      <e p="packages" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
