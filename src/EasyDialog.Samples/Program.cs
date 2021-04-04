@@ -1,6 +1,7 @@
 using EasyDialog.Samples.Authorization;
 using EasyDialog.Samples.Basics;
 using EasyDialog.Samples.CustomControl;
+using EasyDialog.Samples.CustomType;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace EasyDialog.Samples
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            new ButtonControlDialogContext().ShowDialog();
+            new TimeSpanCollectionDialogContext().ShowDialog();
         }
     }
 }

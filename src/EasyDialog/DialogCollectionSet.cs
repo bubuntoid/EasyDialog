@@ -2,13 +2,19 @@
 using bubuntoid.EasyDialog.Internal.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace bubuntoid.EasyDialog
 {
     public class DialogCollectionSet<TValue> : IDialogCollectionSet
     {
-        IEnumerable<object> IDialogCollectionSet.DataSource { get => (IEnumerable<object>)DataSource; set => DataSource = (IEnumerable<TValue>)value; }
+        IEnumerable<object> IDialogCollectionSet.DataSource
+        {
+            get => DataSource.Cast<object>().ToList();
+            set => DataSource = value.Cast<TValue>();
+        }
+
         Action<Control, IEnumerable<object>> IDialogCollectionSet.UpdateItemsEvent { get; set; }
         bool IDialogCollectionSet.UpdateItemsEventSpecifiedFromBuilder { get; set; }
 
@@ -48,7 +54,21 @@ namespace bubuntoid.EasyDialog
         }
         public Control Control => Base.Control;
 
-        public IEnumerable<TValue> DataSource { get; set; }
+        private IEnumerable<TValue> _dataSource = new HashSet<TValue>();
+        public IEnumerable<TValue> DataSource
+        {
+            get
+            {
+                Base.UpdateItemsEvent?.Invoke(Base.Control, _dataSource.Cast<object>());
+                return _dataSource;
+            }
+
+            set
+            {
+                _dataSource = value;
+                Base.UpdateItemsEvent?.Invoke(Base.Control, _dataSource.Cast<object>());
+            }
+        }
 
         private IDialogCollectionSet Base => this;
 

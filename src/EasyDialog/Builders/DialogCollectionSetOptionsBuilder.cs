@@ -25,7 +25,7 @@ namespace bubuntoid.EasyDialog
 
         public DialogCollectionSetOptionsBuilder<TValue> HasDataSource(IEnumerable<TValue> value)
         {
-            CollectionSet.DataSource = (IEnumerable<object>)value;
+            CollectionSet.DataSource = value.Cast<object>();
             return this;
         }
     }

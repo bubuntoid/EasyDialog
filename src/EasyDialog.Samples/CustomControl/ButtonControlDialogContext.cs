@@ -22,7 +22,6 @@ namespace EasyDialog.Samples.CustomControl
                 .AsControl(template)
                 .ConfigureGetter((control) => control.Text == "On")
                 .ConfigureSetter((control, value) => control.Text = value ? "On" : "Off");
-            
         }
 
         private Button GetButton()
