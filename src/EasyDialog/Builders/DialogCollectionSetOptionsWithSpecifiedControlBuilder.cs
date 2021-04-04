@@ -16,8 +16,8 @@ namespace bubuntoid.EasyDialog
 
         public DialogCollectionSetOptionsWithSpecifiedControlBuilder<TControl, TValue> ConfigureUpdateItemsEvent(Action<TControl, IEnumerable<TValue>> cfg)
         {
-            Set.UpdateItemsEventSpecifiedFromBuilder = true;
-            Set.UpdateItemsEvent = (control, items) => cfg.Invoke((TControl)Set.Control, (IEnumerable<TValue>)items);
+            CollectionSet.UpdateItemsEventSpecifiedFromBuilder = true;
+            CollectionSet.UpdateItemsEvent = (control, items) => cfg.Invoke((TControl)Set.Control, (IEnumerable<TValue>)items);
             return this;
         }
 

@@ -17,6 +17,8 @@ namespace bubuntoid.EasyDialog
         DialogStyle IDialogContextConfigureOptionsBuilder.DialogStyle { get; set; }
         MetroTheme IDialogContextConfigureOptionsBuilder.MetroTheme{ get; set; }
         Action IDialogContextConfigureOptionsBuilder.OnShownEvent { get; set; }
+        MaterialTheme IDialogContextConfigureOptionsBuilder.MaterialTheme { get; set; }
+        MaterialColorScheme IDialogContextConfigureOptionsBuilder.MaterialColorScheme { get; set; }
 
         internal DialogContextConfigureOptionsBuilder(IEnumerable<IDialogSet> items)
         {
@@ -69,6 +71,24 @@ namespace bubuntoid.EasyDialog
         {
             Base.DialogStyle = DialogStyle.Metro;
             Base.MetroTheme = theme;
+            return this;
+        }
+
+        public DialogContextConfigureOptionsBuilder<TContext> UseMaterialStyle()
+        {
+            return UseMaterialStyle(MaterialTheme.Light);
+        }
+
+        public DialogContextConfigureOptionsBuilder<TContext> UseMaterialStyle(MaterialTheme theme)
+        {
+            return UseMaterialStyle(theme, MaterialColorScheme.Default);
+        }
+
+        public DialogContextConfigureOptionsBuilder<TContext> UseMaterialStyle(MaterialTheme theme, MaterialColorScheme scheme)
+        {
+            Base.DialogStyle = DialogStyle.Material;
+            Base.MaterialTheme = theme;
+            Base.MaterialColorScheme = scheme;
             return this;
         }
 

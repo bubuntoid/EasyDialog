@@ -10,4 +10,8 @@
     <ProjectReference Include="..\EasyDialog\EasyDialog.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="CustomType\" />
+  </ItemGroup>
+
 </Project>

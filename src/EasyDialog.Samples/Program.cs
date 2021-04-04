@@ -1,5 +1,6 @@
 using EasyDialog.Samples.Authorization;
 using EasyDialog.Samples.Basics;
+using EasyDialog.Samples.CustomControl;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace EasyDialog.Samples
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            new DialogWithBasicSupportedTypes().ShowDialog();
+            new ButtonControlDialogContext().ShowDialog();
         }
     }
 }

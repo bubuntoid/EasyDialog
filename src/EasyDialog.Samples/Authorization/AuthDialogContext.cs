@@ -11,12 +11,11 @@ namespace EasyDialog.Samples.Authorization
 
         protected override void OnConfigure(DialogContextConfigureOptionsBuilder<AuthDialogContext> builder)
         {
-            builder.UseMetroStyle()
+            builder.UseMaterialStyle()
                 .HasTitle("Authorization")
-                .HasButton("Sign In", ButtonAlign.Right);
+                .HasButton("Sign In", ButtonAlign.Center);
 
             builder.Item(x => x.Password)
-                .AsFullRow()
                 .AsTextBox()
                 .UsePasswordChar('*');
 

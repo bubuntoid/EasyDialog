@@ -11,4 +11,10 @@
     <PackageReference Include="MetroFramework" Version="1.2.0.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="MaterialSkin">
+      <HintPath>..\..\libs\MaterialSkin.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

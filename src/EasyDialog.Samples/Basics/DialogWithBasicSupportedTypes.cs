@@ -32,7 +32,7 @@ namespace EasyDialog.Samples.Basics
 
         protected override void OnConfigure(DialogContextConfigureOptionsBuilder<DialogWithBasicSupportedTypes> builder)
         {
-            builder.HasTitle("Supported types");
+            builder.HasTitle("Supported types sample");
 
             builder.Item(x => x.FullRow)
                 .AsTextBox()

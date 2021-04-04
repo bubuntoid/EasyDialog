@@ -34,6 +34,7 @@ namespace bubuntoid.EasyDialog.Internal
             {
                 DialogStyle.Default => new DefaultFormProvider(),
                 DialogStyle.Metro => new MetroFormProvider(options.MetroTheme),
+                DialogStyle.Material => new MaterialFormProvider(options.MaterialTheme, options.MaterialColorScheme),
 
                 _ => throw new NotImplementedException()
             };
@@ -53,12 +54,12 @@ namespace bubuntoid.EasyDialog.Internal
                     continue;
 
                 if (control == null)
-                    throw ExceptionBuilder.ControlIsNotSpecifiedException;
+                    throw ExceptionBuilder.ControlIsNotSpecifiedException(currentItem);
 
                 if (currentItem.ControlSpecifiedFromBuilder && (currentItem.GetterSpecifiedFromBuilder || currentItem.SetterSpecifiedFromBuilder) == false)
                     throw currentItem.GetterSpecifiedFromBuilder == false
-                        ? ExceptionBuilder.GetterIsNotConfiguredException 
-                        : ExceptionBuilder.SetterIsNotConfiguredException;
+                        ? ExceptionBuilder.GetterIsNotConfiguredException(currentItem)
+                        : ExceptionBuilder.SetterIsNotConfiguredException(currentItem);
 
                 control.Enabled = currentItem.Enabled;
                 control.AutoSize = false;
@@ -77,7 +78,7 @@ namespace bubuntoid.EasyDialog.Internal
                 if (currentItem is IDialogCollectionSet collectionSet)
                 {
                     if (collectionSet.ControlSpecifiedFromBuilder && collectionSet.UpdateItemsEventSpecifiedFromBuilder == false)
-                        throw ExceptionBuilder.UpdateItemsEventNotSpecifiedException;
+                        throw ExceptionBuilder.UpdateItemsEventNotSpecifiedException(currentItem);
                     
                     collectionSet.ControlHeight = collectionSet.DataSource?.Count() * 20 + 30;
                     collectionSet.UpdateItemsEvent(collectionSet.Control, collectionSet.DataSource);

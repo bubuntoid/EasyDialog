@@ -17,5 +17,8 @@ namespace bubuntoid.EasyDialog
         internal MetroTheme MetroTheme { get; set; }
 
         internal Action OnShownEvent { get; set; }
+
+        internal MaterialTheme MaterialTheme { get; set; }
+        internal MaterialColorScheme MaterialColorScheme { get; set; }
     }
 }

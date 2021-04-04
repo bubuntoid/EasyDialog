@@ -30,14 +30,14 @@ namespace bubuntoid.EasyDialog
             get 
             {
                 if (Base.Getter == null)
-                    throw ExceptionBuilder.GetterIsNotConfiguredException;
+                    throw ExceptionBuilder.GetterIsNotConfiguredException(Base);
 
                 return (TValue)Base.Getter(Base.Control);
             }
             set
             {
                 if (Base.Setter == null)
-                    throw ExceptionBuilder.SetterIsNotConfiguredException;
+                    throw ExceptionBuilder.SetterIsNotConfiguredException(Base);
 
                 Base.Setter(Base.Control, value);
             }

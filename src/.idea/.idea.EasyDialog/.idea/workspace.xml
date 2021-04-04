@@ -22,14 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7bb5725e-a94e-4c5e-a5ab-daf8897d013c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/EasyDialog.Samples/Basics/DialogWithBasicSupportedTypes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasyDialog.Samples/Basics/DialogWithBasicSupportedTypes.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasyDialog.Samples/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasyDialog.Samples/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasyDialog/DialogSet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasyDialog/DialogSet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasyDialog/Exceptions/DialogContextConfigureException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasyDialog/Exceptions/DialogContextConfigureException.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasyDialog/Interfaces/IDialogSet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasyDialog/Interfaces/IDialogSet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasyDialog/Internal/DialogContextItemsLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EasyDialog/Internal/DialogContextItemsLoader.cs" afterDir="false" />
-    </list>
+    <list default="true" id="7bb5725e-a94e-4c5e-a5ab-daf8897d013c" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,6 +30,13 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/EasyDialog/Builders/DialogCollectionSetOptionsWithSpecifiedControlBuilder.cs" />
+      </list>
+    </option>
   </component>
   <component name="ProjectId" id="1qeSdOyz9GDIhvqeReI90gQDQwV" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -79,13 +79,14 @@
       <option name="presentableId" value="Default" />
       <updated>1617438656007</updated>
       <workItem from="1617438689317" duration="90000" />
+      <workItem from="1617471820769" duration="82000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -97,6 +98,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
