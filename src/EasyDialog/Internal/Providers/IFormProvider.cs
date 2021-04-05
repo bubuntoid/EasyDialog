@@ -8,19 +8,20 @@ namespace bubuntoid.EasyDialog.Internal.Providers
         void ShowDialog();
         void Close();
 
+        Form Form { get; }
+
         void SetStartPosition(FormStartPosition startPosition);
         void AddControl(Control control);
 
         int Height { get; set; }
         int Width { get; set; }
 
+        int ExtraPaddingForFullRow { get; set; }
         int InitialTopPadding { get; set; }
         int SecondColumnXCoord { get; set; }
         int BottomSpace { get; set; }
         int ButtonRightPadding { get; set; }
         int ButtonBottomPadding { get; set; }
-
-        string Title { get; set; }
 
         Action OnCloseHandler { get; set; }
     }

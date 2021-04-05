@@ -14,32 +14,33 @@ namespace bubuntoid.EasyDialog.Internal.Providers
         public int BottomSpace { get; set; } = -40;
         public int ButtonRightPadding { get; set; } = 15;
         public int ButtonBottomPadding { get; set; } = 10;
+        public int ExtraPaddingForFullRow { get; set; } = 0;
 
         public Action OnCloseHandler { get; set; }
 
         public string Title
         {
-            get => form.Text;
-            set => form.Text = value;
+            get => Form.Text;
+            set => Form.Text = value;
         }
 
         public int Width
         {
-            get => form.Width;
-            set => form.Width = value;
+            get => Form.Width;
+            set => Form.Width = value;
         }
 
         public int Height
         {
-            get => form.Height;
-            set => form.Height = value;
+            get => Form.Height;
+            set => Form.Height = value;
         }
 
-        private readonly MetroForm form;
+        public Form Form { get; private set; }
 
         public MetroFormProvider(MetroTheme theme)
         {
-            form = new MetroForm()
+            Form = new MetroForm()
             {
                 Width = 335,
                 
@@ -49,30 +50,30 @@ namespace bubuntoid.EasyDialog.Internal.Providers
                 BorderStyle = MetroBorderStyle.FixedSingle,
             };
 
-            form.FormClosed += (s, e) =>
+            Form.FormClosed += (s, e) =>
             {
-                OnCloseHandler.Invoke();
+                OnCloseHandler?.Invoke();
             };
         }
 
         public void ShowDialog()
         {
-            form.ShowDialog();
+            Form.ShowDialog();
         }
 
         public void Close()
         {
-            form.Close();
+            Form.Close();
         }
 
         public void AddControl(Control control)
         {
-            form.Controls.Add(control);
+            Form.Controls.Add(control);
         }
 
         public void SetStartPosition(FormStartPosition startPosition)
         {
-            form.StartPosition = startPosition;
+            Form.StartPosition = startPosition;
         }
     }
 }

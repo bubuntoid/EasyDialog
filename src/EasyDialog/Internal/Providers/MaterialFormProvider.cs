@@ -13,32 +13,27 @@ namespace bubuntoid.EasyDialog.Internal.Providers
         public int BottomSpace { get; set; } = -60;
         public int ButtonRightPadding { get; set; } = 15;
         public int ButtonBottomPadding { get; set; } = 10;
+        public int ExtraPaddingForFullRow { get; set; } = 0;
 
         public Action OnCloseHandler { get; set; }
 
-        public string Title
-        {
-            get => form.Text;
-            set => form.Text = value;
-        }
-
         public int Width
         {
-            get => form.Width;
-            set => form.Width = value;
+            get => Form.Width;
+            set => Form.Width = value;
         }
 
         public int Height
         {
-            get => form.Height;
-            set => form.Height = value;
+            get => Form.Height;
+            set => Form.Height = value;
         }
 
-        private readonly MaterialForm form;
+        public Form Form { get; set; }
 
         public MaterialFormProvider(MaterialTheme theme, MaterialColorScheme colorScheme)
         {
-            form = new MaterialForm()
+            Form = new MaterialForm()
             {
                 Width = 320,
 
@@ -46,19 +41,19 @@ namespace bubuntoid.EasyDialog.Internal.Providers
                 Sizable = false
             };
 
-            form.FormClosed += (s, e) =>
+            Form.FormClosed += (s, e) =>
             {
-                OnCloseHandler.Invoke();
+                OnCloseHandler?.Invoke();
             };
 
-            var defaultLabel = Templates.DefaultLabel;
+            var defaultLabel = new Label();
             var defaultFontFamilyName = defaultLabel.Font.FontFamily.Name;
             var defaultLabelSize = defaultLabel.Font.Size;
             defaultLabel.Dispose();
 
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.ROBOTO_REGULAR_11 = new System.Drawing.Font(defaultFontFamilyName, defaultLabelSize);
-            materialSkinManager.AddFormToManage(form);
+            materialSkinManager.AddFormToManage((MaterialForm)Form);
             materialSkinManager.Theme = (MaterialSkinManager.Themes)theme;
             materialSkinManager.ColorScheme = new ColorScheme(
                 primary: (Primary)colorScheme.Primary,
@@ -70,12 +65,12 @@ namespace bubuntoid.EasyDialog.Internal.Providers
 
         public void ShowDialog()
         {
-            form.ShowDialog();
+            Form.ShowDialog();
         }
 
         public void Close()
         {
-            form.Close();
+            Form.Close();
         }
 
         public void AddControl(Control control)
@@ -88,7 +83,7 @@ namespace bubuntoid.EasyDialog.Internal.Providers
                     Text = label.Text,
                     Size = label.Size,
                     Location = label.Location,
-                    
+
                 };
             }
             else if (control is Button button)
@@ -98,6 +93,7 @@ namespace bubuntoid.EasyDialog.Internal.Providers
                     Text = button.Text,
                     Size = button.Size,
                     Location = button.Location,
+                    AutoSize = false,
                 };
 
                 var buttonControl = control as MaterialRaisedButton;
@@ -107,12 +103,12 @@ namespace bubuntoid.EasyDialog.Internal.Providers
                 };
             }
 
-            form.Controls.Add(control);
+            Form.Controls.Add(control);
         }
 
         public void SetStartPosition(FormStartPosition startPosition)
         {
-            form.StartPosition = startPosition;
+            Form.StartPosition = startPosition;
         }
     }
 }

@@ -1,19 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System.Windows.Forms;
 
 namespace bubuntoid.EasyDialog.Internal
 {
-    internal interface IEasyDialogForm<TContext> 
-        where TContext : DialogContext<TContext>
+    internal interface IEasyDialogForm
     {
-        DialogContext<TContext> Context { get; set; }
-        ButtonAlign ButtonAlign { get; set; }
-
-        string Title { get; set; }
-        string ButtonText { get; set; }
-
+        Form Form { get; }
+        
+        void Initialize(IDialogContextConfigureOptionsBuilder options);
+        
         void ShowDialog();
         void Close();
-
-        void SetItems(IEnumerable<BaseDialogItem> items);
     }
 }

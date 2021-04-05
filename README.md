@@ -14,9 +14,9 @@ using bubuntoid.EasyDialog;
 
 public class AuthDialog : DialogContext<AuthDialog>
 {
-    public TextBoxItem Username { get; set; }
-    public TextBoxItem Password { get; set; }
-    public CheckBoxItem Robot { get; set; }
+    public DialogSet<string> Username { get; set; }
+    public DialogSet<string> Password { get; set; }
+    public DialogSet<bool> Robot { get; set; }
 
     protected override void OnConfiguring(DialogContextOptionsBuilder<AuthDialog> builder)
     {
@@ -25,6 +25,7 @@ public class AuthDialog : DialogContext<AuthDialog>
             .WithButton("Sign in");
 
         builder.Item(x => x.Password)
+            .AsTextBox()
             .UsePasswordChar();
 
         builder.Item(x => x.Robot)
@@ -44,32 +45,33 @@ Dialogs that was used in preview:
 - [Client dialog](https://github.com/bubuntoid/EasyDialog/blob/main/src/EasyDialog.Tests/Implementation/ClientDialog.cs)
 - [Auth dialog](https://github.com/bubuntoid/EasyDialog/blob/main/src/EasyDialog.Tests/Implementation/AuthentificationDialog.cs)
 
+
+
 ## Items
-Base items that available "out of the box":
-- TextBoxItem (string)
-- NumericUpDownItem (decimal/int)
-- CheckBoxItem (bool)
-- ComboBoxItem (Collection)
-- ListBoxItem (Collection)
-- DateTimePickerItem (DateTime)
+### Basics
+There are 2 types of items you may set for your dialog - `DialogSet<TValue>` and `DialogCollectionSet<TValue>`. 
+Both of theme has 2 properties: `TValue Value` and `Control control`.
 
-You can use your own control as dialog item by inerhiting from DialogItem<TControl, TValue> where **TControl** is System.Windows.Forms.Control and **TValue** is output value:
+Difference between them is that `DialogCollectionSet<TValue>` besides `TValue Value` property has another one - `IEnumerable<TValue> DataSource` intended for interact collection with control or vice versa and one more action `Action<Control, IEnumearble<TValue>> UpdateItemsEvent` (encapsulated, but may be configured through option builders)
+
+Supported types that are available out of the box:
+- `DialogSet<string>` -> TextBox
+- `DialogSet<int>` -> NumericUpDown (also work with `decimal`, `float` and `double`)
+- `DialogSet<bool>` -> CheckBox
+- `DialogSet<DateTime>` -> DateTimePicker
+- `DialogCollectionSet<string>` -> ComboBox or ListBox
+
+### Configuration
+For specifying custom control or type for your DialogSet<TValue> you have to configure **control**, **getter**, **setter**, and **update items event** in case that you using **DialogCollectionSet**. There a little sample for **TimeSpan** type (which actually could be easier to get by using `.AsDateTimePicker()`):
 ```csharp
-public class DialogButtonItem : DialogItem<Button, bool>
-{
-    public override Button Control { get; set; } = new Button() { Text = "Click on me!" };
-    public override bool Value { get; set } = true;
-}
-```
-[Base items implementation samples](https://github.com/bubuntoid/EasyDialog/tree/main/src/EasyDialog/Items)
+public DialogSet<TimeSpan> Time { get; set; }
 
-There is just a little thing you should know: if your control's height is not "one row" default size, you have to override **ControlHeight** property or configure it in your **DialogContext**:
-
-```csharp
 protected override void OnConfiguring(DialogContextOptionsBuilder<YourDialogContext> builder)
 {
-    builder.Item(x => x.PropertyName)
-        .HasHeight(value);
+    builder.Item(x => x.Time)
+        .AsControl<TextBox>()
+        .ConfigureGetter((control) => TimeSpan.Parse(control.Text))
+        .ConfigureSetter((control, value) => control.Text = value.ToString())
 }
 ```
 
@@ -90,6 +92,34 @@ var scheme = new MaterialColorScheme()
 };
 
 builder.UseMaterialStyle(MaterialTheme.Dark, scheme)
+```
+
+### Some "Features"
+If your control's height is not "one row" default size, you have to configure it explicitically by using `HasHeight(int value)` method:
+
+```csharp
+protected override void OnConfiguring(DialogContextOptionsBuilder<YourDialogContext> builder)
+{
+    builder.Item(x => x.PropertyName)
+        .HasHeight(value);
+}
+```
+
+For editing state of `IEnumearble<TValue>` (`DialogCollectionSet<TValue>`) you have to override it itself. There a little sample that could change LINQ's `.ToList().Add()` method.
+
+From this:
+```csharp
+protected override void OnButtonClick()
+{
+    MyDialogSet.DataSource.ToList().Add(DateTime.Now.TimeOfDay);
+}
+```
+To this:
+```csharp
+protected override void OnButtonClick()
+{
+    MyDialogSet.DataSource = MyDialogSet.DataSource.Append(DateTime.Now.TimeOfDay);
+}
 ```
 
 ## Dependencies
