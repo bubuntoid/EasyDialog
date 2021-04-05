@@ -89,7 +89,7 @@ var scheme = new MaterialColorScheme()
 builder.UseMaterialStyle(MaterialTheme.Dark, scheme)
 ```
 
-### Some "Features"
+## Some "Features"
 If your control's height is not "one row" default size, you have to configure it explicitically by using `HasHeight(int value)` method:
 
 ```csharp
