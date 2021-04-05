@@ -1,13 +1,15 @@
-﻿using bubuntoid.EasyDialog.Internal;
-using bubuntoid.EasyDialog.Internal.Models;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Windows.Forms;
+using System.Collections.Generic;
+
+using bubuntoid.EasyDialog.Internal;
+using bubuntoid.EasyDialog.Internal.Models;
 
 namespace bubuntoid.EasyDialog
 {
     public class DialogSet<TValue> : IDialogSet
     {
+        #region Implementations
         string IDialogSet.PropertyName { get; set; }
         Control IDialogSet.Control { get; set; }
         
@@ -24,6 +26,7 @@ namespace bubuntoid.EasyDialog
         string IDialogSet.Name { get; set; }
         int? IDialogSet.ControlHeight { get; set; }
         object IDialogSet.PreValue { get; set; }
+        #endregion
 
         public TValue Value
         {
@@ -42,6 +45,7 @@ namespace bubuntoid.EasyDialog
                 Base.Setter(Base.Control, value);
             }
         }
+
         public Control Control => Base.Control;
 
         private IDialogSet Base => this;
@@ -73,6 +77,10 @@ namespace bubuntoid.EasyDialog
                                 setter: (control, value) => ((CheckBox)control).Checked = (bool)value),
 
             [typeof(DateTime)] = new SupportedTypeSetup(control: () => new DateTimePicker { Format = DateTimePickerFormat.Short },
+                                getter: (control) => ((DateTimePicker)control).Value,
+                                setter: (control, value) => ((DateTimePicker)control).Value = (DateTime)value),
+
+            [typeof(TimeSpan)] = new SupportedTypeSetup(control: () => new DateTimePicker { Format = DateTimePickerFormat.Time },
                                 getter: (control) => ((DateTimePicker)control).Value,
                                 setter: (control, value) => ((DateTimePicker)control).Value = (DateTime)value),
         };

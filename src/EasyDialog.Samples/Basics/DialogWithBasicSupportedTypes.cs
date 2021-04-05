@@ -19,7 +19,8 @@ namespace EasyDialog.Samples.Basics
 
         public DialogSet<bool> Bool { get; set; }
         public DialogSet<DateTime> DateTime { get; set; }
-        
+        public DialogSet<TimeSpan> TimeSpan { get; set; }
+
         public DialogCollectionSet<string> ComboBox { get; set; }
         public DialogCollectionSet<string> ListBox { get; set; }
         
@@ -43,8 +44,8 @@ namespace EasyDialog.Samples.Basics
                 .Disabled();
 
             builder.Item(x => x.Multiline)
-              .AsTextBox()
-              .IsMultiline();
+                .AsTextBox()
+                .IsMultiline();
 
             builder.Item(x => x.ComboBox)
                 .HasDataSource(new[] { "First", "Second", "Third" })
@@ -54,6 +55,19 @@ namespace EasyDialog.Samples.Basics
                 .AsListBox()
                 .HasDataSource(new[] { "Third", "First", "Second" })
                 .HasValue("Third");
+
+            builder.Item(x => x.Int)
+                .AsNumericUpDown()
+                .HasDecimalPlaces(0)
+                .HasMaximum(int.MaxValue)
+                .HasMinimum(int.MinValue)
+                .HasValue(0);
+
+            builder.Item(x => x.DateTime)
+                .AsDateTimePicker()
+                .HasFormat(DateTimePickerFormat.Long)
+                .HasMaximumDate(System.DateTime.MaxValue)
+                .HasMinimumDate(System.DateTime.MinValue);
         }
     }
 }

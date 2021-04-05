@@ -12,24 +12,24 @@ namespace bubuntoid.EasyDialog
         public static DialogSetOptionsWithSpecifiedControlBuilder<TextBox, string> UsePasswordChar
             (this DialogSetOptionsWithSpecifiedControlBuilder<TextBox, string> builder, char passwordChar = '*')
         {
-            var textBox = builder.Set.Control as TextBox;
-            textBox.PasswordChar = passwordChar;
+            var control = builder.Set.Control as TextBox;
+            control.PasswordChar = passwordChar;
             return builder;
         }
 
         public static DialogSetOptionsWithSpecifiedControlBuilder<TextBox, string> HasTextAlign
            (this DialogSetOptionsWithSpecifiedControlBuilder<TextBox, string> builder, HorizontalAlignment textAlign)
         {
-            var textBox = builder.Set.Control as TextBox;
-            textBox.TextAlign = textAlign;
+            var control = builder.Set.Control as TextBox;
+            control.TextAlign = textAlign;
             return builder;
         }
 
         public static DialogSetOptionsWithSpecifiedControlBuilder<TextBox, string> IsMultiline
          (this DialogSetOptionsWithSpecifiedControlBuilder<TextBox, string> builder, int size = 100)
         {
-            var textBox = builder.Set.Control as TextBox;
-            textBox.Multiline = true;
+            var control = builder.Set.Control as TextBox;
+            control.Multiline = true;
             builder.Set.ControlHeight = size;
             return builder;
         }

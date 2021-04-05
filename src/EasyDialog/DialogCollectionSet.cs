@@ -1,14 +1,16 @@
-﻿using bubuntoid.EasyDialog.Internal;
-using bubuntoid.EasyDialog.Internal.Models;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
 using System.Windows.Forms;
+using System.Collections.Generic;
+
+using bubuntoid.EasyDialog.Internal;
+using bubuntoid.EasyDialog.Internal.Models;
 
 namespace bubuntoid.EasyDialog
 {
     public class DialogCollectionSet<TValue> : IDialogCollectionSet
     {
+        #region Implementations
         IEnumerable<object> IDialogCollectionSet.DataSource
         {
             get => DataSource.Cast<object>().ToList();
@@ -34,6 +36,7 @@ namespace bubuntoid.EasyDialog
         string IDialogSet.Name { get; set; }
         int? IDialogSet.ControlHeight { get; set; }
         object IDialogSet.PreValue { get; set; }
+        #endregion
 
         public TValue Value
         {
@@ -82,7 +85,7 @@ namespace bubuntoid.EasyDialog
                                  var comboBox = (ComboBox)control;
                                  comboBox.Items.Clear();
 
-                                 if (Base.DataSource != null)
+                                 if (_dataSource != null)
                                  {
                                      foreach (var item in items)
                                      {

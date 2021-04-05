@@ -1,6 +1,6 @@
-﻿using bubuntoid.EasyDialog.Internal;
-using System;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
+
+using bubuntoid.EasyDialog.Internal;
 
 namespace bubuntoid.EasyDialog
 {

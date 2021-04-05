@@ -1,8 +1,9 @@
-﻿using bubuntoid.EasyDialog.Internal.Providers;
-using System;
-using System.Drawing;
+﻿using System;
 using System.Linq;
+using System.Drawing;
 using System.Windows.Forms;
+
+using bubuntoid.EasyDialog.Internal.Providers;
 
 namespace bubuntoid.EasyDialog.Internal
 {

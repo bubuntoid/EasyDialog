@@ -1,14 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Reflection;
 using System.Windows.Forms;
+using System.Linq.Expressions;
+using System.Collections.Generic;
 
 namespace bubuntoid.EasyDialog
 {
     public class DialogContextConfigureOptionsBuilder<TContext> : IDialogContextConfigureOptionsBuilder
     {
+        #region Implementations
         IEnumerable<IDialogSet> IDialogContextConfigureOptionsBuilder.Items { get; set; }
         string IDialogContextConfigureOptionsBuilder.Title { get; set; }
         string IDialogContextConfigureOptionsBuilder.ButtonText { get; set; }
@@ -19,6 +20,7 @@ namespace bubuntoid.EasyDialog
         Action IDialogContextConfigureOptionsBuilder.OnShownEvent { get; set; }
         MaterialTheme IDialogContextConfigureOptionsBuilder.MaterialTheme { get; set; }
         MaterialColorScheme IDialogContextConfigureOptionsBuilder.MaterialColorScheme { get; set; }
+        #endregion
 
         internal DialogContextConfigureOptionsBuilder(IEnumerable<IDialogSet> items)
         {

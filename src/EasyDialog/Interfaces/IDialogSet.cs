@@ -1,7 +1,8 @@
-﻿using bubuntoid.EasyDialog.Internal.Models;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Windows.Forms;
+using System.Collections.Generic;
+
+using bubuntoid.EasyDialog.Internal.Models;
 
 namespace bubuntoid.EasyDialog
 {
