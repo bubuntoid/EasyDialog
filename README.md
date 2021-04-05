@@ -48,6 +48,12 @@ Dialogs that was used in preview:
 
 
 ## Items
+### Basics
+There are 2 types of items you may set for your dialog - `DialogSet<TValue>` and `DialogCollectionSet<TValue>`. 
+Both of theme has 2 properties: `TValue Value` and `Control control`.
+
+Difference between them is that `DialogCollectionSet<TValue>` besides `TValue Value` property has another one - `IEnumerable<TValue> DataSource` intended for interact collection with control or vice versa and one more action `Action<Control, IEnumearble<TValue>> UpdateItemsEvent` (encapsulated, but may be configured through option builders)
+
 Supported types that are available out of the box:
 - `DialogSet<string>` -> TextBox
 - `DialogSet<int>` -> NumericUpDown (also work with `decimal`, `float` and `double`)
@@ -56,7 +62,7 @@ Supported types that are available out of the box:
 - `DialogCollectionSet<string>` -> ComboBox or ListBox
 
 ### Configuration
-For using your own control or type as set you have to specify **control**, **getter**, **setter**, and **update items event** in case that you using **DialogCollectionSet**. There a little sample for **TimeSpan** type (which actually could be easier to get by using `.AsDateTimePicker()`):
+For specifying custom control or type for your DialogSet<TValue> you have to configure **control**, **getter**, **setter**, and **update items event** in case that you using **DialogCollectionSet**. There a little sample for **TimeSpan** type (which actually could be easier to get by using `.AsDateTimePicker()`):
 ```csharp
 public DialogSet<TimeSpan> Time { get; set; }
 
@@ -69,13 +75,31 @@ protected override void OnConfiguring(DialogContextOptionsBuilder<YourDialogCont
 }
 ```
 
-There is just a little thing you should know: if your control's height is not "one row" default size, you have to override **ControlHeight** property or configure it in your **DialogContext**:
+### Some "Features"
+If your control's height is not "one row" default size, you have to configure it explicitically by using `HasHeight(int value)` method:
 
 ```csharp
 protected override void OnConfiguring(DialogContextOptionsBuilder<YourDialogContext> builder)
 {
     builder.Item(x => x.PropertyName)
         .HasHeight(value);
+}
+```
+
+For editing state of `IEnumearble<TValue>` (`DialogCollectionSet<TValue>`) you have to override it itself. There a little sample that could change LINQ's `.ToList().Add()` method.
+
+From this:
+```csharp
+protected override void OnButtonClick()
+{
+    MyDialogSet.DataSource.ToList().Add(DateTime.Now.TimeOfDay);
+}
+```
+To this:
+```csharp
+protected override void OnButtonClick()
+{
+    MyDialogSet.DataSource = MyDialogSet.DataSource.Append(DateTime.Now.TimeOfDay);
 }
 ```
 
