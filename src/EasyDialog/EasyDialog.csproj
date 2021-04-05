@@ -5,6 +5,19 @@
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <RootNamespace>bubuntoid.EasyDialog</RootNamespace>
+    <PackageId>bubuntoid.EasyDialog</PackageId>
+    <Authors>bubuntoid</Authors>
+    <Company>bubuntoid</Company>
+    <Description>🌈 Create UI dialogs automatically with metro, material and windows style for desktop applications by using EasyDialog (.NET Framework).
+Docs: https://github.com/bubuntoid/EasyDialog</Description>
+    <Copyright>Copyright © 2021</Copyright>
+    <PackageLicenseExpression></PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/bubuntoid/EasyDialog</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/bubuntoid/EasyDialog</RepositoryUrl>
+    <PackageTags>dialog, builder, ui, framework</PackageTags>
+    <PackageReleaseNotes>Move to .NET 5</PackageReleaseNotes>
+    <Version>5.0.0</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
