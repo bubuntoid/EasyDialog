@@ -61,7 +61,7 @@ For specifying custom control or type for your DialogSet<TValue> you have to con
 ```csharp
 public DialogSet<TimeSpan> Time { get; set; }
 
-protected override void OnConfiguring(DialogContextOptionsBuilder<YourDialogContext> builder)
+protected override void OnConfiguring(DialogContextConfigureOptionsBuilder<YourDialogContext> builder)
 {
     builder.Item(x => x.Time)
         .AsControl<TextBox>()
@@ -93,7 +93,7 @@ builder.UseMaterialStyle(MaterialTheme.Dark, scheme)
 If your control's height is not "one row" default size, you have to configure it explicitically by using `HasHeight(int value)` method:
 
 ```csharp
-protected override void OnConfiguring(DialogContextOptionsBuilder<YourDialogContext> builder)
+protected override void OnConfiguring(DialogContextConfigureOptionsBuilder<YourDialogContext> builder)
 {
     builder.Item(x => x.PropertyName)
         .HasHeight(value);
