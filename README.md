@@ -40,12 +40,7 @@ public class AuthDialog : DialogContext<AuthDialog>
 }
 ```
 
-Dialogs that was used in preview:
-- [File dialog](https://github.com/bubuntoid/EasyDialog/blob/main/src/EasyDialog.Tests/Implementation/UploadFileDialog.cs)
-- [Client dialog](https://github.com/bubuntoid/EasyDialog/blob/main/src/EasyDialog.Tests/Implementation/ClientDialog.cs)
-- [Auth dialog](https://github.com/bubuntoid/EasyDialog/blob/main/src/EasyDialog.Tests/Implementation/AuthentificationDialog.cs)
-
-
+More samples [here](https://github.com/bubuntoid/EasyDialog/tree/main/src/EasyDialog.Samples).
 
 ## Items
 ### Basics
