@@ -75,6 +75,25 @@ protected override void OnConfiguring(DialogContextOptionsBuilder<YourDialogCont
 }
 ```
 
+## Themes
+Material style has only two themes - Dark and Light, but it also supports color schemes, for using them you can use constant schemes from **MaterialColorScheme**:
+```csharp
+builder.UseMaterialStyle(MaterialTheme.Light, MaterialColorScheme.Indigo)
+```
+Or create your own, there is tons of available colors [here](https://github.com/bubuntoid/EasyDialog/blob/main/src/EasyDialog/Enums/MaterialThemePrimaryColor.cs):
+```csharp
+var scheme = new MaterialColorScheme()
+{
+    Primary = MaterialThemePrimaryColor.BlueGrey800,
+    DarkPrimary = MaterialThemePrimaryColor.BlueGrey900,
+    LightPrimary = MaterialThemePrimaryColor.BlueGrey500,
+    Accent = MaterialThemeAccent.LightBlue200,
+    TextShade = MaterialThemeTextShade.White,
+};
+
+builder.UseMaterialStyle(MaterialTheme.Dark, scheme)
+```
+
 ### Some "Features"
 If your control's height is not "one row" default size, you have to configure it explicitically by using `HasHeight(int value)` method:
 
@@ -101,25 +120,6 @@ protected override void OnButtonClick()
 {
     MyDialogSet.DataSource = MyDialogSet.DataSource.Append(DateTime.Now.TimeOfDay);
 }
-```
-
-## Themes
-Material style has only two themes - Dark and Light, but it also supports color schemes, for using them you can use constant schemes from **MaterialColorScheme**:
-```csharp
-builder.UseMaterialStyle(MaterialTheme.Light, MaterialColorScheme.Indigo)
-```
-Or create your own, there is tons of available colors [here](https://github.com/bubuntoid/EasyDialog/blob/main/src/EasyDialog/Enums/MaterialThemePrimaryColor.cs):
-```csharp
-var scheme = new MaterialColorScheme()
-{
-    Primary = MaterialThemePrimaryColor.BlueGrey800,
-    DarkPrimary = MaterialThemePrimaryColor.BlueGrey900,
-    LightPrimary = MaterialThemePrimaryColor.BlueGrey500,
-    Accent = MaterialThemeAccent.LightBlue200,
-    TextShade = MaterialThemeTextShade.White,
-};
-
-builder.UseMaterialStyle(MaterialTheme.Dark, scheme)
 ```
 
 ## Dependencies
