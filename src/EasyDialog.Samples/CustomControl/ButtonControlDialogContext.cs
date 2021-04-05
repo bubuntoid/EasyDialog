@@ -12,7 +12,7 @@ namespace EasyDialog.Samples.CustomControl
 
         }
 
-        protected override void OnConfigure(DialogContextConfigureOptionsBuilder<ButtonControlDialogContext> builder)
+        protected override void OnConfiguring(DialogContextConfigureOptionsBuilder<ButtonControlDialogContext> builder)
         {
             builder.HasTitle("Custom control sample");
 

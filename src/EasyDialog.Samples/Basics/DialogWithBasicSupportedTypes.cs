@@ -31,7 +31,7 @@ namespace EasyDialog.Samples.Basics
 
         }
 
-        protected override void OnConfigure(DialogContextConfigureOptionsBuilder<DialogWithBasicSupportedTypes> builder)
+        protected override void OnConfiguring(DialogContextConfigureOptionsBuilder<DialogWithBasicSupportedTypes> builder)
         {
             builder.HasTitle("Supported types sample");
 
