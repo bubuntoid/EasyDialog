@@ -14,7 +14,7 @@ namespace EasyDialog.Samples.CustomType
             Times.DataSource = Times.DataSource.Append(DateTime.Now.TimeOfDay);
         }
 
-        protected override void OnConfigure(DialogContextConfigureOptionsBuilder<TimeSpanCollectionDialogContext> builder)
+        protected override void OnConfiguring(DialogContextConfigureOptionsBuilder<TimeSpanCollectionDialogContext> builder)
         {
             builder.HasTitle("Custom type collection sample");
 

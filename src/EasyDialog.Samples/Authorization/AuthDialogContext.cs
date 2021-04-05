@@ -7,25 +7,26 @@ namespace EasyDialog.Samples.Authorization
     {
         public DialogSet<string> Username { get; set; }
         public DialogSet<string> Password { get; set; }
-        public DialogSet<bool> IsRobot { get; set; }
+        public DialogSet<bool> Robot { get; set; }
 
-        protected override void OnConfigure(DialogContextConfigureOptionsBuilder<AuthDialogContext> builder)
+        protected override void OnConfiguring(DialogContextConfigureOptionsBuilder<AuthDialogContext> builder)
         {
             builder.UseMaterialStyle()
-                .HasTitle("Authorization")
-                .HasButton("Sign In", ButtonAlign.Center);
+                .HasTitle("Authentification")
+                .HasButton("Sign in");
 
             builder.Item(x => x.Password)
                 .AsTextBox()
-                .UsePasswordChar('*');
+                .UsePasswordChar();
 
-            builder.Item(x => x.IsRobot)
-                .HasName("I'm not a robot");
+            builder.Item(x => x.Robot)
+                .HasName("I`m not a robot");
         }
 
         protected override void OnButtonClick()
         {
-            MessageBox.Show($"Username: {Username.Value}, Password: {Password.Value}");
+            MessageBox.Show($@"Login: {Username.Value} Password: {Password.Value}");
+            this.Close();
         }
     }
 }

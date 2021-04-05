@@ -13,7 +13,7 @@ namespace EasyDialog.Samples.CustomType
 
         }
 
-        protected override void OnConfigure(DialogContextConfigureOptionsBuilder<TimeSpanTypeDialogContext> builder)
+        protected override void OnConfiguring(DialogContextConfigureOptionsBuilder<TimeSpanTypeDialogContext> builder)
         {
             builder.HasTitle("Custom type sample");
 

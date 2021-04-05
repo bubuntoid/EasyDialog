@@ -28,7 +28,7 @@ namespace bubuntoid.EasyDialog
                    .GetFromProperties();
 
                 var options = new DialogContextConfigureOptionsBuilder<TContext>(items);
-                OnConfigure(options);
+                OnConfiguring(options);
 
                 dialogForm.Initialize(options);
 
@@ -43,7 +43,7 @@ namespace bubuntoid.EasyDialog
             dialogForm.Close();
         }
 
-        protected abstract void OnConfigure(DialogContextConfigureOptionsBuilder<TContext> builder);
+        protected abstract void OnConfiguring(DialogContextConfigureOptionsBuilder<TContext> builder);
         protected internal abstract void OnButtonClick();
     }
 }
