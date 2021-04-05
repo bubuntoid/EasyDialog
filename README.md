@@ -18,11 +18,11 @@ public class AuthDialog : DialogContext<AuthDialog>
     public DialogSet<string> Password { get; set; }
     public DialogSet<bool> Robot { get; set; }
 
-    protected override void OnConfiguring(DialogContextOptionsBuilder<AuthDialog> builder)
+    protected override void OnConfiguring(DialogContextConfigureOptionsBuilder<AuthDialog> builder)
     {
         builder.UseMaterialStyle()
-            .WithTitle("Authentification")
-            .WithButton("Sign in");
+            .HasTitle("Authentification")
+            .HasButton("Sign in");
 
         builder.Item(x => x.Password)
             .AsTextBox()
