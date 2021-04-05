@@ -14,9 +14,9 @@ using bubuntoid.EasyDialog;
 
 public class AuthDialog : DialogContext<AuthDialog>
 {
-    public TextBoxItem Username { get; set; }
-    public TextBoxItem Password { get; set; }
-    public CheckBoxItem Robot { get; set; }
+    public DialogSet<string> Username { get; set; }
+    public DialogSet<string> Password { get; set; }
+    public DialogSet<bool> Robot { get; set; }
 
     protected override void OnConfiguring(DialogContextOptionsBuilder<AuthDialog> builder)
     {
@@ -25,6 +25,7 @@ public class AuthDialog : DialogContext<AuthDialog>
             .WithButton("Sign in");
 
         builder.Item(x => x.Password)
+            .AsTextBox()
             .UsePasswordChar();
 
         builder.Item(x => x.Robot)
@@ -55,7 +56,7 @@ Supported types that are available out of the box:
 - `DialogCollectionSet<string>` -> ComboBox or ListBox
 
 ### Configuration
-For using your own control or type as set you have to specify **control**, **getter**, **setter**, and **update items event** in case that you using **DialogCollectionSet**. There a little sample for **TimeSpan** type (that actually could be easier to get by using `.AsDateTimePicker()`):
+For using your own control or type as set you have to specify **control**, **getter**, **setter**, and **update items event** in case that you using **DialogCollectionSet**. There a little sample for **TimeSpan** type (which actually could be easier to get by using `.AsDateTimePicker()`):
 ```csharp
 public DialogSet<TimeSpan> Time { get; set; }
 
