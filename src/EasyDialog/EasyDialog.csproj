@@ -15,8 +15,7 @@ Docs: https://github.com/bubuntoid/EasyDialog</Description>
     <PackageProjectUrl>https://github.com/bubuntoid/EasyDialog</PackageProjectUrl>
     <RepositoryUrl>https://github.com/bubuntoid/EasyDialog</RepositoryUrl>
     <PackageTags>dialog, builder, ui, framework</PackageTags>
-    <PackageReleaseNotes>Move to .NET 5</PackageReleaseNotes>
-    <Version>5.0.1</Version>
+    <Version>5.0.2</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
@@ -28,6 +27,20 @@ Docs: https://github.com/bubuntoid/EasyDialog</Description>
     <Reference Include="MaterialSkin">
       <HintPath>..\..\libs\MaterialSkin.dll</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\..\libs\MaterialSkin.dll">
+      <Pack>true</Pack>
+      <PackagePath>lib\net5.0-windows7.0\;content</PackagePath>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\..\libs\ref\MaterialSkin.dll">
+      <Pack>true</Pack>
+      <PackagePath>lib\net5.0-windows7.0\ref\;content</PackagePath>
+    </Content>
   </ItemGroup>
 
 </Project>
