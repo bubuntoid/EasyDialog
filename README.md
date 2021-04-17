@@ -118,6 +118,6 @@ protected override void OnButtonClick()
 ```
 
 ## Dependencies
-- System.Windows.Forms 4.0.0.0
+- net5.0-windows7.0
 - [MetroFramework](https://github.com/thielj/MetroFramework) 1.2.0.3
-- [MaterialSkin](https://github.com/IgnaceMaes/MaterialSkin) 0.2.1
+- [MaterialSkin.NET5](https://github.com/bubuntoid/MaterialSkin.NET5) 1.0.0

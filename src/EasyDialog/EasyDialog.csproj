@@ -15,32 +15,13 @@ Docs: https://github.com/bubuntoid/EasyDialog</Description>
     <PackageProjectUrl>https://github.com/bubuntoid/EasyDialog</PackageProjectUrl>
     <RepositoryUrl>https://github.com/bubuntoid/EasyDialog</RepositoryUrl>
     <PackageTags>dialog, builder, ui, framework</PackageTags>
-    <Version>5.0.2</Version>
+    <Version>5.0.3</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageReleaseNotes>Add MaterialSkin.NET5 dependency (https://github.com/bubuntoid/MaterialSkin.NET5)</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MaterialSkin.NET5" Version="1.0.0" />
     <PackageReference Include="MetroFramework" Version="1.2.0.3" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="MaterialSkin">
-      <HintPath>..\..\libs\MaterialSkin.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="..\..\libs\MaterialSkin.dll">
-      <Pack>true</Pack>
-      <PackagePath>lib\net5.0-windows7.0\;content</PackagePath>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="..\..\libs\ref\MaterialSkin.dll">
-      <Pack>true</Pack>
-      <PackagePath>lib\net5.0-windows7.0\ref\;content</PackagePath>
-    </Content>
-  </ItemGroup>
-
 </Project>
