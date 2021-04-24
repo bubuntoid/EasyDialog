@@ -1,5 +1,4 @@
 ﻿using System.Windows.Forms;
-
 using bubuntoid.EasyDialog.Internal;
 
 namespace bubuntoid.EasyDialog

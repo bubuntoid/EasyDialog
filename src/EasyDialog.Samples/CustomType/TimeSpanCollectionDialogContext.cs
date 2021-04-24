@@ -12,6 +12,7 @@ namespace EasyDialog.Samples.CustomType
         protected override void OnButtonClick()
         {
             Times.DataSource = Times.DataSource.Append(DateTime.Now.TimeOfDay);
+            Times.Value = Times.DataSource.Last();
         }
 
         protected override void OnConfiguring(DialogContextConfigureOptionsBuilder<TimeSpanCollectionDialogContext> builder)
@@ -22,12 +23,13 @@ namespace EasyDialog.Samples.CustomType
                 .AsControl<ComboBox>()
                 .ConfigureGetter((control) => TimeSpan.Parse(control.Text))
                 .ConfigureSetter((control, value) => control.Text = value.ToString())
-                .ConfigureUpdateItemsEvent((control, source) =>
+                .ConfigureOnUpdateItemsAction((control, source) =>
                 {
                     control.Items.Clear();
                     source.ToList().ForEach(x => control.Items.Add(x));
                 })
-                .HasDataSource(new[] { TimeSpan.FromHours(1), TimeSpan.FromHours(2), TimeSpan.FromHours(3) });
+                .HasDataSource(new[] { TimeSpan.FromHours(1), TimeSpan.FromHours(2), TimeSpan.FromHours(3) })
+                .HasValue(Times.DataSource.First());
         }
     }
 }

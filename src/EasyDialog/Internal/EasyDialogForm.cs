@@ -49,27 +49,28 @@ namespace bubuntoid.EasyDialog.Internal
             for (int i = 0; i < count; i++)
             {
                 var currentItem = options.Items.ElementAt(i);
-                var control = currentItem.Control;
+                var currentItemData = currentItem.Data;
+                var control = currentItemData.Control;
 
-                if (currentItem.Ignore == true)
+                if (currentItemData.Ignore == true)
                     continue;
 
                 if (control == null)
                     throw ExceptionBuilder.ControlIsNotSpecifiedException(currentItem);
 
-                if (currentItem.ControlSpecifiedFromBuilder && (currentItem.GetterSpecifiedFromBuilder || currentItem.SetterSpecifiedFromBuilder) == false)
-                    throw currentItem.GetterSpecifiedFromBuilder == false
+                if (currentItemData.ControlSpecifiedFromBuilder && (currentItemData.GetterSpecifiedFromBuilder || currentItemData.SetterSpecifiedFromBuilder) == false)
+                    throw currentItemData.GetterSpecifiedFromBuilder == false
                         ? ExceptionBuilder.GetterIsNotConfiguredException(currentItem)
                         : ExceptionBuilder.SetterIsNotConfiguredException(currentItem);
 
-                control.Enabled = currentItem.Enabled;
+                control.Enabled = currentItemData.Enabled;
                 control.AutoSize = false;
 
-                if (currentItem.FullRow == false)
+                if (currentItemData.FullRow == false)
                 {
                     var label = new Label
                     {
-                        Text = currentItem.Name,
+                        Text = currentItemData.Name,
                         Location = new Point(25, currentHeight + 3)
                     };
 
@@ -78,24 +79,24 @@ namespace bubuntoid.EasyDialog.Internal
 
                 if (currentItem is IDialogCollectionSet collectionSet)
                 {
-                    if (collectionSet.ControlSpecifiedFromBuilder && collectionSet.UpdateItemsEventSpecifiedFromBuilder == false)
+                    if (collectionSet.Data.ControlSpecifiedFromBuilder && collectionSet.OnUpdateItemsActionSpecifiedFromBuilder == false)
                         throw ExceptionBuilder.UpdateItemsEventNotSpecifiedException(currentItem);
                     
-                    collectionSet.ControlHeight = collectionSet.DataSource?.Count() * 20 + 30;
-                    collectionSet.UpdateItemsEvent(collectionSet.Control, collectionSet.DataSource);
+                    collectionSet.Data.ControlHeight = collectionSet.DataSource?.Count() * 20 + 30;
+                    collectionSet.OnUpdateItemsAction(collectionSet.Data.Control, collectionSet.DataSource);
                 }
 
-                if (currentItem.PreValue != null)
-                    currentItem.Setter.Invoke(currentItem.Control, currentItem.PreValue);
+                if (currentItemData.PreValue != null)
+                    currentItemData.Setter.Invoke(currentItemData.Control, currentItemData.PreValue);
 
                 control.Size = new Size
                 {
-                    Width = currentItem.FullRow ? formProvider.Width + formProvider.ExtraPaddingForFullRow - 45 : DEFAULT_VALUE_CONTROL_WIDTH,
-                    Height = currentItem.ControlHeight ?? DEFAULT_VALUE_CONTROL_HEIGHT
+                    Width = currentItemData.FullRow ? formProvider.Width + formProvider.ExtraPaddingForFullRow - 45 : DEFAULT_VALUE_CONTROL_WIDTH,
+                    Height = currentItemData.ControlHeight ?? DEFAULT_VALUE_CONTROL_HEIGHT
                 };
                 control.Location = new Point
                 {
-                    X = currentItem.FullRow ? PADDING : formProvider.SecondColumnXCoord,
+                    X = currentItemData.FullRow ? PADDING : formProvider.SecondColumnXCoord,
                     Y = currentHeight,
                 };
 

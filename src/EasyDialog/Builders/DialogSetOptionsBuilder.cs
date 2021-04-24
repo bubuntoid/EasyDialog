@@ -11,9 +11,9 @@ namespace bubuntoid.EasyDialog
 
         public DialogSetOptionsWithSpecifiedControlBuilder<TControl, TValue> AsControl<TControl>(TControl control) where TControl : Control
         {
-            Set.ControlSpecifiedFromBuilder = true;
-            Set.Control = control;
-            return new DialogSetOptionsWithSpecifiedControlBuilder<TControl, TValue>(Set);
+            Item.Data.ControlSpecifiedFromBuilder = true;
+            Item.Data.Control = control;
+            return new DialogSetOptionsWithSpecifiedControlBuilder<TControl, TValue>(Item);
         }
 
         public DialogSetOptionsWithSpecifiedControlBuilder<TControl, TValue> AsControl<TControl>() where TControl : Control, new() => AsControl(new TControl());

@@ -8,7 +8,7 @@ namespace bubuntoid.EasyDialog
     {
         internal IEnumerable<object> DataSource { get; set; }
 
-        internal Action<Control, IEnumerable<object>> UpdateItemsEvent { get; set; }
-        internal bool UpdateItemsEventSpecifiedFromBuilder { get; set; }
+        internal Action<Control, IEnumerable<object>> OnUpdateItemsAction { get; set; }
+        internal bool OnUpdateItemsActionSpecifiedFromBuilder { get; set; }
     }
 }

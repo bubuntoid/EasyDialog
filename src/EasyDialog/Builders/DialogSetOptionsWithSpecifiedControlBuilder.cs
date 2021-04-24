@@ -13,21 +13,21 @@ namespace bubuntoid.EasyDialog
 
         public DialogSetOptionsWithSpecifiedControlBuilder<TControl, TValue> ConfigureGetter(Func<TControl, TValue> cfg)
         {
-            Set.GetterSpecifiedFromBuilder = true;
-            Set.Getter = (control) => cfg.Invoke((TControl)Set.Control);
+            Item.Data.GetterSpecifiedFromBuilder = true;
+            Item.Data.Getter = (control) => cfg.Invoke((TControl)Item.Data.Control);
             return this;   
         }
 
         public DialogSetOptionsWithSpecifiedControlBuilder<TControl, TValue> ConfigureSetter(Action<TControl, TValue> cfg)
         {
-            Set.SetterSpecifiedFromBuilder = true;
-            Set.Setter = (control, value) => cfg.Invoke((TControl)Set.Control, (TValue)value);
+            Item.Data.SetterSpecifiedFromBuilder = true;
+            Item.Data.Setter = (control, value) => cfg.Invoke((TControl)Item.Data.Control, (TValue)value);
             return this;
         }
 
         public DialogSetOptionsWithSpecifiedControlBuilder<TControl, TValue> UseTemplate(TControl control)
         {
-            Set.Control = control;
+            Item.Data.Control = control;
             return this;
         }
     }

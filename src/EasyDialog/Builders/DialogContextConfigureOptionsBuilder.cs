@@ -119,7 +119,7 @@ namespace bubuntoid.EasyDialog
 
             var prop = (PropertyInfo)expr.Member;
 
-            return Base.Items.FirstOrDefault(x => x.PropertyName == prop.Name);
+            return Base.Items.FirstOrDefault(x => x.Data.PropertyName == prop.Name);
         }
 
         private IDialogContextConfigureOptionsBuilder Base => this;

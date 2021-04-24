@@ -6,7 +6,7 @@ namespace bubuntoid.EasyDialog
 {
     public class DialogCollectionSetOptionsBuilder<TValue> : DialogSetOptionsBuilderBase<DialogCollectionSetOptionsBuilder<TValue>, TValue>
     {
-        internal IDialogCollectionSet CollectionSet => (IDialogCollectionSet)Set;
+        internal IDialogCollectionSet CollectionSet => (IDialogCollectionSet)Item;
 
         internal DialogCollectionSetOptionsBuilder(IDialogCollectionSet set) : base(set)
         {
@@ -15,8 +15,8 @@ namespace bubuntoid.EasyDialog
 
         public DialogCollectionSetOptionsWithSpecifiedControlBuilder<TControl, TValue> AsControl<TControl>(TControl control) where TControl : Control
         {
-            Set.ControlSpecifiedFromBuilder = true;
-            Set.Control = control;
+            Item.Data.ControlSpecifiedFromBuilder = true;
+            Item.Data.Control = control;
             return new DialogCollectionSetOptionsWithSpecifiedControlBuilder<TControl, TValue>(CollectionSet);
         }
 
