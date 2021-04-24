@@ -8,7 +8,7 @@ namespace bubuntoid.EasyDialog
             builder.AsControl<ListBox>()
                 .ConfigureGetter((control) => (string)control.SelectedItem)
                 .ConfigureSetter((control, value) => control.SelectedItem = value)
-                .ConfigureUpdateItemsEvent((control, items) =>
+                .ConfigureOnUpdateItemsAction((control, items) =>
                 {
                     control.Items.Clear();
                     foreach (var item in items)
@@ -21,7 +21,7 @@ namespace bubuntoid.EasyDialog
             builder.AsControl<ComboBox>()
                 .ConfigureGetter((control) => (string)control.SelectedItem)
                 .ConfigureSetter((control, value) => control.SelectedItem = value)
-                .ConfigureUpdateItemsEvent((control, items) =>
+                .ConfigureOnUpdateItemsAction((control, items) =>
                 {
                     control.Items.Clear();
                     foreach (var item in items)

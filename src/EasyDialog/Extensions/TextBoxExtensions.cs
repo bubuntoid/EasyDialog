@@ -12,7 +12,7 @@ namespace bubuntoid.EasyDialog
         public static DialogSetOptionsWithSpecifiedControlBuilder<TextBox, string> UsePasswordChar
             (this DialogSetOptionsWithSpecifiedControlBuilder<TextBox, string> builder, char passwordChar = '*')
         {
-            var control = builder.Set.Control as TextBox;
+            var control = builder.Item.Data.Control as TextBox;
             control.PasswordChar = passwordChar;
             return builder;
         }
@@ -20,7 +20,7 @@ namespace bubuntoid.EasyDialog
         public static DialogSetOptionsWithSpecifiedControlBuilder<TextBox, string> HasTextAlign
            (this DialogSetOptionsWithSpecifiedControlBuilder<TextBox, string> builder, HorizontalAlignment textAlign)
         {
-            var control = builder.Set.Control as TextBox;
+            var control = builder.Item.Data.Control as TextBox;
             control.TextAlign = textAlign;
             return builder;
         }
@@ -28,9 +28,9 @@ namespace bubuntoid.EasyDialog
         public static DialogSetOptionsWithSpecifiedControlBuilder<TextBox, string> IsMultiline
          (this DialogSetOptionsWithSpecifiedControlBuilder<TextBox, string> builder, int size = 100)
         {
-            var control = builder.Set.Control as TextBox;
+            var control = builder.Item.Data.Control as TextBox;
             control.Multiline = true;
-            builder.Set.ControlHeight = size;
+            builder.Item.Data.ControlHeight = size;
             return builder;
         }
     }

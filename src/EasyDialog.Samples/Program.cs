@@ -23,6 +23,10 @@ namespace EasyDialog.Samples
             Application.SetCompatibleTextRenderingDefault(false);
 
             new AuthDialogContext().ShowDialog();
+            new DialogWithBasicSupportedTypes().ShowDialog();
+            new ButtonControlDialogContext().ShowDialog();
+            new TimeSpanCollectionDialogContext().ShowDialog();
+            new TimeSpanTypeDialogContext().ShowDialog();
         }
     }
 }

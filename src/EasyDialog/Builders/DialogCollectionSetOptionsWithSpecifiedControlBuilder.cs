@@ -13,33 +13,33 @@ namespace bubuntoid.EasyDialog
 
         }
 
-        public DialogCollectionSetOptionsWithSpecifiedControlBuilder<TControl, TValue> ConfigureUpdateItemsEvent(Action<TControl, IEnumerable<TValue>> cfg)
+        public DialogCollectionSetOptionsWithSpecifiedControlBuilder<TControl, TValue> ConfigureOnUpdateItemsAction(Action<TControl, IEnumerable<TValue>> cfg)
         {
-            CollectionSet.UpdateItemsEventSpecifiedFromBuilder = true;
-            CollectionSet.UpdateItemsEvent = (control, items) => 
+            CollectionSet.OnUpdateItemsActionSpecifiedFromBuilder = true;
+            CollectionSet.OnUpdateItemsAction = (control, items) => 
             {
-                cfg.Invoke((TControl)Set.Control, items.Cast<TValue>());
+                cfg.Invoke((TControl)Item.Data.Control, items.Cast<TValue>());
             };
             return this;
         }
 
         public DialogCollectionSetOptionsWithSpecifiedControlBuilder<TControl, TValue> ConfigureGetter(Func<TControl, TValue> cfg)
         {
-            Set.GetterSpecifiedFromBuilder = true;
-            Set.Getter = (control) => cfg.Invoke((TControl)Set.Control);
+            Item.Data.GetterSpecifiedFromBuilder = true;
+            Item.Data.Getter = (control) => cfg.Invoke((TControl)Item.Data.Control);
             return this;
         }
 
         public DialogCollectionSetOptionsWithSpecifiedControlBuilder<TControl, TValue> ConfigureSetter(Action<TControl, TValue> cfg)
         {
-            Set.SetterSpecifiedFromBuilder = true;
-            Set.Setter = (control, value) => cfg.Invoke((TControl)Set.Control, (TValue)value);
+            Item.Data.SetterSpecifiedFromBuilder = true;
+            Item.Data.Setter = (control, value) => cfg.Invoke((TControl)Item.Data.Control, (TValue)value);
             return this;
         }
 
         public DialogCollectionSetOptionsWithSpecifiedControlBuilder<TControl, TValue> UseTemplate(TControl control)
         {
-            Set.Control = control;
+            Item.Data.Control = control;
             return this;
         }
     }

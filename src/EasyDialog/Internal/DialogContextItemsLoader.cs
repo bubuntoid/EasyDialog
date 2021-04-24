@@ -25,7 +25,7 @@ namespace bubuntoid.EasyDialog.Internal
             foreach (var property in properties)
             {
                 var item = Activator.CreateInstance(property.PropertyType) as IDialogSet;
-                item.PropertyName = item.Name = property.Name;
+                item.Data.PropertyName = item.Data.Name = property.Name;
                 
                 TryResolveDefaultControl(item, property);
                 
@@ -52,12 +52,12 @@ namespace bubuntoid.EasyDialog.Internal
             if (item.SupportedTypesSetups.ContainsKey(type))
             {
                 var setup = item.SupportedTypesSetups.GetValueOrDefault(type);
-                item.Control = setup.ControlFactory.Invoke();
-                item.Getter = setup.Getter;
-                item.Setter = setup.Setter;
+                item.Data.Control = setup.ControlFactory.Invoke();
+                item.Data.Getter = setup.Getter;
+                item.Data.Setter = setup.Setter;
 
                 if (item is IDialogCollectionSet collectionSet)
-                    collectionSet.UpdateItemsEvent = setup.UpdateItemsEvent;
+                    collectionSet.OnUpdateItemsAction = setup.UpdateItemsEvent;
             }
         }
     }

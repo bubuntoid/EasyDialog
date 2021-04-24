@@ -29,7 +29,7 @@ namespace bubuntoid.EasyDialog
         public static DialogSetOptionsWithSpecifiedControlBuilder<NumericUpDown, TValue> HasMaximum<TValue>
            (this DialogSetOptionsWithSpecifiedControlBuilder<NumericUpDown, TValue> builder, decimal value)
         {
-            var control = builder.Set.Control as NumericUpDown;
+            var control = builder.Item.Data.Control as NumericUpDown;
             control.Maximum = value;
             return builder;
         }
@@ -37,7 +37,7 @@ namespace bubuntoid.EasyDialog
         public static DialogSetOptionsWithSpecifiedControlBuilder<NumericUpDown, TValue> HasMinimum<TValue>
           (this DialogSetOptionsWithSpecifiedControlBuilder<NumericUpDown, TValue> builder, decimal value)
         {
-            var control = builder.Set.Control as NumericUpDown;
+            var control = builder.Item.Data.Control as NumericUpDown;
             control.Minimum = value;
             return builder;
         }
@@ -45,7 +45,7 @@ namespace bubuntoid.EasyDialog
         public static DialogSetOptionsWithSpecifiedControlBuilder<NumericUpDown, TValue> HasDecimalPlaces<TValue>
            (this DialogSetOptionsWithSpecifiedControlBuilder<NumericUpDown, TValue> builder, int value)
         {
-            var control = builder.Set.Control as NumericUpDown;
+            var control = builder.Item.Data.Control as NumericUpDown;
             control.DecimalPlaces = value;
             return builder;
         }

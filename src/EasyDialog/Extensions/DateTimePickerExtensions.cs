@@ -19,7 +19,7 @@ namespace bubuntoid.EasyDialog
         public static DialogSetOptionsWithSpecifiedControlBuilder<DateTimePicker, DateTime> HasMaximumDate
             (this DialogSetOptionsWithSpecifiedControlBuilder<DateTimePicker, DateTime> builder, DateTime value)
         {
-            var control = builder.Set.Control as DateTimePicker;
+            var control = builder.Item.Data.Control as DateTimePicker;
             control.MaxDate = value;
             return builder;
         }
@@ -27,7 +27,7 @@ namespace bubuntoid.EasyDialog
         public static DialogSetOptionsWithSpecifiedControlBuilder<DateTimePicker, DateTime> HasMinimumDate
           (this DialogSetOptionsWithSpecifiedControlBuilder<DateTimePicker, DateTime> builder, DateTime value)
         {
-            var control = builder.Set.Control as DateTimePicker;
+            var control = builder.Item.Data.Control as DateTimePicker;
             control.MinDate = value;
             return builder;
         }
@@ -35,7 +35,7 @@ namespace bubuntoid.EasyDialog
         public static DialogSetOptionsWithSpecifiedControlBuilder<DateTimePicker, DateTime> HasFormat
          (this DialogSetOptionsWithSpecifiedControlBuilder<DateTimePicker, DateTime> builder, DateTimePickerFormat format)
         {
-            var control = builder.Set.Control as DateTimePicker;
+            var control = builder.Item.Data.Control as DateTimePicker;
             control.Format = format;
             return builder;
         }

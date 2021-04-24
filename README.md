@@ -47,7 +47,7 @@ More samples [here](https://github.com/bubuntoid/EasyDialog/tree/main/src/EasyDi
 There are 2 types of items you may set for your dialog - `DialogSet<TValue>` and `DialogCollectionSet<TValue>`. 
 Both of theme has 2 properties: `TValue Value` and `Control control`.
 
-Difference between them is that `DialogCollectionSet<TValue>` besides `TValue Value` property has another one - `IEnumerable<TValue> DataSource` intended for interact collection with control or vice versa and one more action `Action<Control, IEnumearble<TValue>> UpdateItemsEvent` (encapsulated, but may be configured through option builders)
+Difference between them is that `DialogCollectionSet<TValue>` besides `TValue Value` property has another one - `IEnumerable<TValue> DataSource` intended for interact collection with control or vice versa and one more action `Action<Control, IEnumearble<TValue>> OnUpdateItemsAction` (encapsulated, but may be configured through option builders)
 
 Supported types that are available out of the box:
 - `DialogSet<string>` -> TextBox
