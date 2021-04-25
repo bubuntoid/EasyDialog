@@ -3,6 +3,7 @@ using System.Linq;
 using System.Drawing;
 using System.Windows.Forms;
 
+using bubuntoid.EasyDialog.Internal.Models;
 using bubuntoid.EasyDialog.Internal.Providers;
 
 namespace bubuntoid.EasyDialog.Internal
@@ -29,8 +30,9 @@ namespace bubuntoid.EasyDialog.Internal
             this.context = context;
         }
 
-        public void Initialize(IDialogContextConfigureOptionsBuilder options)
+        public void Initialize(IDialogContextConfigureOptionsBuilder optionsBuilder)
         {
+            var options = optionsBuilder.Data;
             formProvider = options.DialogStyle switch
             {
                 DialogStyle.Default => new DefaultFormProvider(),
@@ -112,7 +114,7 @@ namespace bubuntoid.EasyDialog.Internal
             buttonControl.Select();
         }
 
-        private Button ResolveButton(IDialogContextConfigureOptionsBuilder options)
+        private Button ResolveButton(InternalDialogContextConfigureOptionsBuilderData options)
         {
             var result = new Button()
             {

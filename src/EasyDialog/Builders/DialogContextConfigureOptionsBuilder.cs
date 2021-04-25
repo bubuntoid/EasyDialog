@@ -4,75 +4,61 @@ using System.Reflection;
 using System.Windows.Forms;
 using System.Linq.Expressions;
 using System.Collections.Generic;
+using bubuntoid.EasyDialog.Internal.Models;
 
 namespace bubuntoid.EasyDialog
 {
     public class DialogContextConfigureOptionsBuilder<TContext> : IDialogContextConfigureOptionsBuilder
     {
-        #region Implementations
-        IEnumerable<IDialogSet> IDialogContextConfigureOptionsBuilder.Items { get; set; }
-        string IDialogContextConfigureOptionsBuilder.Title { get; set; }
-        string IDialogContextConfigureOptionsBuilder.ButtonText { get; set; }
-        ButtonAlign IDialogContextConfigureOptionsBuilder.ButtonAlign { get; set; }
-        FormStartPosition IDialogContextConfigureOptionsBuilder.StartPosition { get; set; }
-        DialogStyle IDialogContextConfigureOptionsBuilder.DialogStyle { get; set; }
-        MetroTheme IDialogContextConfigureOptionsBuilder.MetroTheme{ get; set; }
-        Action IDialogContextConfigureOptionsBuilder.OnShownEvent { get; set; }
-        MaterialTheme IDialogContextConfigureOptionsBuilder.MaterialTheme { get; set; }
-        MaterialColorScheme IDialogContextConfigureOptionsBuilder.MaterialColorScheme { get; set; }
-        #endregion
+        InternalDialogContextConfigureOptionsBuilderData IDialogContextConfigureOptionsBuilder.Data { get; } = 
+            new InternalDialogContextConfigureOptionsBuilderData();
 
         internal DialogContextConfigureOptionsBuilder(IEnumerable<IDialogSet> items)
         {
-            Base.Items = items;
-
-            // Defaults
-            Base.ButtonText = "Submit";
-            Base.ButtonAlign = ButtonAlign.Right;
-            Base.StartPosition = FormStartPosition.CenterScreen;
+            Base.Data.Items = items;
         }
 
         public DialogContextConfigureOptionsBuilder<TContext> OnShown(Action action)
         {
-            Base.OnShownEvent = action;
+            Base.Data.OnShownEvent = action;
             return this;
         }
 
         public DialogContextConfigureOptionsBuilder<TContext> HasTitle(string title)
         {
-            Base.Title = title;
+            Base.Data.Title = title;
             return this;
         }
 
         public DialogContextConfigureOptionsBuilder<TContext> HasButton(string buttonText)
         {
-            Base.ButtonText = buttonText;
+            Base.Data.ButtonText = buttonText;
             return this;
         }
 
         public DialogContextConfigureOptionsBuilder<TContext> HasButton(string buttonText, ButtonAlign buttonAlign)
         {
-            Base.ButtonAlign = buttonAlign;
+            Base.Data.ButtonAlign = buttonAlign;
             return HasButton(buttonText);
         }
 
         public DialogContextConfigureOptionsBuilder<TContext> UseDefaultStyle()
         {
-            Base.DialogStyle = DialogStyle.Default;
+            Base.Data.DialogStyle = DialogStyle.Default;
             return this;
         }
 
         public DialogContextConfigureOptionsBuilder<TContext> UseMetroStyle()
         {
-            Base.DialogStyle = DialogStyle.Metro;
-            Base.MetroTheme = MetroTheme.Default;
+            Base.Data.DialogStyle = DialogStyle.Metro;
+            Base.Data.MetroTheme = MetroTheme.Default;
             return this;
         }
 
         public DialogContextConfigureOptionsBuilder<TContext> UseMetroStyle(MetroTheme theme)
         {
-            Base.DialogStyle = DialogStyle.Metro;
-            Base.MetroTheme = theme;
+            Base.Data.DialogStyle = DialogStyle.Metro;
+            Base.Data.MetroTheme = theme;
             return this;
         }
 
@@ -88,18 +74,17 @@ namespace bubuntoid.EasyDialog
 
         public DialogContextConfigureOptionsBuilder<TContext> UseMaterialStyle(MaterialTheme theme, MaterialColorScheme scheme)
         {
-            Base.DialogStyle = DialogStyle.Material;
-            Base.MaterialTheme = theme;
-            Base.MaterialColorScheme = scheme;
+            Base.Data.DialogStyle = DialogStyle.Material;
+            Base.Data.MaterialTheme = theme;
+            Base.Data.MaterialColorScheme = scheme;
             return this;
         }
 
         public DialogContextConfigureOptionsBuilder<TContext> HasStartPosition(FormStartPosition startPosition)
         {
-            Base.StartPosition = startPosition;
+            Base.Data.StartPosition = startPosition;
             return this;
         }
-
 
         public DialogSetOptionsBuilder<TValue> Item<TValue>(Expression<Func<TContext, DialogSet<TValue>>> property)
         {
@@ -119,7 +104,7 @@ namespace bubuntoid.EasyDialog
 
             var prop = (PropertyInfo)expr.Member;
 
-            return Base.Items.FirstOrDefault(x => x.Data.PropertyName == prop.Name);
+            return Base.Data.Items.FirstOrDefault(x => x.Data.PropertyName == prop.Name);
         }
 
         private IDialogContextConfigureOptionsBuilder Base => this;

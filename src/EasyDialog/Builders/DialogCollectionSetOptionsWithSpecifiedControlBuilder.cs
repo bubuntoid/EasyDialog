@@ -8,7 +8,7 @@ namespace bubuntoid.EasyDialog
     public class DialogCollectionSetOptionsWithSpecifiedControlBuilder<TControl, TValue> : DialogCollectionSetOptionsBuilder<TValue>
         where TControl : Control
     {
-        public DialogCollectionSetOptionsWithSpecifiedControlBuilder(IDialogCollectionSet set) : base(set)
+        internal DialogCollectionSetOptionsWithSpecifiedControlBuilder(IDialogCollectionSet set) : base(set)
         {
 
         }
