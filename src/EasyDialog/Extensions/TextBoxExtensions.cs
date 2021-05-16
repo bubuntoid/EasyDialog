@@ -4,6 +4,11 @@ namespace bubuntoid.EasyDialog
 {
     public static class TextBoxExtensions
     {
+        /// <summary>
+        /// Sets DialogSet<string> control as TextBox
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <returns></returns>
         public static DialogSetOptionsWithSpecifiedControlBuilder<TextBox, string> AsTextBox(this DialogSetOptionsBuilder<string> builder) =>
             builder.AsControl<TextBox>()
                 .ConfigureGetter((control) => control.Text)
@@ -17,6 +22,12 @@ namespace bubuntoid.EasyDialog
             return builder;
         }
 
+        /// <summary>
+        /// Sets TextAlign value of TextBox control
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="textAlign"></param>
+        /// <returns></returns>
         public static DialogSetOptionsWithSpecifiedControlBuilder<TextBox, string> HasTextAlign
            (this DialogSetOptionsWithSpecifiedControlBuilder<TextBox, string> builder, HorizontalAlignment textAlign)
         {
@@ -25,6 +36,12 @@ namespace bubuntoid.EasyDialog
             return builder;
         }
 
+        /// <summary>
+        /// Sets Multiline value of TextBox control
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="size"></param>
+        /// <returns></returns>
         public static DialogSetOptionsWithSpecifiedControlBuilder<TextBox, string> IsMultiline
          (this DialogSetOptionsWithSpecifiedControlBuilder<TextBox, string> builder, int size = 100)
         {

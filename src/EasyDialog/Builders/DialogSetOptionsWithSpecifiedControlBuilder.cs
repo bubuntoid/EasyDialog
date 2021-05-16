@@ -11,6 +11,11 @@ namespace bubuntoid.EasyDialog
 
         }
 
+        /// <summary>
+        /// Specifying action that will be invoked when user trying to get value from DialogSet.Value
+        /// </summary>
+        /// <param name="cfg"></param>
+        /// <returns></returns>
         public DialogSetOptionsWithSpecifiedControlBuilder<TControl, TValue> ConfigureGetter(Func<TControl, TValue> cfg)
         {
             Item.Data.GetterSpecifiedFromBuilder = true;
@@ -18,6 +23,11 @@ namespace bubuntoid.EasyDialog
             return this;   
         }
 
+        /// <summary>
+        /// Specifying action that will be invoked when user trying to set value to DialogSet.Value
+        /// </summary>
+        /// <param name="cfg"></param>
+        /// <returns></returns>
         public DialogSetOptionsWithSpecifiedControlBuilder<TControl, TValue> ConfigureSetter(Action<TControl, TValue> cfg)
         {
             Item.Data.SetterSpecifiedFromBuilder = true;
@@ -25,6 +35,11 @@ namespace bubuntoid.EasyDialog
             return this;
         }
 
+        /// <summary>
+        /// Specifying template that will used for control
+        /// </summary>
+        /// <param name="control"></param>
+        /// <returns></returns>
         public DialogSetOptionsWithSpecifiedControlBuilder<TControl, TValue> UseTemplate(TControl control)
         {
             Item.Data.Control = control;

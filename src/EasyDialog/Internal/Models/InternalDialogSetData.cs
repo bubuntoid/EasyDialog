@@ -22,6 +22,9 @@ namespace bubuntoid.EasyDialog.Internal.Models
         public bool FullRow { get; set; }
         public int? ControlHeight { get; set; }
 
+        public Separator SeparatorBefore { get; set; }
+        public Separator SeparatorAfter { get; set; }
+
         public InternalDialogSetData()
         {
             // Defaults

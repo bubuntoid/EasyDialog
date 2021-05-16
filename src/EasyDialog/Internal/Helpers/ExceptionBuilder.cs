@@ -1,6 +1,6 @@
 ﻿namespace bubuntoid.EasyDialog.Internal
 {
-    public static class ExceptionBuilder
+    internal static class ExceptionBuilder
     {
         public static DialogContextConfigureException GetterIsNotConfiguredException(IDialogSet set) =>
             new DialogContextConfigureException($"Getter of item '{set.Data.PropertyName}' is not configured. Configure it by calling .ConfigureGetter(...)\n" +

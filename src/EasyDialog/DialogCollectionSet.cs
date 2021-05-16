@@ -8,8 +8,15 @@ using bubuntoid.EasyDialog.Internal.Models;
 
 namespace bubuntoid.EasyDialog
 {
+    /// <summary>
+    /// Docs: https://github.com/bubuntoid/EasyDialog
+    /// </summary>
+    /// <typeparam name="TValue"></typeparam>
     public class DialogCollectionSet<TValue> : IDialogCollectionSet
     {
+        /// <summary>
+        /// Presents value of this DialogCollectionSet<TValue>
+        /// </summary>
         public TValue Value
         {
             get
@@ -27,9 +34,17 @@ namespace bubuntoid.EasyDialog
                 Base.Data.Setter(Base.Data.Control, value);
             }
         }
+
+        /// <summary>
+        /// Presents current control of this DialogCollectionSet<TValue>
+        /// </summary>
         public Control Control => Base.Data.Control;
 
         private IEnumerable<TValue> _dataSource = new HashSet<TValue>();
+
+        /// <summary>
+        /// Presents data source of this DialogCollectionSet<TValue>
+        /// </summary>
         public IEnumerable<TValue> DataSource
         {
             get

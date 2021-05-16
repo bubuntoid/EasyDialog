@@ -3,6 +3,10 @@ using bubuntoid.EasyDialog.Internal;
 
 namespace bubuntoid.EasyDialog
 {
+    /// <summary>
+    /// Docs: https://github.com/bubuntoid/EasyDialog
+    /// </summary>
+    /// <typeparam name="TContext">Inherited class of DialogContext</typeparam>
     public abstract class DialogContext<TContext> : IDialogContext
         where TContext : DialogContext<TContext>
     {
@@ -11,6 +15,9 @@ namespace bubuntoid.EasyDialog
         private readonly IEasyDialogForm dialogForm;
         private bool isInitialized;
 
+        /// <summary>
+        /// Presents current form
+        /// </summary>
         public Form Form => dialogForm.Form;
 
         public DialogContext()
@@ -19,6 +26,9 @@ namespace bubuntoid.EasyDialog
             isInitialized = false;
         }
 
+        /// <summary>
+        /// Shows dialog
+        /// </summary>
         public void ShowDialog()
         {
             if (isInitialized == false)
@@ -37,6 +47,9 @@ namespace bubuntoid.EasyDialog
             dialogForm.ShowDialog();
         }
 
+        /// <summary>
+        /// Closes dialog
+        /// </summary>
         public void Close()
         {
             dialogForm.Close();
