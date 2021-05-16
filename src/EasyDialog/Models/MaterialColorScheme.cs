@@ -1,5 +1,9 @@
 ﻿namespace bubuntoid.EasyDialog
 {
+    /// <summary>
+    /// Model that used for creating your own theme for MaterialStyle. 
+    /// Contains existing themes in static properties
+    /// </summary>
     public class MaterialColorScheme
     {
         public MaterialThemePrimaryColor Primary { get; set; }

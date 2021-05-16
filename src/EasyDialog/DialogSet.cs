@@ -7,8 +7,15 @@ using bubuntoid.EasyDialog.Internal.Models;
 
 namespace bubuntoid.EasyDialog
 {
+    /// <summary>
+    /// Docs: https://github.com/bubuntoid/EasyDialog
+    /// </summary>
+    /// <typeparam name="TValue"></typeparam>
     public class DialogSet<TValue> : IDialogSet
     {
+        /// <summary>
+        /// Presents value of this DialogSet<TValue>
+        /// </summary>
         public TValue Value
         {
             get 
@@ -27,6 +34,9 @@ namespace bubuntoid.EasyDialog
             }
         }
         
+        /// <summary>
+        /// Presents current control of this DialogSet<TValue>
+        /// </summary>
         public Control Control => Base.Data.Control;
         
         private IDialogSet Base => this;

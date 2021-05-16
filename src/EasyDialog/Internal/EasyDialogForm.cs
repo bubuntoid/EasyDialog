@@ -53,6 +53,7 @@ namespace bubuntoid.EasyDialog.Internal
                 var currentItem = options.Items.ElementAt(i);
                 var currentItemData = currentItem.Data;
                 var control = currentItemData.Control;
+                var fullRowValueControlWidth = formProvider.Width + formProvider.ExtraPaddingForFullRow - 45;
 
                 if (currentItemData.Ignore == true)
                     continue;
@@ -67,6 +68,14 @@ namespace bubuntoid.EasyDialog.Internal
 
                 control.Enabled = currentItemData.Enabled;
                 control.AutoSize = false;
+
+                if (currentItemData.SeparatorBefore != null)
+                {
+                    var seperatorControl = currentItemData.SeparatorBefore.BuildControl(fullRowValueControlWidth);
+                    seperatorControl.Location = new Point(PADDING, currentHeight);
+                    formProvider.AddControl(seperatorControl);
+                    currentHeight += seperatorControl.Size.Height;
+                }
 
                 if (currentItemData.FullRow == false)
                 {
@@ -93,7 +102,7 @@ namespace bubuntoid.EasyDialog.Internal
 
                 control.Size = new Size
                 {
-                    Width = currentItemData.FullRow ? formProvider.Width + formProvider.ExtraPaddingForFullRow - 45 : DEFAULT_VALUE_CONTROL_WIDTH,
+                    Width = currentItemData.FullRow ? fullRowValueControlWidth : DEFAULT_VALUE_CONTROL_WIDTH,
                     Height = currentItemData.ControlHeight ?? DEFAULT_VALUE_CONTROL_HEIGHT
                 };
                 control.Location = new Point
@@ -104,6 +113,14 @@ namespace bubuntoid.EasyDialog.Internal
 
                 formProvider.AddControl(control);
                 currentHeight += control.Size.Height + 10;
+
+                if (currentItemData.SeparatorAfter != null)
+                {
+                    var seperatorControl = currentItemData.SeparatorAfter.BuildControl(fullRowValueControlWidth);
+                    seperatorControl.Location = new Point(PADDING, currentHeight);
+                    formProvider.AddControl(seperatorControl);
+                    currentHeight += seperatorControl.Size.Height;
+                }
             }
 
             formProvider.Height = formProvider.InitialTopPadding + currentHeight + DEFAULT_BUTTON_HEIGHT +

@@ -28,7 +28,7 @@ namespace EasyDialog.Samples.Basics
 
         protected override void OnButtonClick()
         {
-
+            
         }
 
         protected override void OnConfiguring(DialogContextConfigureOptionsBuilder<DialogWithBasicSupportedTypes> builder)
@@ -36,6 +36,7 @@ namespace EasyDialog.Samples.Basics
             builder.HasTitle("Supported types sample");
 
             builder.Item(x => x.FullRow)
+                .PlaceSeparatorBefore(SeparatorStyle.Line)
                 .AsTextBox()
                 .AsFullRow()
                 .HasValue("Full row");
@@ -48,6 +49,7 @@ namespace EasyDialog.Samples.Basics
                 .IsMultiline();
 
             builder.Item(x => x.ComboBox)
+                .PlaceSeparatorBefore(SeparatorStyle.Line)
                 .HasDataSource(new[] { "First", "Second", "Third" })
                 .HasValue("First");
 
@@ -57,6 +59,7 @@ namespace EasyDialog.Samples.Basics
                 .HasValue("Third");
 
             builder.Item(x => x.Int)
+                .PlaceSeparatorBefore(SeparatorStyle.Line)
                 .AsNumericUpDown()
                 .HasDecimalPlaces(0)
                 .HasMaximum(int.MaxValue)
@@ -68,6 +71,9 @@ namespace EasyDialog.Samples.Basics
                 .HasFormat(DateTimePickerFormat.Long)
                 .HasMaximumDate(System.DateTime.MaxValue)
                 .HasMinimumDate(System.DateTime.MinValue);
+
+            builder.Item(x => x.Bool)
+                .PlaceSeparatorBefore(SeparatorStyle.Line);
         }
     }
 }
