@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <LangVersion>9.0</LangVersion>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <RootNamespace>bubuntoid.EasyDialog</RootNamespace>
+    <PackageId>bubuntoid.EasyDialog.MetroFramework</PackageId>
+    <Authors>bubuntoid</Authors>
+    <Company>bubuntoid</Company>
+    <Description>MetroFramework theme for bubuntoid.EasyDialog</Description>
+    <Copyright>Copyright © 2021</Copyright>
+    <PackageLicenseExpression></PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/bubuntoid/EasyDialog</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/bubuntoid/EasyDialog</RepositoryUrl>
+    <PackageTags>dialog, builder, ui, framework</PackageTags>
+    <Version>6.0.0</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="bubuntoid.EasyDialog" Version="6.0.0" />
+    <PackageReference Include="MetroFramework" Version="1.2.0.3" />
+  </ItemGroup>
+
+</Project>

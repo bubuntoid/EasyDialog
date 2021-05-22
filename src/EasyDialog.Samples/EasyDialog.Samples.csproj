@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EasyDialog.MaterialSkin\EasyDialog.MaterialSkin.csproj" />
+    <ProjectReference Include="..\EasyDialog.MetroFramework\EasyDialog.MetroFramework.csproj" />
     <ProjectReference Include="..\EasyDialog\EasyDialog.csproj" />
   </ItemGroup>
 

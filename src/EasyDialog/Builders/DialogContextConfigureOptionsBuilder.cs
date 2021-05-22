@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.Linq.Expressions;
 using System.Collections.Generic;
 using bubuntoid.EasyDialog.Internal.Models;
+using bubuntoid.EasyDialog.Internal.Providers;
 
 namespace bubuntoid.EasyDialog
 {
@@ -69,63 +70,16 @@ namespace bubuntoid.EasyDialog
         /// <returns></returns>
         public DialogContextConfigureOptionsBuilder<TContext> UseDefaultStyle()
         {
-            Base.Data.DialogStyle = DialogStyle.Default;
-            return this;
+            return UseFormProvider(new DefaultFormProvider());
         }
 
         /// <summary>
-        /// Uses metro UI style
+        /// Specifying FormProvider
         /// </summary>
         /// <returns></returns>
-        public DialogContextConfigureOptionsBuilder<TContext> UseMetroStyle()
+        public DialogContextConfigureOptionsBuilder<TContext> UseFormProvider(IFormProvider formProvider)
         {
-            Base.Data.DialogStyle = DialogStyle.Metro;
-            Base.Data.MetroTheme = MetroTheme.Default;
-            return this;
-        }
-
-        /// <summary>
-        /// Uses metro UI style with specified theme
-        /// </summary>
-        /// <param name="theme"></param>
-        /// <returns></returns>
-        public DialogContextConfigureOptionsBuilder<TContext> UseMetroStyle(MetroTheme theme)
-        {
-            Base.Data.DialogStyle = DialogStyle.Metro;
-            Base.Data.MetroTheme = theme;
-            return this;
-        }
-
-        /// <summary>
-        /// Uses material style
-        /// </summary>
-        /// <returns></returns>
-        public DialogContextConfigureOptionsBuilder<TContext> UseMaterialStyle()
-        {
-            return UseMaterialStyle(MaterialTheme.Light);
-        }
-
-        /// <summary>
-        /// Uses material style with specified theme
-        /// </summary>
-        /// <param name="theme"></param>
-        /// <returns></returns>
-        public DialogContextConfigureOptionsBuilder<TContext> UseMaterialStyle(MaterialTheme theme)
-        {
-            return UseMaterialStyle(theme, MaterialColorScheme.Default);
-        }
-
-        /// <summary>
-        /// Uses material style with specified theme and color scheme
-        /// </summary>
-        /// <param name="theme"></param>
-        /// <param name="scheme"></param>
-        /// <returns></returns>
-        public DialogContextConfigureOptionsBuilder<TContext> UseMaterialStyle(MaterialTheme theme, MaterialColorScheme scheme)
-        {
-            Base.Data.DialogStyle = DialogStyle.Material;
-            Base.Data.MaterialTheme = theme;
-            Base.Data.MaterialColorScheme = scheme;
+            Base.Data.FormProvider = formProvider;
             return this;
         }
 
