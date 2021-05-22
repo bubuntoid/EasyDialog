@@ -11,7 +11,7 @@ namespace EasyDialog.Samples.Authorization
 
         protected override void OnConfiguring(DialogContextConfigureOptionsBuilder<AuthDialogContext> builder)
         {
-            builder.UseMaterialStyle()
+            builder.UseMetroStyle()
                 .HasTitle("Authentification")
                 .HasButton("Sign in");
 

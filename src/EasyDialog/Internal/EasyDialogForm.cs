@@ -33,14 +33,7 @@ namespace bubuntoid.EasyDialog.Internal
         public void Initialize(IDialogContextConfigureOptionsBuilder optionsBuilder)
         {
             var options = optionsBuilder.Data;
-            formProvider = options.DialogStyle switch
-            {
-                DialogStyle.Default => new DefaultFormProvider(),
-                DialogStyle.Metro => new MetroFormProvider(options.MetroTheme),
-                DialogStyle.Material => new MaterialFormProvider(options.MaterialTheme, options.MaterialColorScheme),
-
-                _ => throw new NotImplementedException()
-            };
+            formProvider = options.FormProvider;
             formProvider.Form.Text = options.Title ?? context.GetType().Name;
             formProvider.SetStartPosition(options.StartPosition);
             onShownEvent = options.OnShownEvent;
@@ -107,7 +100,7 @@ namespace bubuntoid.EasyDialog.Internal
                 };
                 control.Location = new Point
                 {
-                    X = currentItemData.FullRow ? PADDING : formProvider.SecondColumnXCoord,
+                    X = currentItemData.FullRow ? PADDING : formProvider.SecondColumnLeftPadding,
                     Y = currentHeight,
                 };
 

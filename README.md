@@ -50,10 +50,10 @@ Both of theme has 2 properties: `TValue Value` and `Control control`.
 Difference between them is that `DialogCollectionSet<TValue>` besides `TValue Value` property has another one - `IEnumerable<TValue> DataSource` intended for interact collection with control or vice versa and one more action `Action<Control, IEnumearble<TValue>> OnUpdateItemsAction` (encapsulated, but may be configured through option builders)
 
 Supported types that are available out of the box:
-- `DialogSet<string>` -> TextBox
+- `DialogSet<string>` -> TextBox, Label
 - `DialogSet<int>` -> NumericUpDown (also work with `decimal`, `float` and `double`)
 - `DialogSet<bool>` -> CheckBox
-- `DialogSet<DateTime>` -> DateTimePicker
+- `DialogSet<DateTime>` -> DateTimePicker (also work with `TimeSpan`)
 - `DialogCollectionSet<string>` -> ComboBox or ListBox
 
 ### Configuration

@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace bubuntoid.EasyDialog.Internal.Providers
 {
-    internal interface IFormProvider
+    public interface IFormProvider
     {
         void ShowDialog();
         void Close();
@@ -18,7 +18,7 @@ namespace bubuntoid.EasyDialog.Internal.Providers
 
         int ExtraPaddingForFullRow { get; set; }
         int InitialTopPadding { get; set; }
-        int SecondColumnXCoord { get; set; }
+        int SecondColumnLeftPadding { get; set; }
         int BottomSpace { get; set; }
         int ButtonRightPadding { get; set; }
         int ButtonBottomPadding { get; set; }

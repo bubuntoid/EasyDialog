@@ -10,7 +10,7 @@ namespace bubuntoid.EasyDialog.Internal.Providers
     internal class MetroFormProvider : IFormProvider
     {
         public int InitialTopPadding { get; set; } = 80;
-        public int SecondColumnXCoord { get; set; } = 165;
+        public int SecondColumnLeftPadding { get; set; } = 165;
         public int BottomSpace { get; set; } = -40;
         public int ButtonRightPadding { get; set; } = 15;
         public int ButtonBottomPadding { get; set; } = 10;

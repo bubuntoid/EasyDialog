@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using bubuntoid.EasyDialog.Internal.Providers;
 
 using MaterialSkin;
 using MaterialSkin.Controls;
@@ -9,7 +10,7 @@ namespace bubuntoid.EasyDialog.Internal.Providers
     internal class MaterialFormProvider : IFormProvider
     {
         public int InitialTopPadding { get; set; } = 80;
-        public int SecondColumnXCoord { get; set; } = 150;
+        public int SecondColumnLeftPadding { get; set; } = 150;
         public int BottomSpace { get; set; } = -60;
         public int ButtonRightPadding { get; set; } = 15;
         public int ButtonBottomPadding { get; set; } = 10;

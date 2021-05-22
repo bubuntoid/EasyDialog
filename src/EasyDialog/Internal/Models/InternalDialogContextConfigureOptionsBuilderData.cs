@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using bubuntoid.EasyDialog.Internal.Providers;
 
 namespace bubuntoid.EasyDialog.Internal.Models
 {
@@ -11,23 +12,23 @@ namespace bubuntoid.EasyDialog.Internal.Models
         public string Title { get; set; }
         public string ButtonText { get; set; }
         
-        public DialogStyle DialogStyle { get; set; }
         public FormStartPosition StartPosition { get; set; }
         public ButtonAlign ButtonAlign { get; set; }
-        public MetroTheme MetroTheme { get; set; }
-        
+
         public Action OnShownEvent { get; set; }
         
-        public MaterialTheme MaterialTheme { get; set; }
-        public MaterialColorScheme MaterialColorScheme { get; set; }
+        public IFormProvider FormProvider { get; set; }
 
-        public InternalDialogContextConfigureOptionsBuilderData()
+        internal InternalDialogContextConfigureOptionsBuilderData()
         {
             // Defaults
 
             ButtonText = "Submit";
             ButtonAlign = ButtonAlign.Right;
+            
             StartPosition = FormStartPosition.CenterScreen;
+
+            FormProvider = new DefaultFormProvider();
         }
     }
 }
