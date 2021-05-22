@@ -10,6 +10,7 @@ namespace EasyDialog.Samples.Basics
     {
         public DialogSet<string> String { get; set; }
         public DialogSet<string> Disabled { get; set; }
+        public DialogSet<string> StringLabel { get; set; }
         public DialogSet<string> Multiline { get; set; }
 
         public DialogSet<int> Int { get; set; }
@@ -47,6 +48,13 @@ namespace EasyDialog.Samples.Basics
             builder.Item(x => x.Multiline)
                 .AsTextBox()
                 .IsMultiline();
+
+            builder.Item(x => x.StringLabel)
+                .AsLabel()
+                .HasText("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod " +
+                         "tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, " +
+                         "quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ")
+                .HasHeight(50);
 
             builder.Item(x => x.ComboBox)
                 .PlaceSeparatorBefore(SeparatorStyle.Line)
