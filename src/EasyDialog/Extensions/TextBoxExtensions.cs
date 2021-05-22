@@ -14,6 +14,12 @@ namespace bubuntoid.EasyDialog
                 .ConfigureGetter((control) => control.Text)
                 .ConfigureSetter((control, value) => control.Text = value);
 
+        /// <summary>
+        /// Sets PasswordChar value of TextBox control
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="passwordChar"></param>
+        /// <returns></returns>
         public static DialogSetOptionsWithSpecifiedControlBuilder<TextBox, string> UsePasswordChar
             (this DialogSetOptionsWithSpecifiedControlBuilder<TextBox, string> builder, char passwordChar = '*')
         {
