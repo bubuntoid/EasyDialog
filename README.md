@@ -7,10 +7,12 @@ EasyDialog is a framework that automatically creates UI dialogs with easy contro
 
 ## Nuget
 https://www.nuget.org/packages/bubuntoid.EasyDialog
+https://www.nuget.org/packages/bubuntoid.EasyDialog.MaterialSkin/
+https://www.nuget.org/packages/bubuntoid.EasyDialog.MetroFramework/
 
 ## Sample
 ```csharp
-using bubuntoid.EasyDialog;
+using bubuntoid.EasyDialog; 
 
 public class AuthDialog : DialogContext<AuthDialog>
 {
@@ -20,7 +22,7 @@ public class AuthDialog : DialogContext<AuthDialog>
 
     protected override void OnConfiguring(DialogContextConfigureOptionsBuilder<AuthDialog> builder)
     {
-        builder.UseMaterialStyle()
+        builder.UseMaterialStyle() // bubuntoid.EasyDialog.MaterialSkin nuget package should be installed for using this theme
             .HasTitle("Authentification")
             .HasButton("Sign in");
 
