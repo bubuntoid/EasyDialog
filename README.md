@@ -6,8 +6,8 @@ EasyDialog is a framework that automatically creates UI dialogs with easy contro
 </p>
 
 ## Nuget
-https://www.nuget.org/packages/bubuntoid.EasyDialog
-https://www.nuget.org/packages/bubuntoid.EasyDialog.MaterialSkin/
+https://www.nuget.org/packages/bubuntoid.EasyDialog <br>
+https://www.nuget.org/packages/bubuntoid.EasyDialog.MaterialSkin/ <br>
 https://www.nuget.org/packages/bubuntoid.EasyDialog.MetroFramework/
 
 ## Sample
