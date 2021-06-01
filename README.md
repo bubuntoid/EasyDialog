@@ -22,7 +22,8 @@ public class AuthDialog : DialogContext<AuthDialog>
 
     protected override void OnConfiguring(DialogContextConfigureOptionsBuilder<AuthDialog> builder)
     {
-        builder.UseMaterialStyle() // bubuntoid.EasyDialog.MaterialSkin nuget package should be installed for using this theme
+        // bubuntoid.EasyDialog.MaterialSkin nuget package should be installed for using this theme
+        builder.UseMaterialStyle() 
             .HasTitle("Authentification")
             .HasButton("Sign in");
 
@@ -49,7 +50,7 @@ More samples [here](https://github.com/bubuntoid/EasyDialog/tree/main/src/EasyDi
 There are 2 types of items you may set for your dialog - `DialogSet<TValue>` and `DialogCollectionSet<TValue>`. 
 Both of theme has 2 properties: `TValue Value` and `Control control`.
 
-Difference between them is that `DialogCollectionSet<TValue>` besides `TValue Value` property has another one - `IEnumerable<TValue> DataSource` intended for interact collection with control or vice versa and one more action `Action<Control, IEnumearble<TValue>> OnUpdateItemsAction` (encapsulated, but may be configured through option builders)
+Difference between them is that `DialogCollectionSet<TValue>` besides `TValue Value` property has one more - `IEnumerable<TValue> DataSource` intended for interact collection with control or vice versa and one more action `Action<Control, IEnumearble<TValue>> OnUpdateItemsAction` (encapsulated, but may be configured through option builders)
 
 Supported types that are available out of the box:
 - `DialogSet<string>` -> TextBox, Label
@@ -77,9 +78,9 @@ Material style has only two themes - Dark and Light, but it also supports color 
 ```csharp
 builder.UseMaterialStyle(MaterialTheme.Light, MaterialColorScheme.Indigo)
 ```
-Or create your own, there is tons of available colors [here](https://github.com/bubuntoid/EasyDialog/blob/main/src/EasyDialog/Enums/MaterialThemePrimaryColor.cs):
+Or create your own, there is tons of available colors [here](https://github.com/bubuntoid/EasyDialog/blob/main/src/EasyDialog.MaterialSkin/MaterialColorScheme.cs):
 ```csharp
-var scheme = new MaterialColorScheme()
+var scheme = new MaterialColorScheme
 {
     Primary = MaterialThemePrimaryColor.BlueGrey800,
     DarkPrimary = MaterialThemePrimaryColor.BlueGrey900,
@@ -90,6 +91,9 @@ var scheme = new MaterialColorScheme()
 
 builder.UseMaterialStyle(MaterialTheme.Dark, scheme)
 ```
+You can make your own window style by using **IFormProvider** and `builder.UseFormProvider(new MyFormProvider(theme))`.<br>
+[Sample](https://github.com/bubuntoid/EasyDialog/tree/main/src/EasyDialog.MetroFramework)
+  
 
 ## Some "Features"
 If your control's height is not "one row" default size, you have to configure it explicitically by using `HasHeight(int value)` method:
@@ -102,23 +106,20 @@ protected override void OnConfiguring(DialogContextConfigureOptionsBuilder<YourD
 }
 ```
 
-For editing state of `IEnumearble<TValue>` (`DialogCollectionSet<TValue>`) you have to override it itself. There a little sample that could change LINQ's `.ToList().Add()` method.
-
-From this:
+For editing state of `IEnumearble<TValue>` (`DialogCollectionSet<TValue>`) you have to override it itself. There a little sample that could change LINQ's `.ToList().Add()` method:
+  
 ```csharp
-protected override void OnButtonClick()
-{
-    MyDialogSet.DataSource.ToList().Add(DateTime.Now.TimeOfDay);
-}
-```
-To this:
-```csharp
-protected override void OnButtonClick()
-{
-    MyDialogSet.DataSource = MyDialogSet.DataSource.Append(DateTime.Now.TimeOfDay);
-}
+  
+  // Instead of using this:
+  dialogContext.MyDialogCollectionSet.DataSource
+    .ToList()
+      .Add(DateTime.Now.TimeOfDay);
+  
+  // Use this:
+  dialogContext.MyDialogCollectionSet.DataSource = MyDialogSet.DataSource.Append(DateTime.Now.TimeOfDay);
 ```
 
+ 
 ## Dependencies
 - net5.0-windows7.0
 - [MetroFramework](https://github.com/thielj/MetroFramework) 1.2.0.3
