@@ -13,7 +13,6 @@ namespace bubuntoid.EasyDialog.Internal
     internal class EasyDialogForm : IEasyDialogForm
     {
         private const int DEFAULT_VALUE_CONTROL_HEIGHT = 20;
-        private const int DEFAULT_VALUE_CONTROL_WIDTH = 150;
         private const int DEFAULT_BUTTON_HEIGHT = 40;
         private const int DEFAULT_BUTTON_WIDTH = 120;
         private const int PADDING = 25;
@@ -34,8 +33,10 @@ namespace bubuntoid.EasyDialog.Internal
         {
             var options = optionsBuilder.Data;
             formProvider = options.FormProvider;
+            formProvider.Width = options.Width ?? formProvider.Width;
             formProvider.Form.Text = options.Title ?? context.GetType().Name;
             formProvider.SetStartPosition(options.StartPosition);
+
             onShownEvent = options.OnShownEvent;
 
             var currentHeight = formProvider.InitialTopPadding;
@@ -46,7 +47,7 @@ namespace bubuntoid.EasyDialog.Internal
                 var currentItem = options.Items.ElementAt(i);
                 var currentItemData = currentItem.Data;
                 var control = currentItemData.Control;
-                var fullRowValueControlWidth = formProvider.Width + formProvider.ExtraPaddingForFullRow - 45;
+                var fullRowValueControlWidth = formProvider.Width + formProvider.ExtraPaddingForFullRow - 55;
 
                 if (currentItemData.Ignore == true)
                     continue;
@@ -95,12 +96,12 @@ namespace bubuntoid.EasyDialog.Internal
 
                 control.Size = new Size
                 {
-                    Width = currentItemData.FullRow ? fullRowValueControlWidth : DEFAULT_VALUE_CONTROL_WIDTH,
+                    Width = currentItemData.FullRow ? fullRowValueControlWidth : formProvider.Width / 2 - 30,
                     Height = currentItemData.ControlHeight ?? DEFAULT_VALUE_CONTROL_HEIGHT
                 };
                 control.Location = new Point
                 {
-                    X = currentItemData.FullRow ? PADDING : formProvider.SecondColumnLeftPadding,
+                    X = currentItemData.FullRow ? PADDING : formProvider.Width / 2,
                     Y = currentHeight,
                 };
 
@@ -118,7 +119,7 @@ namespace bubuntoid.EasyDialog.Internal
 
             formProvider.Height = formProvider.InitialTopPadding + currentHeight + DEFAULT_BUTTON_HEIGHT +
                                   formProvider.BottomSpace;
-
+            
             var buttonControl = ResolveButton(options);
             formProvider.AddControl(buttonControl);
             buttonControl.Select();

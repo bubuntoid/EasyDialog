@@ -13,7 +13,8 @@ namespace EasyDialog.Samples.Authorization
         {
             builder.UseMetroStyle()
                 .HasTitle("Authentification")
-                .HasButton("Sign in");
+                .HasButton("Sign in")
+                .HasWidth(400);
 
             builder.Item(x => x.Password)
                 .AsTextBox()

@@ -53,6 +53,17 @@ namespace bubuntoid.EasyDialog
         }
 
         /// <summary>
+        /// Sets width of form
+        /// </summary>
+        /// <param name="width">width in pixels</param>
+        /// <returns></returns>
+        public DialogContextConfigureOptionsBuilder<TContext> HasWidth(int width)
+        {
+            Base.Data.Width = width;
+            return this;
+        }
+
+        /// <summary>
         /// Sets button text and align
         /// </summary>
         /// <param name="buttonText"></param>

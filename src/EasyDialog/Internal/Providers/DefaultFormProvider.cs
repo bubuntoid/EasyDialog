@@ -6,11 +6,10 @@ namespace bubuntoid.EasyDialog.Internal.Providers
     public class DefaultFormProvider : IFormProvider
     {
         public int InitialTopPadding { get; set; } = 20;
-        public int SecondColumnLeftPadding { get; set; } = 150;
         public int BottomSpace { get; set; } = 50;
         public int ButtonRightPadding { get; set; } = 35;
         public int ButtonBottomPadding { get; set; } = 50;
-        public int ExtraPaddingForFullRow { get; set; } = -15;
+        public int ExtraPaddingForFullRow { get; set; } = 0;
 
         public Action OnCloseHandler { get; set; }
 
