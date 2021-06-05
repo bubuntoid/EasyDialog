@@ -18,6 +18,7 @@ namespace bubuntoid.EasyDialog.Internal.Models
         public Action OnShownEvent { get; set; }
         
         public IFormProvider FormProvider { get; set; }
+        public int? Width { get; set; }
 
         internal InternalDialogContextConfigureOptionsBuilderData()
         {

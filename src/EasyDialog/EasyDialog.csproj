@@ -8,20 +8,18 @@
     <PackageId>bubuntoid.EasyDialog</PackageId>
     <Authors>bubuntoid</Authors>
     <Company>bubuntoid</Company>
-    <Description>🌈 Create UI dialogs automatically with metro, material and windows style for desktop applications by using EasyDialog (.NET Framework).
+    <Description>Create UI dialogs automatically with metro, material and windows style for desktop applications by using EasyDialog (.NET 5).
 Docs: https://github.com/bubuntoid/EasyDialog</Description>
     <Copyright>Copyright © 2021</Copyright>
     <PackageLicenseExpression></PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/bubuntoid/EasyDialog</PackageProjectUrl>
     <RepositoryUrl>https://github.com/bubuntoid/EasyDialog</RepositoryUrl>
     <PackageTags>dialog, builder, ui, framework</PackageTags>
-    <Version>6.0.0</Version>
+    <Version>6.0.1</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageReleaseNotes>Move MaterialSkin theme  to https://www.nuget.org/packages/bubuntoid.EasyDialog.MaterialSkin;
-Move MetroFramework theme  to https://www.nuget.org/packages/bubuntoid.EasyDialog.MetroFramework;
-Add UseFormProvider to DialogContextConfigureOptionsBuilder;
-Implement AsLabel extension;
-Implement PlaceSeparatorBefore, PlaceSeparatorAfter extensions;
-IFormProvider from now is public;</PackageReleaseNotes>
+    <PackageReleaseNotes>
+		Add HasWidth(int width) method;
+		Remove redundant property from IFormProvider (SecondColumnLeftPadding);
+	</PackageReleaseNotes>
   </PropertyGroup>
 </Project>

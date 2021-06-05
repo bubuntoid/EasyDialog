@@ -8,7 +8,8 @@ namespace bubuntoid.EasyDialog
         /// Uses material style
         /// </summary>
         /// <returns></returns>
-        public static DialogContextConfigureOptionsBuilder<TContext> UseMaterialStyle<TContext>(this DialogContextConfigureOptionsBuilder<TContext> builder)
+        public static DialogContextConfigureOptionsBuilder<TContext> UseMaterialStyle<TContext>(
+            this DialogContextConfigureOptionsBuilder<TContext> builder)
         {
             return UseMaterialStyle(builder, MaterialTheme.Light);
         }
@@ -18,7 +19,9 @@ namespace bubuntoid.EasyDialog
         /// </summary>
         /// <param name="theme"></param>
         /// <returns></returns>
-        public static DialogContextConfigureOptionsBuilder<TContext> UseMaterialStyle<TContext>(this DialogContextConfigureOptionsBuilder<TContext> builder, MaterialTheme theme)
+        public static DialogContextConfigureOptionsBuilder<TContext> UseMaterialStyle<TContext>(
+            this DialogContextConfigureOptionsBuilder<TContext> builder, 
+            MaterialTheme theme)
         {
             return UseMaterialStyle(builder, theme, MaterialColorScheme.Default);
         }
@@ -29,7 +32,8 @@ namespace bubuntoid.EasyDialog
         /// <param name="theme"></param>
         /// <param name="scheme"></param>
         /// <returns></returns>
-        public static DialogContextConfigureOptionsBuilder<TContext> UseMaterialStyle<TContext>(this DialogContextConfigureOptionsBuilder<TContext> builder, 
+        public static DialogContextConfigureOptionsBuilder<TContext> UseMaterialStyle<TContext>(
+            this DialogContextConfigureOptionsBuilder<TContext> builder, 
             MaterialTheme theme, 
             MaterialColorScheme scheme)
         {
