@@ -1,8 +1,7 @@
-﻿namespace bubuntoid.EasyDialog
+﻿namespace bubuntoid.EasyDialog;
+
+public enum SeparatorStyle
 {
-    public enum SeparatorStyle
-    {
-        Empty,
-        Line
-    }
+    Empty,
+    Line
 }

@@ -1,8 +1,7 @@
-﻿namespace bubuntoid.EasyDialog
+﻿namespace bubuntoid.EasyDialog;
+
+public enum MaterialTheme
 {
-    public enum MaterialTheme
-    {
-        Light,
-        Dark,
-    }
+    Light,
+    Dark,
 }

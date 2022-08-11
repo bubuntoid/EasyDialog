@@ -1,9 +1,8 @@
 ﻿using bubuntoid.EasyDialog.Internal.Models;
 
-namespace bubuntoid.EasyDialog
+namespace bubuntoid.EasyDialog;
+
+public interface IDialogContextConfigureOptionsBuilder
 {
-    public interface IDialogContextConfigureOptionsBuilder
-    {
-        internal InternalDialogContextConfigureOptionsBuilderData Data { get; }
-    }
+    internal InternalDialogContextConfigureOptionsBuilderData Data { get; }
 }

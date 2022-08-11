@@ -1,306 +1,305 @@
-﻿namespace bubuntoid.EasyDialog
+﻿namespace bubuntoid.EasyDialog;
+
+/// <summary>
+/// Model that used for creating your own theme for MaterialStyle. 
+/// Contains existing themes in static properties
+/// </summary>
+public class MaterialColorScheme
 {
+    public MaterialThemePrimaryColor Primary { get; set; }
+    public MaterialThemePrimaryColor DarkPrimary { get; set; }
+    public MaterialThemePrimaryColor LightPrimary { get; set; }
+    public MaterialThemeAccent Accent { get; set; }
+    public MaterialThemeTextShade TextShade { get; set; }
+
     /// <summary>
-    /// Model that used for creating your own theme for MaterialStyle. 
-    /// Contains existing themes in static properties
+    /// Default values are: Light, BlueGrey800, BlueGrey900, BlueGrey500, LightBlue200, White
     /// </summary>
-    public class MaterialColorScheme
+    /// <returns></returns>
+    public static MaterialColorScheme Default
     {
-        public MaterialThemePrimaryColor Primary { get; set; }
-        public MaterialThemePrimaryColor DarkPrimary { get; set; }
-        public MaterialThemePrimaryColor LightPrimary { get; set; }
-        public MaterialThemeAccent Accent { get; set; }
-        public MaterialThemeTextShade TextShade { get; set; }
-
-        /// <summary>
-        /// Default values are: Light, BlueGrey800, BlueGrey900, BlueGrey500, LightBlue200, White
-        /// </summary>
-        /// <returns></returns>
-        public static MaterialColorScheme Default
+        get
         {
-            get
+            return new MaterialColorScheme()
             {
-                return new MaterialColorScheme()
-                {
-                    Primary = MaterialThemePrimaryColor.BlueGrey800,
-                    DarkPrimary = MaterialThemePrimaryColor.BlueGrey900,
-                    LightPrimary = MaterialThemePrimaryColor.BlueGrey500,
-                    Accent = MaterialThemeAccent.LightBlue200,
-                    TextShade = MaterialThemeTextShade.White,
-                };
-            }
+                Primary = MaterialThemePrimaryColor.BlueGrey800,
+                DarkPrimary = MaterialThemePrimaryColor.BlueGrey900,
+                LightPrimary = MaterialThemePrimaryColor.BlueGrey500,
+                Accent = MaterialThemeAccent.LightBlue200,
+                TextShade = MaterialThemeTextShade.White,
+            };
         }
+    }
 
-        public static MaterialColorScheme Green
+    public static MaterialColorScheme Green
+    {
+        get
         {
-            get
+            return new MaterialColorScheme()
             {
-                return new MaterialColorScheme()
-                {
-                    Primary = MaterialThemePrimaryColor.Green800,
-                    DarkPrimary = MaterialThemePrimaryColor.Green900,
-                    LightPrimary = MaterialThemePrimaryColor.Green500,
-                    Accent = MaterialThemeAccent.LightGreen200,
+                Primary = MaterialThemePrimaryColor.Green800,
+                DarkPrimary = MaterialThemePrimaryColor.Green900,
+                LightPrimary = MaterialThemePrimaryColor.Green500,
+                Accent = MaterialThemeAccent.LightGreen200,
 
-                    TextShade = MaterialThemeTextShade.White,
-                };
-            }
+                TextShade = MaterialThemeTextShade.White,
+            };
         }
+    }
 
-        public static MaterialColorScheme LightGreen
+    public static MaterialColorScheme LightGreen
+    {
+        get
         {
-            get
+            return new MaterialColorScheme()
             {
-                return new MaterialColorScheme()
-                {
-                    Primary = MaterialThemePrimaryColor.LightGreen800,
-                    DarkPrimary = MaterialThemePrimaryColor.LightGreen900,
-                    LightPrimary = MaterialThemePrimaryColor.LightGreen500,
-                    Accent = MaterialThemeAccent.LightGreen200,
+                Primary = MaterialThemePrimaryColor.LightGreen800,
+                DarkPrimary = MaterialThemePrimaryColor.LightGreen900,
+                LightPrimary = MaterialThemePrimaryColor.LightGreen500,
+                Accent = MaterialThemeAccent.LightGreen200,
 
-                    TextShade = MaterialThemeTextShade.White,
-                };
-            }
+                TextShade = MaterialThemeTextShade.White,
+            };
         }
+    }
 
-        public static MaterialColorScheme Red
+    public static MaterialColorScheme Red
+    {
+        get
         {
-            get
+            return new MaterialColorScheme()
             {
-                return new MaterialColorScheme()
-                {
-                    Primary = MaterialThemePrimaryColor.Red800,
-                    DarkPrimary = MaterialThemePrimaryColor.Red900,
-                    LightPrimary = MaterialThemePrimaryColor.Red500,
-                    Accent = MaterialThemeAccent.Red200,
+                Primary = MaterialThemePrimaryColor.Red800,
+                DarkPrimary = MaterialThemePrimaryColor.Red900,
+                LightPrimary = MaterialThemePrimaryColor.Red500,
+                Accent = MaterialThemeAccent.Red200,
 
-                    TextShade = MaterialThemeTextShade.White,
-                };
-            }
+                TextShade = MaterialThemeTextShade.White,
+            };
         }
+    }
 
-        public static MaterialColorScheme Amber
+    public static MaterialColorScheme Amber
+    {
+        get
         {
-            get
+            return new MaterialColorScheme()
             {
-                return new MaterialColorScheme()
-                {
-                    Primary = MaterialThemePrimaryColor.Amber800,
-                    DarkPrimary = MaterialThemePrimaryColor.Amber900,
-                    LightPrimary = MaterialThemePrimaryColor.Amber500,
-                    Accent = MaterialThemeAccent.Amber200,
+                Primary = MaterialThemePrimaryColor.Amber800,
+                DarkPrimary = MaterialThemePrimaryColor.Amber900,
+                LightPrimary = MaterialThemePrimaryColor.Amber500,
+                Accent = MaterialThemeAccent.Amber200,
 
-                    TextShade = MaterialThemeTextShade.White,
-                };
-            }
+                TextShade = MaterialThemeTextShade.White,
+            };
         }
+    }
 
-        public static MaterialColorScheme Brown
+    public static MaterialColorScheme Brown
+    {
+        get
         {
-            get
+            return new MaterialColorScheme()
             {
-                return new MaterialColorScheme()
-                {
-                    Primary = MaterialThemePrimaryColor.Brown800,
-                    DarkPrimary = MaterialThemePrimaryColor.Brown900,
-                    LightPrimary = MaterialThemePrimaryColor.Brown500,
-                    Accent = MaterialThemeAccent.Teal200,
+                Primary = MaterialThemePrimaryColor.Brown800,
+                DarkPrimary = MaterialThemePrimaryColor.Brown900,
+                LightPrimary = MaterialThemePrimaryColor.Brown500,
+                Accent = MaterialThemeAccent.Teal200,
 
-                    TextShade = MaterialThemeTextShade.White,
-                };
-            }
+                TextShade = MaterialThemeTextShade.White,
+            };
         }
+    }
 
-        public static MaterialColorScheme Teal
+    public static MaterialColorScheme Teal
+    {
+        get
         {
-            get
+            return new MaterialColorScheme()
             {
-                return new MaterialColorScheme()
-                {
-                    Primary = MaterialThemePrimaryColor.Teal800,
-                    DarkPrimary = MaterialThemePrimaryColor.Teal900,
-                    LightPrimary = MaterialThemePrimaryColor.Teal500,
-                    Accent = MaterialThemeAccent.Teal200,
+                Primary = MaterialThemePrimaryColor.Teal800,
+                DarkPrimary = MaterialThemePrimaryColor.Teal900,
+                LightPrimary = MaterialThemePrimaryColor.Teal500,
+                Accent = MaterialThemeAccent.Teal200,
 
-                    TextShade = MaterialThemeTextShade.White,
-                };
-            }
+                TextShade = MaterialThemeTextShade.White,
+            };
         }
+    }
 
-        public static MaterialColorScheme Yellow
+    public static MaterialColorScheme Yellow
+    {
+        get
         {
-            get
+            return new MaterialColorScheme()
             {
-                return new MaterialColorScheme()
-                {
-                    Primary = MaterialThemePrimaryColor.Yellow800,
-                    DarkPrimary = MaterialThemePrimaryColor.Yellow900,
-                    LightPrimary = MaterialThemePrimaryColor.Yellow500,
-                    Accent = MaterialThemeAccent.Yellow200,
+                Primary = MaterialThemePrimaryColor.Yellow800,
+                DarkPrimary = MaterialThemePrimaryColor.Yellow900,
+                LightPrimary = MaterialThemePrimaryColor.Yellow500,
+                Accent = MaterialThemeAccent.Yellow200,
 
-                    TextShade = MaterialThemeTextShade.White,
-                };
-            }
+                TextShade = MaterialThemeTextShade.White,
+            };
         }
+    }
 
-        public static MaterialColorScheme Pink
+    public static MaterialColorScheme Pink
+    {
+        get
         {
-            get
+            return new MaterialColorScheme()
             {
-                return new MaterialColorScheme()
-                {
-                    Primary = MaterialThemePrimaryColor.Pink800,
-                    DarkPrimary = MaterialThemePrimaryColor.Pink900,
-                    LightPrimary = MaterialThemePrimaryColor.Pink500,
-                    Accent = MaterialThemeAccent.Pink200,
+                Primary = MaterialThemePrimaryColor.Pink800,
+                DarkPrimary = MaterialThemePrimaryColor.Pink900,
+                LightPrimary = MaterialThemePrimaryColor.Pink500,
+                Accent = MaterialThemeAccent.Pink200,
 
-                    TextShade = MaterialThemeTextShade.White,
-                };
-            }
+                TextShade = MaterialThemeTextShade.White,
+            };
         }
+    }
 
-        public static MaterialColorScheme Purple
+    public static MaterialColorScheme Purple
+    {
+        get
         {
-            get
+            return new MaterialColorScheme()
             {
-                return new MaterialColorScheme()
-                {
-                    Primary = MaterialThemePrimaryColor.Purple800,
-                    DarkPrimary = MaterialThemePrimaryColor.Purple900,
-                    LightPrimary = MaterialThemePrimaryColor.Purple500,
-                    Accent = MaterialThemeAccent.Purple200,
+                Primary = MaterialThemePrimaryColor.Purple800,
+                DarkPrimary = MaterialThemePrimaryColor.Purple900,
+                LightPrimary = MaterialThemePrimaryColor.Purple500,
+                Accent = MaterialThemeAccent.Purple200,
 
-                    TextShade = MaterialThemeTextShade.White,
-                };
-            }
+                TextShade = MaterialThemeTextShade.White,
+            };
         }
+    }
 
-        public static MaterialColorScheme DeepPurple
+    public static MaterialColorScheme DeepPurple
+    {
+        get
         {
-            get
+            return new MaterialColorScheme()
             {
-                return new MaterialColorScheme()
-                {
-                    Primary = MaterialThemePrimaryColor.DeepPurple800,
-                    DarkPrimary = MaterialThemePrimaryColor.DeepPurple900,
-                    LightPrimary = MaterialThemePrimaryColor.DeepPurple500,
-                    Accent = MaterialThemeAccent.DeepPurple200,
+                Primary = MaterialThemePrimaryColor.DeepPurple800,
+                DarkPrimary = MaterialThemePrimaryColor.DeepPurple900,
+                LightPrimary = MaterialThemePrimaryColor.DeepPurple500,
+                Accent = MaterialThemeAccent.DeepPurple200,
 
-                    TextShade = MaterialThemeTextShade.White,
-                };
-            }
+                TextShade = MaterialThemeTextShade.White,
+            };
         }
+    }
 
-        public static MaterialColorScheme Orange
+    public static MaterialColorScheme Orange
+    {
+        get
         {
-            get
+            return new MaterialColorScheme()
             {
-                return new MaterialColorScheme()
-                {
-                    Primary = MaterialThemePrimaryColor.Orange800,
-                    DarkPrimary = MaterialThemePrimaryColor.Orange900,
-                    LightPrimary = MaterialThemePrimaryColor.Orange500,
-                    Accent = MaterialThemeAccent.Orange200,
+                Primary = MaterialThemePrimaryColor.Orange800,
+                DarkPrimary = MaterialThemePrimaryColor.Orange900,
+                LightPrimary = MaterialThemePrimaryColor.Orange500,
+                Accent = MaterialThemeAccent.Orange200,
 
-                    TextShade = MaterialThemeTextShade.White,
-                };
-            }
+                TextShade = MaterialThemeTextShade.White,
+            };
         }
+    }
 
-        public static MaterialColorScheme DeepOrange
+    public static MaterialColorScheme DeepOrange
+    {
+        get
         {
-            get
+            return new MaterialColorScheme()
             {
-                return new MaterialColorScheme()
-                {
-                    Primary = MaterialThemePrimaryColor.DeepOrange800,
-                    DarkPrimary = MaterialThemePrimaryColor.DeepOrange900,
-                    LightPrimary = MaterialThemePrimaryColor.DeepOrange500,
-                    Accent = MaterialThemeAccent.DeepOrange200,
+                Primary = MaterialThemePrimaryColor.DeepOrange800,
+                DarkPrimary = MaterialThemePrimaryColor.DeepOrange900,
+                LightPrimary = MaterialThemePrimaryColor.DeepOrange500,
+                Accent = MaterialThemeAccent.DeepOrange200,
 
-                    TextShade = MaterialThemeTextShade.White,
-                };
-            }
+                TextShade = MaterialThemeTextShade.White,
+            };
         }
+    }
 
-        public static MaterialColorScheme Lime
+    public static MaterialColorScheme Lime
+    {
+        get
         {
-            get
+            return new MaterialColorScheme()
             {
-                return new MaterialColorScheme()
-                {
-                    Primary = MaterialThemePrimaryColor.Lime800,
-                    DarkPrimary = MaterialThemePrimaryColor.Lime900,
-                    LightPrimary = MaterialThemePrimaryColor.Lime500,
-                    Accent = MaterialThemeAccent.Lime200,
+                Primary = MaterialThemePrimaryColor.Lime800,
+                DarkPrimary = MaterialThemePrimaryColor.Lime900,
+                LightPrimary = MaterialThemePrimaryColor.Lime500,
+                Accent = MaterialThemeAccent.Lime200,
 
-                    TextShade = MaterialThemeTextShade.White,
-                };
-            }
+                TextShade = MaterialThemeTextShade.White,
+            };
         }
+    }
 
-        public static MaterialColorScheme LightBlue
+    public static MaterialColorScheme LightBlue
+    {
+        get
         {
-            get
+            return new MaterialColorScheme()
             {
-                return new MaterialColorScheme()
-                {
-                    Primary = MaterialThemePrimaryColor.LightBlue800,
-                    DarkPrimary = MaterialThemePrimaryColor.LightBlue900,
-                    LightPrimary = MaterialThemePrimaryColor.LightBlue500,
-                    Accent = MaterialThemeAccent.LightBlue200,
+                Primary = MaterialThemePrimaryColor.LightBlue800,
+                DarkPrimary = MaterialThemePrimaryColor.LightBlue900,
+                LightPrimary = MaterialThemePrimaryColor.LightBlue500,
+                Accent = MaterialThemeAccent.LightBlue200,
 
-                    TextShade = MaterialThemeTextShade.White,
-                };
-            }
+                TextShade = MaterialThemeTextShade.White,
+            };
         }
+    }
 
-        public static MaterialColorScheme Indigo
+    public static MaterialColorScheme Indigo
+    {
+        get
         {
-            get
+            return new MaterialColorScheme()
             {
-                return new MaterialColorScheme()
-                {
-                    Primary = MaterialThemePrimaryColor.Indigo800,
-                    DarkPrimary = MaterialThemePrimaryColor.Indigo900,
-                    LightPrimary = MaterialThemePrimaryColor.Indigo500,
-                    Accent = MaterialThemeAccent.Indigo200,
+                Primary = MaterialThemePrimaryColor.Indigo800,
+                DarkPrimary = MaterialThemePrimaryColor.Indigo900,
+                LightPrimary = MaterialThemePrimaryColor.Indigo500,
+                Accent = MaterialThemeAccent.Indigo200,
 
-                    TextShade = MaterialThemeTextShade.White,
-                };
-            }
+                TextShade = MaterialThemeTextShade.White,
+            };
         }
+    }
 
-        public static MaterialColorScheme Grey
+    public static MaterialColorScheme Grey
+    {
+        get
         {
-            get
+            return new MaterialColorScheme()
             {
-                return new MaterialColorScheme()
-                {
-                    Primary = MaterialThemePrimaryColor.Grey800,
-                    DarkPrimary = MaterialThemePrimaryColor.Grey900,
-                    LightPrimary = MaterialThemePrimaryColor.Grey500,
-                    Accent = MaterialThemeAccent.Teal200,
+                Primary = MaterialThemePrimaryColor.Grey800,
+                DarkPrimary = MaterialThemePrimaryColor.Grey900,
+                LightPrimary = MaterialThemePrimaryColor.Grey500,
+                Accent = MaterialThemeAccent.Teal200,
 
-                    TextShade = MaterialThemeTextShade.White,
-                };
-            }
+                TextShade = MaterialThemeTextShade.White,
+            };
         }
+    }
 
-        public static MaterialColorScheme Cyan
+    public static MaterialColorScheme Cyan
+    {
+        get
         {
-            get
+            return new MaterialColorScheme()
             {
-                return new MaterialColorScheme()
-                {
-                    Primary = MaterialThemePrimaryColor.Cyan800,
-                    DarkPrimary = MaterialThemePrimaryColor.Cyan900,
-                    LightPrimary = MaterialThemePrimaryColor.Cyan500,
-                    Accent = MaterialThemeAccent.Cyan200,
+                Primary = MaterialThemePrimaryColor.Cyan800,
+                DarkPrimary = MaterialThemePrimaryColor.Cyan900,
+                LightPrimary = MaterialThemePrimaryColor.Cyan500,
+                Accent = MaterialThemeAccent.Cyan200,
 
-                    TextShade = MaterialThemeTextShade.White,
-                };
-            }
+                TextShade = MaterialThemeTextShade.White,
+            };
         }
     }
 }

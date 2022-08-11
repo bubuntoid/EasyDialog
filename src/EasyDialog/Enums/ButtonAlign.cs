@@ -1,10 +1,9 @@
-﻿namespace bubuntoid.EasyDialog
+﻿namespace bubuntoid.EasyDialog;
+
+public enum ButtonAlign
 {
-    public enum ButtonAlign
-    {
-        Left,
-        Right,
-        Center,
-        FullRow
-    }
+    Left,
+    Right,
+    Center,
+    FullRow
 }
