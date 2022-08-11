@@ -48,12 +48,13 @@ More samples [here](https://github.com/bubuntoid/EasyDialog/tree/main/src/EasyDi
 ## Items
 ### Basics
 There are 2 types of items you may set for your dialog - `DialogSet<TValue>` and `DialogCollectionSet<TValue>`. 
-Both of theme has 2 properties: `TValue Value` and `Control control`.
+Both of theme has 2 main properties: `TValue Value` that sets or gets value of control and `System.Windows.Controls.Control Control` that exists for more control flexability.<br>
+After version 7.0.0 there is one more additional property - `string Name` that was added to simplify label.Text operations (.HasText extension method)
 
-Difference between them is that `DialogCollectionSet<TValue>` besides `TValue Value` property has one more - `IEnumerable<TValue> DataSource` intended for interact collection with control or vice versa and one more action `Action<Control, IEnumearble<TValue>> OnUpdateItemsAction` (encapsulated, but may be configured through option builders)
+Difference between DialogSets is that `DialogCollectionSet<TValue>` besides `TValue Value` property has one more property - `IEnumerable<TValue> DataSource` intended for interact collection with control or vice versa and one more action `Action<Control, IEnumearble<TValue>> OnUpdateItemsAction` (encapsulated, but may be configured through option builders)
 
 Supported types that are available out of the box:
-- `DialogSet<string>` -> TextBox, Label
+- `DialogSet<string>` -> TextBox, Label, FolderBrowserDialog
 - `DialogSet<int>` -> NumericUpDown (also work with `decimal`, `float` and `double`)
 - `DialogSet<bool>` -> CheckBox
 - `DialogSet<DateTime>` -> DateTimePicker (also work with `TimeSpan`)
@@ -116,7 +117,7 @@ For editing state of `IEnumearble<TValue>` (`DialogCollectionSet<TValue>`) you h
       .Add(DateTime.Now.TimeOfDay);
   
   // Use this:
-  dialogContext.MyDialogCollectionSet.DataSource = MyDialogSet.DataSource.Append(DateTime.Now.TimeOfDay);
+  dialogContext.MyDialogCollectionSet.DataSource = dialogContext.MyDialogCollectionSet.DataSource.Append(DateTime.Now.TimeOfDay);
 ```
 
  
