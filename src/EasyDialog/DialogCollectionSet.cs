@@ -15,6 +15,19 @@ namespace bubuntoid.EasyDialog;
 public class DialogCollectionSet<TValue> : IDialogCollectionSet
 {
     /// <summary>
+    /// Property accessible only after form initialization 
+    /// </summary>
+    public string Name
+    {
+        get => Base.Data.Label?.Text;
+        set
+        {
+            if (Base.Data.Label != null)
+                Base.Data.Label.Text = value;
+        }
+    }
+    
+    /// <summary>
     /// Presents value of this DialogCollectionSet<TValue>
     /// </summary>
     public TValue Value
@@ -75,8 +88,8 @@ public class DialogCollectionSet<TValue> : IDialogCollectionSet
     Dictionary<Type, SupportedTypeSetup> IDialogSet.SupportedTypesSetups => new()
     {
         [typeof(string)] = new SupportedTypeSetup(control: () => new ComboBox(),
-            getter: (control) => (control as ComboBox).SelectedItem,
-            setter: (control, value) => (control as ComboBox).SelectedItem = value,
+            getter: (control) => ((ComboBox)control).SelectedItem,
+            setter: (control, value) => ((ComboBox)control).SelectedItem = value,
             updateItemsEvent: (control, items) =>
             {
                 var comboBox = (ComboBox)control;
