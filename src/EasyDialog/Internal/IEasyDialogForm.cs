@@ -1,14 +1,13 @@
 ﻿using System.Windows.Forms;
 
-namespace bubuntoid.EasyDialog.Internal
+namespace bubuntoid.EasyDialog.Internal;
+
+internal interface IEasyDialogForm
 {
-    internal interface IEasyDialogForm
-    {
-        Form Form { get; }
+    Form Form { get; }
+    
+    void Initialize(IDialogContextConfigureOptionsBuilder options);
         
-        void Initialize(IDialogContextConfigureOptionsBuilder options);
-        
-        void ShowDialog();
-        void Close();
-    }
+    void ShowDialog();
+    void Close();
 }

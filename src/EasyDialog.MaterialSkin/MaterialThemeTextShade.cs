@@ -1,8 +1,7 @@
-﻿namespace bubuntoid.EasyDialog
+﻿namespace bubuntoid.EasyDialog;
+
+public enum MaterialThemeTextShade
 {
-    public enum MaterialThemeTextShade
-    {
-        Black = 2171169,
-        White = 16777215
-    }
+    Black = 2171169,
+    White = 16777215
 }

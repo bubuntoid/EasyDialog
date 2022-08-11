@@ -3,11 +3,12 @@ using System.Collections.Generic;
 
 using bubuntoid.EasyDialog.Internal.Models;
 
-namespace bubuntoid.EasyDialog
+namespace bubuntoid.EasyDialog;
+
+public interface IDialogSet
 {
-    public interface IDialogSet
-    {
-        internal InternalDialogSetData Data { get; }
-        internal Dictionary<Type, SupportedTypeSetup> SupportedTypesSetups { get; }
-    }
+    public string Name { get; set; }
+    
+    internal InternalDialogSetData Data { get; }
+    internal Dictionary<Type, SupportedTypeSetup> SupportedTypesSetups { get; }
 }

@@ -1,10 +1,9 @@
-﻿namespace bubuntoid.EasyDialog
-{
-    public interface IDialogContext
-    {
-        void ShowDialog();
-        void Close();
+﻿namespace bubuntoid.EasyDialog;
 
-        internal void OnButtonClick();
-    }
+public interface IDialogContext
+{
+    void ShowDialog();
+    void Close();
+
+    internal void OnButtonClick();
 }
