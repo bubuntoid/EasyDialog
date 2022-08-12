@@ -8,18 +8,18 @@
     <PackageId>bubuntoid.EasyDialog.MetroFramework</PackageId>
     <Authors>bubuntoid</Authors>
     <Company>bubuntoid</Company>
-    <Description>MetroFramework theme for bubuntoid.EasyDialog</Description>
-    <Copyright>Copyright © 2021</Copyright>
+    <Description>MetroFramework theme for bubuntoid.EasyDialog. Docs and samples: https://github.com/bubuntoid/EasyDialog</Description>
+    <Copyright>Copyright © 2022</Copyright>
     <PackageProjectUrl>https://github.com/bubuntoid/EasyDialog</PackageProjectUrl>
     <RepositoryUrl>https://github.com/bubuntoid/EasyDialog</RepositoryUrl>
     <PackageTags>dialog, builder, ui, framework</PackageTags>
-    <Version>6.0.1</Version>
+    <Version>7.0.0</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	<PackageReleaseNotes>Remove redundant property from IFormProvider (SecondColumnLeftPadding)</PackageReleaseNotes>
   </PropertyGroup>
 
 	<ItemGroup Condition=" '$(Configuration)' == 'Release' ">
-		<PackageReference Include="bubuntoid.EasyDialog" Version="6.0.1" />
+		<PackageReference Include="bubuntoid.EasyDialog" Version="7.0.0" />
 	</ItemGroup>
 
 	<ItemGroup Condition=" '$(Configuration)' != 'Release' ">

@@ -8,16 +8,20 @@
     <Authors>bubuntoid</Authors>
     <Company>bubuntoid</Company>
     <Description>Create UI dialogs automatically with metro, material and windows style for desktop applications by using EasyDialog (.NET 6).
-Docs: https://github.com/bubuntoid/EasyDialog</Description>
-    <Copyright>Copyright © 2021</Copyright>
+Docs and samples: https://github.com/bubuntoid/EasyDialog</Description>
+    <Copyright>Copyright © 2022</Copyright>
     <PackageProjectUrl>https://github.com/bubuntoid/EasyDialog</PackageProjectUrl>
     <RepositoryUrl>https://github.com/bubuntoid/EasyDialog</RepositoryUrl>
     <PackageTags>dialog, builder, ui, framework</PackageTags>
-    <Version>6.0.1</Version>
+    <Version>7.0.0</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageReleaseNotes>
-		Add HasWidth(int width) method;
-		Remove redundant property from IFormProvider (SecondColumnLeftPadding);
+        upgrade projects to .NET 6;
+        add IDialogSet.Name field that sets label text (if it exists);
+        add HasNoButton method;
+        add overload for .HasName(string name, ContentAlignment align);
+        implement FolderBrowserDialog with methods AsFolderBrowserDialog, OnFolderSelected;
+        refactoring to file-scoped namespaces code style;
 	</PackageReleaseNotes>
   </PropertyGroup>
 </Project>
